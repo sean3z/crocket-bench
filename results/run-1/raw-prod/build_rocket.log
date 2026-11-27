@@ -1,0 +1,20 @@
+#13 [stage-1 3/5] COPY --from=build /src/target/release/bench /app/bench
+#13 DONE 0.0s
+
+#14 [stage-1 4/5] COPY Rocket.toml /app/
+#14 DONE 0.0s
+
+#15 [stage-1 5/5] WORKDIR /app
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 0.8s done
+#16 exporting manifest sha256:486a885a98ab85857e516d5d72081df6011920e3e41059caafea3b522ece2a35 done
+#16 exporting config sha256:485a51c58ff2c7da55bb4c352eb4d5dd2b52709f81cfe3f019997b8ba0d1ff25 done
+#16 exporting attestation manifest sha256:5f92ef512cdac412eac969eac49cd6ac9349a9aa7d9d42da5ffd1f2f8080d454 done
+#16 exporting manifest list sha256:1bcd9aa67584f9a9906b27024689a5052bfd2018bbdfb14bf2bbe8cf81300137 done
+#16 naming to docker.io/library/bench-rocket:latest done
+#16 unpacking to docker.io/library/bench-rocket:latest
+#16 unpacking to docker.io/library/bench-rocket:latest 0.2s done
+#16 DONE 1.0s

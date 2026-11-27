@@ -1,0 +1,20 @@
+#9 6.558 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#9 6.560 
+#9 6.560 [notice] A new release of pip is available: 26.2.2 -> 26.3
+#9 6.560 [notice] To update, run: pip install --upgrade pip
+#9 DONE 6.9s
+
+#10 [6/6] COPY app.py ./
+#10 DONE 0.0s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 2.9s done
+#11 exporting manifest sha256:62c5b59591796e15176eb55e523c195c2e2d781e3c3d346d4c9a958fa92edd8e done
+#11 exporting config sha256:e0d5bc5b848fc75ce086271dde5388ce2ebca755c3efe9799c6db1c285be6bd2 done
+#11 exporting attestation manifest sha256:d52ed6896799081a55e59be8c3bf35248607c55520dd226d9b8a3a359fcb9ad8 done
+#11 exporting manifest list sha256:a658dfc33a073a97956e98ae85626ec091f9771b41696fced13ddb41b1bb8951 done
+#11 naming to docker.io/library/bench-fastapi:latest done
+#11 unpacking to docker.io/library/bench-fastapi:latest
+#11 unpacking to docker.io/library/bench-fastapi:latest 0.8s done
+#11 DONE 3.8s

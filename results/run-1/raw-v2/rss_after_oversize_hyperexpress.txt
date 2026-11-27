@@ -1,0 +1,1 @@
+{"app_cpu_cores":0.010,"app_user_cores":0.005,"app_sys_cores":0.005,"rss_peak_kb":795584,"rss_avg_kb":795584,"host_cpu_pct":0.9,"docker_cpu_cores":0.00}

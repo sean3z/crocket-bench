@@ -1,0 +1,11 @@
+[default]
+address = "0.0.0.0"
+port = 8000
+log_level = "off"   # Rocket's own text logs off; the JSON request log comes from the JsonLog fairing
+cli_colors = false
+
+[default.databases.bench]
+url = "postgresql://bench:bench@localhost/bench"
+max_connections = 16
+min_connections = 16
+connect_timeout = 5

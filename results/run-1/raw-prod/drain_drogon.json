@@ -1,0 +1,1 @@
+{"app": "drogon", "sigterm_unix": 1795642277, "down_unix": 1795642277, "up_unix": 1795642280, "load": {"ok": 70267, "err": 2458, "by": {"200": 70267, "ConnectionResetError": 1, "URLError": 2457}, "seconds": 40.0}}

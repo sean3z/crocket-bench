@@ -1,0 +1,20 @@
+#9 175.8 [148/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket_pg.dir/src/db.cpp.o
+#9 175.8 [149/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/fairings.cpp.o
+#9 177.3 [150/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/engine_h2o.cpp.o
+#9 177.4 [151/154] Linking CXX static library _deps/crocket-build/libcrocket.a
+#9 177.4 [152/154] Linking CXX static library _deps/crocket-build/libcrocket_pg.a
+#9 181.2 [153/154] Building CXX object CMakeFiles/bench.dir/main.cpp.o
+#9 181.7 [154/154] Linking CXX executable bench
+#9 DONE 181.7s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 22.1s done
+#10 exporting manifest sha256:dcf0af9cfa76dbc48afe138aa217192d4183dd1102dd452f4c4a292a8dd19f09 done
+#10 exporting config sha256:d0febcabac95919c41a86b5415aff2ba7c2e80b429f31f0395052eb5ba39cd73 done
+#10 exporting attestation manifest sha256:f9099966512d149397a9b7995521a3225ffc3f0b3b0a64615fe91e2b6dcc3ce7 0.0s done
+#10 exporting manifest list sha256:20aabe5f58bccaf7e838763f323bded748fe9be98e63866f50a7e1d6fdf1ff64 done
+#10 naming to docker.io/library/bench-crocket:latest done
+#10 unpacking to docker.io/library/bench-crocket:latest
+#10 unpacking to docker.io/library/bench-crocket:latest 4.3s done
+#10 DONE 26.5s

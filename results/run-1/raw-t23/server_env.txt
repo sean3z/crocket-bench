@@ -1,0 +1,7 @@
+6.8.0-149-generic
+Model name:                              Intel(R) Xeon(R) Platinum 8280 CPU @ 2.70GHz
+BIOS Model name:                         pc-i440fx-6.1  CPU @ 2.0GHz
+4
+               total        used        free      shared  buff/cache   available
+Mem:            7941         750         672           4        6845        7191
+docker 29.1.3

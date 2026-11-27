@@ -1,0 +1,3 @@
+Warning: Permanently added 'droplet' (ED25519) to the list of known hosts.
+Model name:                              Intel(R) Xeon(R) Platinum 8280 CPU @ 2.70GHz
+BIOS Model name:                         pc-i440fx-6.1  CPU @ 2.0GHz

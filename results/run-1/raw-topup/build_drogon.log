@@ -1,0 +1,30 @@
+#8 DONE 158.4s
+
+#9 [build 4/6] WORKDIR /src
+#9 DONE 0.1s
+
+#10 [build 5/6] COPY CMakeLists.txt main.cc ./
+#10 DONE 0.0s
+
+#11 [build 6/6] RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j4
+#11 0.381 -- The CXX compiler identification is GNU 13.3.0
+#11 0.412 -- Detecting CXX compiler ABI info
+#11 0.645 -- Detecting CXX compiler ABI info - done
+#11 0.674 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#11 0.674 -- Detecting CXX compile features
+#11 0.676 -- Detecting CXX compile features - done
+#11 0.695 -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+#11 0.700 -- Found c-ares: /usr/include  
+#11 0.704 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+#11 0.905 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+#11 0.907 -- Found Threads: TRUE  
+#11 0.911 -- Found UUID: /usr/lib/x86_64-linux-gnu/libuuid.so
+#11 0.921 -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  
+#11 0.942 -- Found PostgreSQL: /usr/lib/x86_64-linux-gnu/libpq.so (found version "16.15")  
+#11 0.942 -- pg inc: /usr/include/postgresql
+#11 0.944 -- Found pg: /usr/lib/x86_64-linux-gnu/libpq.so  
+#11 0.947 -- Found Brotli: /usr/lib/x86_64-linux-gnu/libbrotlidec.so  
+#11 0.950 -- Looking for C++ include filesystem
+#11 1.781 -- Looking for C++ include filesystem - found
+#11 1.785 -- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED
+#11 2.671 -- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED - Success

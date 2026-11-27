@@ -1,0 +1,1097 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.24kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/ubuntu:24.04
+#2 DONE 0.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 8.32kB done
+#4 DONE 0.0s
+
+#5 [build 1/6] FROM docker.io/library/ubuntu:24.04@sha256:562111b88caa79c71391c0c4d3c2114a7d5c35915c20561fd893cb1e07929e6b
+#5 resolve docker.io/library/ubuntu:24.04@sha256:562111b88caa79c71391c0c4d3c2114a7d5c35915c20561fd893cb1e07929e6b done
+#5 sha256:2b147973fd863c93ced60f325461fe0e262b91317b008e6a2d961f13e81af0e4 2.05kB / 2.05kB done
+#5 sha256:8e8df94085bf9af8de500d2042195f1819a4c381b7f3be2a6b920cab65039050 0B / 29.79MB 0.1s
+#5 sha256:562111b88caa79c71391c0c4d3c2114a7d5c35915c20561fd893cb1e07929e6b 6.69kB / 6.69kB done
+#5 sha256:9a04f13b3f80ef056361e30868593b1cfd2279fe19e4081cb93a90bf56819d6a 424B / 424B done
+#5 sha256:8e8df94085bf9af8de500d2042195f1819a4c381b7f3be2a6b920cab65039050 29.79MB / 29.79MB 0.2s done
+#5 extracting sha256:8e8df94085bf9af8de500d2042195f1819a4c381b7f3be2a6b920cab65039050
+#5 extracting sha256:8e8df94085bf9af8de500d2042195f1819a4c381b7f3be2a6b920cab65039050 0.9s done
+#5 DONE 1.2s
+
+#6 [stage-1 2/3] RUN apt-get update && apt-get install -y --no-install-recommends libjsoncpp25 libuuid1 zlib1g libssl3t64 libpq5 libbrotli1 libc-ares2 curl && rm -rf /var/lib/apt/lists/*
+#6 0.412 Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#6 0.482 Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#6 1.180 Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#6 1.236 Get:4 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [55.6 kB]
+#6 1.373 Get:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#6 1.565 Get:6 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#6 1.579 Get:7 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1514 kB]
+#6 1.749 Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+#6 2.327 Get:9 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#6 2.469 Get:10 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#6 3.194 Get:11 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2403 kB]
+#6 3.342 Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1843 kB]
+#6 3.482 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2184 kB]
+#6 3.626 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [61.7 kB]
+#6 3.754 Get:15 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.0 kB]
+#6 3.877 Get:16 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [669 B]
+#6 4.004 Get:17 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.0 kB]
+#6 4.500 Get:18 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1563 kB]
+#6 7.130 Get:19 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2277 kB]
+#6 9.624 Fetched 34.2 MB in 9s (3614 kB/s)
+#6 9.624 Reading package lists...
+#6 ...
+
+#7 [build 2/6] RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates cmake g++ make       libjsoncpp-dev uuid-dev zlib1g-dev libssl-dev libpq-dev libbrotli-dev libc-ares-dev && rm -rf /var/lib/apt/lists/*
+#7 0.347 Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+#7 0.518 Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+#7 0.814 Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+#7 0.932 Get:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+#7 1.050 Get:5 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+#7 1.166 Get:6 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+#7 1.347 Get:7 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1514 kB]
+#7 1.528 Get:8 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+#7 1.616 Get:9 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+#7 2.055 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1843 kB]
+#7 2.154 Get:11 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2403 kB]
+#7 2.246 Get:12 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2184 kB]
+#7 2.337 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [61.7 kB]
+#7 2.417 Get:14 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [669 B]
+#7 2.498 Get:15 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.0 kB]
+#7 2.577 Get:16 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.0 kB]
+#7 3.923 Get:17 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2277 kB]
+#7 8.259 Get:18 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [55.6 kB]
+#7 8.511 Get:19 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1563 kB]
+#7 ...
+
+#6 [stage-1 2/3] RUN apt-get update && apt-get install -y --no-install-recommends libjsoncpp25 libuuid1 zlib1g libssl3t64 libpq5 libbrotli1 libc-ares2 curl && rm -rf /var/lib/apt/lists/*
+#6 9.624 Reading package lists...
+#6 10.46 Reading package lists...
+#6 11.26 Building dependency tree...
+#6 11.41 Reading state information...
+#6 11.58 libuuid1 is already the newest version (2.39.3-9ubuntu6.6).
+#6 11.58 zlib1g is already the newest version (1:1.3.dfsg-3.1ubuntu2.3).
+#6 11.58 libssl3t64 is already the newest version (3.0.13-0ubuntu3.16).
+#6 11.58 The following additional packages will be installed:
+#6 11.58   libcurl4t64 libgssapi-krb5-2 libk5crypto3 libkeyutils1 libkrb5-3
+#6 11.58   libkrb5support0 libldap2 libnghttp2-14 libpsl5t64 librtmp1 libsasl2-2
+#6 11.58   libsasl2-modules-db libssh-4
+#6 11.58 Suggested packages:
+#6 11.58   krb5-doc krb5-user
+#6 11.58 Recommended packages:
+#6 11.58   ca-certificates krb5-locales libldap-common publicsuffix libsasl2-modules
+#6 11.62 The following NEW packages will be installed:
+#6 11.62   curl libbrotli1 libcares2 libcurl4t64 libgssapi-krb5-2 libjsoncpp25
+#6 11.62   libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap2 libnghttp2-14
+#6 11.62   libpq5 libpsl5t64 librtmp1 libsasl2-2 libsasl2-modules-db libssh-4
+#6 11.91 0 upgraded, 18 newly installed, 0 to remove and 4 not upgraded.
+#6 11.91 Need to get 2478 kB of archives.
+#6 11.91 After this operation, 6888 kB of additional disk space will be used.
+#6 11.91 Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5support0 amd64 1.20.1-6ubuntu2.12 [36.0 kB]
+#6 12.24 Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libk5crypto3 amd64 1.20.1-6ubuntu2.12 [81.9 kB]
+#6 12.60 Get:3 http://archive.ubuntu.com/ubuntu noble/main amd64 libkeyutils1 amd64 1.6.3-3build1 [9490 B]
+#6 12.74 Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5-3 amd64 1.20.1-6ubuntu2.12 [348 kB]
+#6 13.23 Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgssapi-krb5-2 amd64 1.20.1-6ubuntu2.12 [143 kB]
+#6 13.48 Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnghttp2-14 amd64 1.59.0-1ubuntu0.4 [74.6 kB]
+#6 13.56 Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 libpsl5t64 amd64 0.21.2-1.1build1 [57.1 kB]
+#6 13.71 Get:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbrotli1 amd64 1.1.0-2ubuntu0.1 [331 kB]
+#6 13.94 Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-5ubuntu3.1 [20.4 kB]
+#6 14.08 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-5ubuntu3.1 [53.2 kB]
+#6 14.23 Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libldap2 amd64 2.6.10+dfsg-0ubuntu0.24.04.1 [198 kB]
+#6 14.41 Get:12 http://archive.ubuntu.com/ubuntu noble/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2build7 [56.3 kB]
+#6 14.55 Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssh-4 amd64 0.10.6-2ubuntu0.6 [191 kB]
+#6 14.73 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.16 [344 kB]
+#6 14.95 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 curl amd64 8.5.0-2ubuntu10.16 [226 kB]
+#6 15.14 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcares2 amd64 1.27.0-1.0ubuntu1.1 [74.2 kB]
+#6 15.29 Get:17 http://archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+#6 15.44 Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpq5 amd64 16.15-0ubuntu0.24.04.1 [151 kB]
+#6 15.57 debconf: delaying package configuration, since apt-utils is not installed
+#6 15.60 Fetched 2478 kB in 4s (645 kB/s)
+#6 15.61 Selecting previously unselected package libkrb5support0:amd64.
+#6 15.61 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4381 files and directories currently installed.)
+#6 15.61 Preparing to unpack .../00-libkrb5support0_1.20.1-6ubuntu2.12_amd64.deb ...
+#6 15.62 Unpacking libkrb5support0:amd64 (1.20.1-6ubuntu2.12) ...
+#6 15.63 Selecting previously unselected package libk5crypto3:amd64.
+#6 15.64 Preparing to unpack .../01-libk5crypto3_1.20.1-6ubuntu2.12_amd64.deb ...
+#6 15.64 Unpacking libk5crypto3:amd64 (1.20.1-6ubuntu2.12) ...
+#6 15.66 Selecting previously unselected package libkeyutils1:amd64.
+#6 15.66 Preparing to unpack .../02-libkeyutils1_1.6.3-3build1_amd64.deb ...
+#6 15.66 Unpacking libkeyutils1:amd64 (1.6.3-3build1) ...
+#6 15.67 Selecting previously unselected package libkrb5-3:amd64.
+#6 15.67 Preparing to unpack .../03-libkrb5-3_1.20.1-6ubuntu2.12_amd64.deb ...
+#6 15.68 Unpacking libkrb5-3:amd64 (1.20.1-6ubuntu2.12) ...
+#6 15.69 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#6 15.69 Preparing to unpack .../04-libgssapi-krb5-2_1.20.1-6ubuntu2.12_amd64.deb ...
+#6 15.69 Unpacking libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.12) ...
+#6 15.71 Selecting previously unselected package libnghttp2-14:amd64.
+#6 15.71 Preparing to unpack .../05-libnghttp2-14_1.59.0-1ubuntu0.4_amd64.deb ...
+#6 15.71 Unpacking libnghttp2-14:amd64 (1.59.0-1ubuntu0.4) ...
+#6 15.72 Selecting previously unselected package libpsl5t64:amd64.
+#6 15.72 Preparing to unpack .../06-libpsl5t64_0.21.2-1.1build1_amd64.deb ...
+#6 15.72 Unpacking libpsl5t64:amd64 (0.21.2-1.1build1) ...
+#6 15.73 Selecting previously unselected package libbrotli1:amd64.
+#6 15.73 Preparing to unpack .../07-libbrotli1_1.1.0-2ubuntu0.1_amd64.deb ...
+#6 15.73 Unpacking libbrotli1:amd64 (1.1.0-2ubuntu0.1) ...
+#6 15.75 Selecting previously unselected package libsasl2-modules-db:amd64.
+#6 15.75 Preparing to unpack .../08-libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+#6 15.75 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#6 15.76 Selecting previously unselected package libsasl2-2:amd64.
+#6 15.76 Preparing to unpack .../09-libsasl2-2_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+#6 15.76 Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#6 15.77 Selecting previously unselected package libldap2:amd64.
+#6 15.77 Preparing to unpack .../10-libldap2_2.6.10+dfsg-0ubuntu0.24.04.1_amd64.deb ...
+#6 15.77 Unpacking libldap2:amd64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+#6 15.79 Selecting previously unselected package librtmp1:amd64.
+#6 15.79 Preparing to unpack .../11-librtmp1_2.4+20151223.gitfa8646d.1-2build7_amd64.deb ...
+#6 15.79 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#6 15.81 Selecting previously unselected package libssh-4:amd64.
+#6 15.81 Preparing to unpack .../12-libssh-4_0.10.6-2ubuntu0.6_amd64.deb ...
+#6 15.81 Unpacking libssh-4:amd64 (0.10.6-2ubuntu0.6) ...
+#6 15.83 Selecting previously unselected package libcurl4t64:amd64.
+#6 15.83 Preparing to unpack .../13-libcurl4t64_8.5.0-2ubuntu10.16_amd64.deb ...
+#6 15.83 Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+#6 15.85 Selecting previously unselected package curl.
+#6 15.85 Preparing to unpack .../14-curl_8.5.0-2ubuntu10.16_amd64.deb ...
+#6 15.85 Unpacking curl (8.5.0-2ubuntu10.16) ...
+#6 15.86 Selecting previously unselected package libcares2:amd64.
+#6 15.87 Preparing to unpack .../15-libcares2_1.27.0-1.0ubuntu1.1_amd64.deb ...
+#6 15.87 Unpacking libcares2:amd64 (1.27.0-1.0ubuntu1.1) ...
+#6 15.88 Selecting previously unselected package libjsoncpp25:amd64.
+#6 15.88 Preparing to unpack .../16-libjsoncpp25_1.9.5-6build1_amd64.deb ...
+#6 15.88 Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+#6 15.89 Selecting previously unselected package libpq5:amd64.
+#6 15.89 Preparing to unpack .../17-libpq5_16.15-0ubuntu0.24.04.1_amd64.deb ...
+#6 15.89 Unpacking libpq5:amd64 (16.15-0ubuntu0.24.04.1) ...
+#6 15.92 Setting up libkeyutils1:amd64 (1.6.3-3build1) ...
+#6 15.92 Setting up libbrotli1:amd64 (1.1.0-2ubuntu0.1) ...
+#6 15.92 Setting up libpsl5t64:amd64 (0.21.2-1.1build1) ...
+#6 15.92 Setting up libnghttp2-14:amd64 (1.59.0-1ubuntu0.4) ...
+#6 15.92 Setting up libkrb5support0:amd64 (1.20.1-6ubuntu2.12) ...
+#6 15.93 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#6 15.93 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#6 15.93 Setting up libcares2:amd64 (1.27.0-1.0ubuntu1.1) ...
+#6 15.93 Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+#6 15.93 Setting up libk5crypto3:amd64 (1.20.1-6ubuntu2.12) ...
+#6 15.93 Setting up libsasl2-2:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#6 15.93 Setting up libkrb5-3:amd64 (1.20.1-6ubuntu2.12) ...
+#6 15.93 Setting up libldap2:amd64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+#6 15.93 Setting up libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.12) ...
+#6 15.94 Setting up libssh-4:amd64 (0.10.6-2ubuntu0.6) ...
+#6 15.94 Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+#6 15.94 Setting up libpq5:amd64 (16.15-0ubuntu0.24.04.1) ...
+#6 15.94 Setting up curl (8.5.0-2ubuntu10.16) ...
+#6 15.94 Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+#6 DONE 16.2s
+
+#7 [build 2/6] RUN apt-get update && apt-get install -y --no-install-recommends git ca-certificates cmake g++ make       libjsoncpp-dev uuid-dev zlib1g-dev libssl-dev libpq-dev libbrotli-dev libc-ares-dev && rm -rf /var/lib/apt/lists/*
+#7 11.22 Fetched 34.2 MB in 11s (3099 kB/s)
+#7 11.22 Reading package lists...
+#7 12.05 Reading package lists...
+#7 12.95 Building dependency tree...
+#7 13.09 Reading state information...
+#7 13.27 The following additional packages will be installed:
+#7 13.27   binutils binutils-common binutils-x86-64-linux-gnu cmake-data cpp cpp-13
+#7 13.27   cpp-13-x86-64-linux-gnu cpp-x86-64-linux-gnu g++-13 g++-13-x86-64-linux-gnu
+#7 13.27   g++-x86-64-linux-gnu gcc gcc-13 gcc-13-base gcc-13-x86-64-linux-gnu
+#7 13.27   gcc-x86-64-linux-gnu git-man libarchive13t64 libasan8 libatomic1 libbinutils
+#7 13.27   libbrotli1 libc-bin libc-dev-bin libc6 libc6-dev libcares2 libcc1-0
+#7 13.27   libcrypt-dev libctf-nobfd0 libctf0 libcurl3t64-gnutls libcurl4t64
+#7 13.27   liberror-perl libexpat1 libgcc-13-dev libgdbm-compat4t64 libgdbm6t64
+#7 13.27   libgomp1 libgprofng0 libgssapi-krb5-2 libhwasan0 libicu74 libisl23 libitm1
+#7 13.27   libjansson4 libjsoncpp25 libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0
+#7 13.27   libldap2 liblsan0 libmpc3 libmpfr6 libnghttp2-14 libperl5.38t64 libpq5
+#7 13.27   libpsl5t64 libquadmath0 librhash0 librtmp1 libsasl2-2 libsasl2-modules-db
+#7 13.27   libsframe1 libssh-4 libstdc++-13-dev libtsan2 libubsan1 libuv1t64 libxml2
+#7 13.28   linux-libc-dev openssl perl perl-modules-5.38 rpcsvc-proto
+#7 13.28 Suggested packages:
+#7 13.28   binutils-doc gprofng-gui cmake-doc cmake-format elpa-cmake-mode ninja-build
+#7 13.28   cpp-doc gcc-13-locales cpp-13-doc g++-multilib g++-13-multilib gcc-13-doc
+#7 13.28   gcc-multilib manpages-dev autoconf automake libtool flex bison gdb gcc-doc
+#7 13.28   gcc-13-multilib gdb-x86-64-linux-gnu gettext-base git-daemon-run
+#7 13.28   | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb git-cvs
+#7 13.28   git-mediawiki git-svn lrzip manpages glibc-doc locales libnss-nis
+#7 13.28   libnss-nisplus gdbm-l10n krb5-doc krb5-user postgresql-doc-16 libssl-doc
+#7 13.28   libstdc++-13-doc make-doc perl-doc libterm-readline-gnu-perl
+#7 13.28   | libterm-readline-perl-perl libtap-harness-archive-perl
+#7 13.28 Recommended packages:
+#7 13.28   patch less ssh-client manpages manpages-dev libc-devtools krb5-locales
+#7 13.28   libldap-common publicsuffix libsasl2-modules netbase
+#7 13.40 The following NEW packages will be installed:
+#7 13.40   binutils binutils-common binutils-x86-64-linux-gnu ca-certificates cmake
+#7 13.40   cmake-data cpp cpp-13 cpp-13-x86-64-linux-gnu cpp-x86-64-linux-gnu g++
+#7 13.40   g++-13 g++-13-x86-64-linux-gnu g++-x86-64-linux-gnu gcc gcc-13 gcc-13-base
+#7 13.40   gcc-13-x86-64-linux-gnu gcc-x86-64-linux-gnu git git-man libarchive13t64
+#7 13.40   libasan8 libatomic1 libbinutils libbrotli-dev libbrotli1 libc-ares-dev
+#7 13.40   libc-dev-bin libc6-dev libcares2 libcc1-0 libcrypt-dev libctf-nobfd0 libctf0
+#7 13.40   libcurl3t64-gnutls libcurl4t64 liberror-perl libexpat1 libgcc-13-dev
+#7 13.40   libgdbm-compat4t64 libgdbm6t64 libgomp1 libgprofng0 libgssapi-krb5-2
+#7 13.40   libhwasan0 libicu74 libisl23 libitm1 libjansson4 libjsoncpp-dev libjsoncpp25
+#7 13.40   libk5crypto3 libkeyutils1 libkrb5-3 libkrb5support0 libldap2 liblsan0
+#7 13.40   libmpc3 libmpfr6 libnghttp2-14 libperl5.38t64 libpq-dev libpq5 libpsl5t64
+#7 13.40   libquadmath0 librhash0 librtmp1 libsasl2-2 libsasl2-modules-db libsframe1
+#7 13.40   libssh-4 libssl-dev libstdc++-13-dev libtsan2 libubsan1 libuv1t64 libxml2
+#7 13.40   linux-libc-dev make openssl perl perl-modules-5.38 rpcsvc-proto uuid-dev
+#7 13.40   zlib1g-dev
+#7 13.40 The following packages will be upgraded:
+#7 13.40   libc-bin libc6
+#7 13.75 2 upgraded, 86 newly installed, 0 to remove and 2 not upgraded.
+#7 13.75 Need to get 120 MB of archives.
+#7 13.75 After this operation, 439 MB of additional disk space will be used.
+#7 13.75 Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc6 amd64 2.39-0ubuntu8.12 [3264 kB]
+#7 15.22 Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-bin amd64 2.39-0ubuntu8.12 [682 kB]
+#7 15.38 Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 perl-modules-5.38 all 5.38.2-3.2ubuntu0.7 [3110 kB]
+#7 15.63 Get:4 http://archive.ubuntu.com/ubuntu noble/main amd64 libgdbm6t64 amd64 1.23-5.1build1 [34.4 kB]
+#7 15.77 Get:5 http://archive.ubuntu.com/ubuntu noble/main amd64 libgdbm-compat4t64 amd64 1.23-5.1build1 [6710 B]
+#7 15.91 Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libperl5.38t64 amd64 5.38.2-3.2ubuntu0.7 [4864 kB]
+#7 16.21 Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 perl amd64 5.38.2-3.2ubuntu0.7 [231 kB]
+#7 16.36 Get:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 openssl amd64 3.0.13-0ubuntu3.16 [1004 kB]
+#7 16.51 Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 ca-certificates all 20260816ubuntu0.24.04.2 [140 kB]
+#7 16.65 Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libexpat1 amd64 2.6.1-2ubuntu0.7 [103 kB]
+#7 16.79 Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5support0 amd64 1.20.1-6ubuntu2.12 [36.0 kB]
+#7 16.92 Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libk5crypto3 amd64 1.20.1-6ubuntu2.12 [81.9 kB]
+#7 17.07 Get:13 http://archive.ubuntu.com/ubuntu noble/main amd64 libkeyutils1 amd64 1.6.3-3build1 [9490 B]
+#7 17.20 Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libkrb5-3 amd64 1.20.1-6ubuntu2.12 [348 kB]
+#7 17.34 Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgssapi-krb5-2 amd64 1.20.1-6ubuntu2.12 [143 kB]
+#7 17.48 Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libicu74 amd64 74.2-1ubuntu3.1 [10.9 MB]
+#7 17.95 Get:17 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libxml2 amd64 2.9.14+dfsg-1.3ubuntu3.10 [764 kB]
+#7 18.10 Get:18 http://archive.ubuntu.com/ubuntu noble/main amd64 libjansson4 amd64 2.14-2build2 [32.8 kB]
+#7 18.23 Get:19 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnghttp2-14 amd64 1.59.0-1ubuntu0.4 [74.6 kB]
+#7 18.37 Get:20 http://archive.ubuntu.com/ubuntu noble/main amd64 libpsl5t64 amd64 0.21.2-1.1build1 [57.1 kB]
+#7 18.51 Get:21 http://archive.ubuntu.com/ubuntu noble/main amd64 libuv1t64 amd64 1.48.0-1.1build1 [97.3 kB]
+#7 18.66 Get:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-common amd64 2.42-4ubuntu2.11 [241 kB]
+#7 18.80 Get:23 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsframe1 amd64 2.42-4ubuntu2.11 [16.6 kB]
+#7 18.94 Get:24 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbinutils amd64 2.42-4ubuntu2.11 [578 kB]
+#7 19.09 Get:25 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libctf-nobfd0 amd64 2.42-4ubuntu2.11 [98.8 kB]
+#7 19.23 Get:26 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libctf0 amd64 2.42-4ubuntu2.11 [94.5 kB]
+#7 19.36 Get:27 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgprofng0 amd64 2.42-4ubuntu2.11 [849 kB]
+#7 19.52 Get:28 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.42-4ubuntu2.11 [2463 kB]
+#7 19.69 Get:29 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils amd64 2.42-4ubuntu2.11 [18.0 kB]
+#7 19.84 Get:30 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libarchive13t64 amd64 3.7.2-2ubuntu0.9 [383 kB]
+#7 19.98 Get:31 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbrotli1 amd64 1.1.0-2ubuntu0.1 [331 kB]
+#7 20.12 Get:32 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-modules-db amd64 2.1.28+dfsg1-5ubuntu3.1 [20.4 kB]
+#7 20.26 Get:33 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsasl2-2 amd64 2.1.28+dfsg1-5ubuntu3.1 [53.2 kB]
+#7 20.39 Get:34 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libldap2 amd64 2.6.10+dfsg-0ubuntu0.24.04.1 [198 kB]
+#7 20.53 Get:35 http://archive.ubuntu.com/ubuntu noble/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2build7 [56.3 kB]
+#7 20.67 Get:36 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssh-4 amd64 0.10.6-2ubuntu0.6 [191 kB]
+#7 20.81 Get:37 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.16 [344 kB]
+#7 20.95 Get:38 http://archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp25 amd64 1.9.5-6build1 [82.8 kB]
+#7 21.09 Get:39 http://archive.ubuntu.com/ubuntu noble/main amd64 librhash0 amd64 1.4.3-3build1 [129 kB]
+#7 21.23 Get:40 http://archive.ubuntu.com/ubuntu noble/main amd64 cmake-data all 3.28.3-1build7 [2155 kB]
+#7 21.40 Get:41 http://archive.ubuntu.com/ubuntu noble/main amd64 cmake amd64 3.28.3-1build7 [11.2 MB]
+#7 21.96 Get:42 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13-base amd64 13.3.0-6ubuntu2~24.04.1 [51.6 kB]
+#7 22.10 Get:43 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libisl23 amd64 0.26-3build1.1 [680 kB]
+#7 22.26 Get:44 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpfr6 amd64 4.2.1-1build1.1 [353 kB]
+#7 22.41 Get:45 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpc3 amd64 1.3.1-1build1.1 [54.6 kB]
+#7 22.55 Get:46 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 cpp-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [10.7 MB]
+#7 23.10 Get:47 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 cpp-13 amd64 13.3.0-6ubuntu2~24.04.1 [1042 B]
+#7 23.23 Get:48 http://archive.ubuntu.com/ubuntu noble/main amd64 cpp-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [5326 B]
+#7 23.37 Get:49 http://archive.ubuntu.com/ubuntu noble/main amd64 cpp amd64 4:13.2.0-7ubuntu1 [22.4 kB]
+#7 23.51 Get:50 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcc1-0 amd64 14.2.0-4ubuntu2~24.04.1 [48.0 kB]
+#7 23.65 Get:51 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgomp1 amd64 14.2.0-4ubuntu2~24.04.1 [148 kB]
+#7 23.79 Get:52 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libitm1 amd64 14.2.0-4ubuntu2~24.04.1 [29.7 kB]
+#7 23.93 Get:53 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libatomic1 amd64 14.2.0-4ubuntu2~24.04.1 [10.5 kB]
+#7 24.07 Get:54 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libasan8 amd64 14.2.0-4ubuntu2~24.04.1 [3027 kB]
+#7 24.33 Get:55 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 liblsan0 amd64 14.2.0-4ubuntu2~24.04.1 [1322 kB]
+#7 24.53 Get:56 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libtsan2 amd64 14.2.0-4ubuntu2~24.04.1 [2772 kB]
+#7 24.77 Get:57 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libubsan1 amd64 14.2.0-4ubuntu2~24.04.1 [1184 kB]
+#7 24.96 Get:58 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libhwasan0 amd64 14.2.0-4ubuntu2~24.04.1 [1641 kB]
+#7 25.17 Get:59 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libquadmath0 amd64 14.2.0-4ubuntu2~24.04.1 [153 kB]
+#7 25.31 Get:60 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgcc-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2681 kB]
+#7 25.55 Get:61 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [21.1 MB]
+#7 26.50 Get:62 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13 amd64 13.3.0-6ubuntu2~24.04.1 [494 kB]
+#7 26.66 Get:63 http://archive.ubuntu.com/ubuntu noble/main amd64 gcc-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [1212 B]
+#7 26.80 Get:64 http://archive.ubuntu.com/ubuntu noble/main amd64 gcc amd64 4:13.2.0-7ubuntu1 [5018 B]
+#7 26.94 Get:65 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-dev-bin amd64 2.39-0ubuntu8.12 [20.4 kB]
+#7 27.07 Get:66 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-libc-dev amd64 6.8.0-151.151 [1712 kB]
+#7 27.29 Get:67 http://archive.ubuntu.com/ubuntu noble/main amd64 libcrypt-dev amd64 1:4.4.36-4build1 [112 kB]
+#7 27.43 Get:68 http://archive.ubuntu.com/ubuntu noble/main amd64 rpcsvc-proto amd64 1.4.2-0ubuntu7 [67.4 kB]
+#7 27.57 Get:69 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc6-dev amd64 2.39-0ubuntu8.12 [2125 kB]
+#7 27.80 Get:70 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libstdc++-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2420 kB]
+#7 28.04 Get:71 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [12.2 MB]
+#7 28.63 Get:72 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13 amd64 13.3.0-6ubuntu2~24.04.1 [16.0 kB]
+#7 28.77 Get:73 http://archive.ubuntu.com/ubuntu noble/main amd64 g++-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [964 B]
+#7 28.91 Get:74 http://archive.ubuntu.com/ubuntu noble/main amd64 g++ amd64 4:13.2.0-7ubuntu1 [1100 B]
+#7 29.05 Get:75 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl3t64-gnutls amd64 8.5.0-2ubuntu10.16 [337 kB]
+#7 29.20 Get:76 http://archive.ubuntu.com/ubuntu noble/main amd64 liberror-perl all 0.17029-2 [25.6 kB]
+#7 29.34 Get:77 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 git-man all 1:2.43.0-1ubuntu7.4 [1101 kB]
+#7 29.52 Get:78 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 git amd64 1:2.43.0-1ubuntu7.4 [3681 kB]
+#7 29.81 Get:79 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbrotli-dev amd64 1.1.0-2ubuntu0.1 [353 kB]
+#7 29.96 Get:80 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcares2 amd64 1.27.0-1.0ubuntu1.1 [74.2 kB]
+#7 30.10 Get:81 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpq5 amd64 16.15-0ubuntu0.24.04.1 [151 kB]
+#7 30.24 Get:82 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libssl-dev amd64 3.0.13-0ubuntu3.16 [2409 kB]
+#7 30.48 Get:83 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpq-dev amd64 16.15-0ubuntu0.24.04.1 [153 kB]
+#7 30.62 Get:84 http://archive.ubuntu.com/ubuntu noble/main amd64 make amd64 4.3-4.1build2 [180 kB]
+#7 30.77 Get:85 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 zlib1g-dev amd64 1:1.3.dfsg-3.1ubuntu2.3 [894 kB]
+#7 30.94 Get:86 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-ares-dev amd64 1.27.0-1.0ubuntu1.1 [189 kB]
+#7 31.09 Get:87 http://archive.ubuntu.com/ubuntu noble/main amd64 libjsoncpp-dev amd64 1.9.5-6build1 [23.0 kB]
+#7 31.22 Get:88 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 uuid-dev amd64 2.39.3-9ubuntu6.6 [33.5 kB]
+#7 31.35 debconf: delaying package configuration, since apt-utils is not installed
+#7 31.38 Fetched 120 MB in 18s (6749 kB/s)
+#7 31.40 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4381 files and directories currently installed.)
+#7 31.41 Preparing to unpack .../libc6_2.39-0ubuntu8.12_amd64.deb ...
+#7 31.48 Unpacking libc6:amd64 (2.39-0ubuntu8.12) over (2.39-0ubuntu8.9) ...
+#7 31.70 Setting up libc6:amd64 (2.39-0ubuntu8.12) ...
+#7 32.78 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4381 files and directories currently installed.)
+#7 32.78 Preparing to unpack .../libc-bin_2.39-0ubuntu8.12_amd64.deb ...
+#7 32.78 Unpacking libc-bin (2.39-0ubuntu8.12) over (2.39-0ubuntu8.9) ...
+#7 32.82 Setting up libc-bin (2.39-0ubuntu8.12) ...
+#7 32.85 Selecting previously unselected package perl-modules-5.38.
+#7 32.85 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 4381 files and directories currently installed.)
+#7 32.85 Preparing to unpack .../00-perl-modules-5.38_5.38.2-3.2ubuntu0.7_all.deb ...
+#7 32.86 Unpacking perl-modules-5.38 (5.38.2-3.2ubuntu0.7) ...
+#7 33.02 Selecting previously unselected package libgdbm6t64:amd64.
+#7 33.02 Preparing to unpack .../01-libgdbm6t64_1.23-5.1build1_amd64.deb ...
+#7 33.02 Unpacking libgdbm6t64:amd64 (1.23-5.1build1) ...
+#7 33.03 Selecting previously unselected package libgdbm-compat4t64:amd64.
+#7 33.03 Preparing to unpack .../02-libgdbm-compat4t64_1.23-5.1build1_amd64.deb ...
+#7 33.03 Unpacking libgdbm-compat4t64:amd64 (1.23-5.1build1) ...
+#7 33.04 Selecting previously unselected package libperl5.38t64:amd64.
+#7 33.05 Preparing to unpack .../03-libperl5.38t64_5.38.2-3.2ubuntu0.7_amd64.deb ...
+#7 33.05 Unpacking libperl5.38t64:amd64 (5.38.2-3.2ubuntu0.7) ...
+#7 33.18 Selecting previously unselected package perl.
+#7 33.18 Preparing to unpack .../04-perl_5.38.2-3.2ubuntu0.7_amd64.deb ...
+#7 33.19 Unpacking perl (5.38.2-3.2ubuntu0.7) ...
+#7 33.20 Selecting previously unselected package openssl.
+#7 33.21 Preparing to unpack .../05-openssl_3.0.13-0ubuntu3.16_amd64.deb ...
+#7 33.21 Unpacking openssl (3.0.13-0ubuntu3.16) ...
+#7 33.23 Selecting previously unselected package ca-certificates.
+#7 33.23 Preparing to unpack .../06-ca-certificates_20260816ubuntu0.24.04.2_all.deb ...
+#7 33.23 Unpacking ca-certificates (20260816ubuntu0.24.04.2) ...
+#7 33.26 Selecting previously unselected package libexpat1:amd64.
+#7 33.26 Preparing to unpack .../07-libexpat1_2.6.1-2ubuntu0.7_amd64.deb ...
+#7 33.26 Unpacking libexpat1:amd64 (2.6.1-2ubuntu0.7) ...
+#7 33.28 Selecting previously unselected package libkrb5support0:amd64.
+#7 33.28 Preparing to unpack .../08-libkrb5support0_1.20.1-6ubuntu2.12_amd64.deb ...
+#7 33.28 Unpacking libkrb5support0:amd64 (1.20.1-6ubuntu2.12) ...
+#7 33.29 Selecting previously unselected package libk5crypto3:amd64.
+#7 33.29 Preparing to unpack .../09-libk5crypto3_1.20.1-6ubuntu2.12_amd64.deb ...
+#7 33.29 Unpacking libk5crypto3:amd64 (1.20.1-6ubuntu2.12) ...
+#7 33.31 Selecting previously unselected package libkeyutils1:amd64.
+#7 33.31 Preparing to unpack .../10-libkeyutils1_1.6.3-3build1_amd64.deb ...
+#7 33.31 Unpacking libkeyutils1:amd64 (1.6.3-3build1) ...
+#7 33.32 Selecting previously unselected package libkrb5-3:amd64.
+#7 33.32 Preparing to unpack .../11-libkrb5-3_1.20.1-6ubuntu2.12_amd64.deb ...
+#7 33.32 Unpacking libkrb5-3:amd64 (1.20.1-6ubuntu2.12) ...
+#7 33.33 Selecting previously unselected package libgssapi-krb5-2:amd64.
+#7 33.34 Preparing to unpack .../12-libgssapi-krb5-2_1.20.1-6ubuntu2.12_amd64.deb ...
+#7 33.34 Unpacking libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.12) ...
+#7 33.35 Selecting previously unselected package libicu74:amd64.
+#7 33.35 Preparing to unpack .../13-libicu74_74.2-1ubuntu3.1_amd64.deb ...
+#7 33.35 Unpacking libicu74:amd64 (74.2-1ubuntu3.1) ...
+#7 33.51 Selecting previously unselected package libxml2:amd64.
+#7 33.51 Preparing to unpack .../14-libxml2_2.9.14+dfsg-1.3ubuntu3.10_amd64.deb ...
+#7 33.51 Unpacking libxml2:amd64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+#7 33.53 Selecting previously unselected package libjansson4:amd64.
+#7 33.53 Preparing to unpack .../15-libjansson4_2.14-2build2_amd64.deb ...
+#7 33.53 Unpacking libjansson4:amd64 (2.14-2build2) ...
+#7 33.55 Selecting previously unselected package libnghttp2-14:amd64.
+#7 33.55 Preparing to unpack .../16-libnghttp2-14_1.59.0-1ubuntu0.4_amd64.deb ...
+#7 33.55 Unpacking libnghttp2-14:amd64 (1.59.0-1ubuntu0.4) ...
+#7 33.56 Selecting previously unselected package libpsl5t64:amd64.
+#7 33.56 Preparing to unpack .../17-libpsl5t64_0.21.2-1.1build1_amd64.deb ...
+#7 33.56 Unpacking libpsl5t64:amd64 (0.21.2-1.1build1) ...
+#7 33.57 Selecting previously unselected package libuv1t64:amd64.
+#7 33.57 Preparing to unpack .../18-libuv1t64_1.48.0-1.1build1_amd64.deb ...
+#7 33.57 Unpacking libuv1t64:amd64 (1.48.0-1.1build1) ...
+#7 33.59 Selecting previously unselected package binutils-common:amd64.
+#7 33.59 Preparing to unpack .../19-binutils-common_2.42-4ubuntu2.11_amd64.deb ...
+#7 33.59 Unpacking binutils-common:amd64 (2.42-4ubuntu2.11) ...
+#7 33.60 Selecting previously unselected package libsframe1:amd64.
+#7 33.60 Preparing to unpack .../20-libsframe1_2.42-4ubuntu2.11_amd64.deb ...
+#7 33.60 Unpacking libsframe1:amd64 (2.42-4ubuntu2.11) ...
+#7 33.61 Selecting previously unselected package libbinutils:amd64.
+#7 33.61 Preparing to unpack .../21-libbinutils_2.42-4ubuntu2.11_amd64.deb ...
+#7 33.61 Unpacking libbinutils:amd64 (2.42-4ubuntu2.11) ...
+#7 33.64 Selecting previously unselected package libctf-nobfd0:amd64.
+#7 33.64 Preparing to unpack .../22-libctf-nobfd0_2.42-4ubuntu2.11_amd64.deb ...
+#7 33.64 Unpacking libctf-nobfd0:amd64 (2.42-4ubuntu2.11) ...
+#7 33.66 Selecting previously unselected package libctf0:amd64.
+#7 33.66 Preparing to unpack .../23-libctf0_2.42-4ubuntu2.11_amd64.deb ...
+#7 33.66 Unpacking libctf0:amd64 (2.42-4ubuntu2.11) ...
+#7 33.68 Selecting previously unselected package libgprofng0:amd64.
+#7 33.68 Preparing to unpack .../24-libgprofng0_2.42-4ubuntu2.11_amd64.deb ...
+#7 33.68 Unpacking libgprofng0:amd64 (2.42-4ubuntu2.11) ...
+#7 33.71 Selecting previously unselected package binutils-x86-64-linux-gnu.
+#7 33.71 Preparing to unpack .../25-binutils-x86-64-linux-gnu_2.42-4ubuntu2.11_amd64.deb ...
+#7 33.71 Unpacking binutils-x86-64-linux-gnu (2.42-4ubuntu2.11) ...
+#7 33.78 Selecting previously unselected package binutils.
+#7 33.78 Preparing to unpack .../26-binutils_2.42-4ubuntu2.11_amd64.deb ...
+#7 33.78 Unpacking binutils (2.42-4ubuntu2.11) ...
+#7 33.81 Selecting previously unselected package libarchive13t64:amd64.
+#7 33.81 Preparing to unpack .../27-libarchive13t64_3.7.2-2ubuntu0.9_amd64.deb ...
+#7 33.81 Unpacking libarchive13t64:amd64 (3.7.2-2ubuntu0.9) ...
+#7 33.84 Selecting previously unselected package libbrotli1:amd64.
+#7 33.84 Preparing to unpack .../28-libbrotli1_1.1.0-2ubuntu0.1_amd64.deb ...
+#7 33.84 Unpacking libbrotli1:amd64 (1.1.0-2ubuntu0.1) ...
+#7 33.86 Selecting previously unselected package libsasl2-modules-db:amd64.
+#7 33.86 Preparing to unpack .../29-libsasl2-modules-db_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+#7 33.86 Unpacking libsasl2-modules-db:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#7 33.87 Selecting previously unselected package libsasl2-2:amd64.
+#7 33.87 Preparing to unpack .../30-libsasl2-2_2.1.28+dfsg1-5ubuntu3.1_amd64.deb ...
+#7 33.87 Unpacking libsasl2-2:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#7 33.88 Selecting previously unselected package libldap2:amd64.
+#7 33.88 Preparing to unpack .../31-libldap2_2.6.10+dfsg-0ubuntu0.24.04.1_amd64.deb ...
+#7 33.88 Unpacking libldap2:amd64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+#7 33.90 Selecting previously unselected package librtmp1:amd64.
+#7 33.90 Preparing to unpack .../32-librtmp1_2.4+20151223.gitfa8646d.1-2build7_amd64.deb ...
+#7 33.90 Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#7 33.92 Selecting previously unselected package libssh-4:amd64.
+#7 33.92 Preparing to unpack .../33-libssh-4_0.10.6-2ubuntu0.6_amd64.deb ...
+#7 33.92 Unpacking libssh-4:amd64 (0.10.6-2ubuntu0.6) ...
+#7 33.94 Selecting previously unselected package libcurl4t64:amd64.
+#7 33.94 Preparing to unpack .../34-libcurl4t64_8.5.0-2ubuntu10.16_amd64.deb ...
+#7 33.94 Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+#7 33.95 Selecting previously unselected package libjsoncpp25:amd64.
+#7 33.95 Preparing to unpack .../35-libjsoncpp25_1.9.5-6build1_amd64.deb ...
+#7 33.95 Unpacking libjsoncpp25:amd64 (1.9.5-6build1) ...
+#7 33.97 Selecting previously unselected package librhash0:amd64.
+#7 33.97 Preparing to unpack .../36-librhash0_1.4.3-3build1_amd64.deb ...
+#7 33.97 Unpacking librhash0:amd64 (1.4.3-3build1) ...
+#7 33.98 Selecting previously unselected package cmake-data.
+#7 33.98 Preparing to unpack .../37-cmake-data_3.28.3-1build7_all.deb ...
+#7 33.98 Unpacking cmake-data (3.28.3-1build7) ...
+#7 34.24 Selecting previously unselected package cmake.
+#7 34.24 Preparing to unpack .../38-cmake_3.28.3-1build7_amd64.deb ...
+#7 34.24 Unpacking cmake (3.28.3-1build7) ...
+#7 34.40 Selecting previously unselected package gcc-13-base:amd64.
+#7 34.40 Preparing to unpack .../39-gcc-13-base_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 34.40 Unpacking gcc-13-base:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 34.42 Selecting previously unselected package libisl23:amd64.
+#7 34.42 Preparing to unpack .../40-libisl23_0.26-3build1.1_amd64.deb ...
+#7 34.42 Unpacking libisl23:amd64 (0.26-3build1.1) ...
+#7 34.44 Selecting previously unselected package libmpfr6:amd64.
+#7 34.44 Preparing to unpack .../41-libmpfr6_4.2.1-1build1.1_amd64.deb ...
+#7 34.44 Unpacking libmpfr6:amd64 (4.2.1-1build1.1) ...
+#7 34.46 Selecting previously unselected package libmpc3:amd64.
+#7 34.46 Preparing to unpack .../42-libmpc3_1.3.1-1build1.1_amd64.deb ...
+#7 34.46 Unpacking libmpc3:amd64 (1.3.1-1build1.1) ...
+#7 34.48 Selecting previously unselected package cpp-13-x86-64-linux-gnu.
+#7 34.48 Preparing to unpack .../43-cpp-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 34.48 Unpacking cpp-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 34.62 Selecting previously unselected package cpp-13.
+#7 34.62 Preparing to unpack .../44-cpp-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 34.62 Unpacking cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 34.63 Selecting previously unselected package cpp-x86-64-linux-gnu.
+#7 34.63 Preparing to unpack .../45-cpp-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#7 34.63 Unpacking cpp-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 34.65 Selecting previously unselected package cpp.
+#7 34.65 Preparing to unpack .../46-cpp_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#7 34.65 Unpacking cpp (4:13.2.0-7ubuntu1) ...
+#7 34.66 Selecting previously unselected package libcc1-0:amd64.
+#7 34.66 Preparing to unpack .../47-libcc1-0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.66 Unpacking libcc1-0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.68 Selecting previously unselected package libgomp1:amd64.
+#7 34.68 Preparing to unpack .../48-libgomp1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.68 Unpacking libgomp1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.70 Selecting previously unselected package libitm1:amd64.
+#7 34.70 Preparing to unpack .../49-libitm1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.70 Unpacking libitm1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.71 Selecting previously unselected package libatomic1:amd64.
+#7 34.71 Preparing to unpack .../50-libatomic1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.71 Unpacking libatomic1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.72 Selecting previously unselected package libasan8:amd64.
+#7 34.72 Preparing to unpack .../51-libasan8_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.72 Unpacking libasan8:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.78 Selecting previously unselected package liblsan0:amd64.
+#7 34.78 Preparing to unpack .../52-liblsan0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.78 Unpacking liblsan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.81 Selecting previously unselected package libtsan2:amd64.
+#7 34.81 Preparing to unpack .../53-libtsan2_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.81 Unpacking libtsan2:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.86 Selecting previously unselected package libubsan1:amd64.
+#7 34.86 Preparing to unpack .../54-libubsan1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.86 Unpacking libubsan1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.89 Selecting previously unselected package libhwasan0:amd64.
+#7 34.89 Preparing to unpack .../55-libhwasan0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.89 Unpacking libhwasan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.93 Selecting previously unselected package libquadmath0:amd64.
+#7 34.93 Preparing to unpack .../56-libquadmath0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+#7 34.93 Unpacking libquadmath0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 34.94 Selecting previously unselected package libgcc-13-dev:amd64.
+#7 34.94 Preparing to unpack .../57-libgcc-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 34.94 Unpacking libgcc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 35.02 Selecting previously unselected package gcc-13-x86-64-linux-gnu.
+#7 35.03 Preparing to unpack .../58-gcc-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 35.03 Unpacking gcc-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 35.30 Selecting previously unselected package gcc-13.
+#7 35.30 Preparing to unpack .../59-gcc-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 35.30 Unpacking gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 35.32 Selecting previously unselected package gcc-x86-64-linux-gnu.
+#7 35.32 Preparing to unpack .../60-gcc-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#7 35.32 Unpacking gcc-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 35.33 Selecting previously unselected package gcc.
+#7 35.33 Preparing to unpack .../61-gcc_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#7 35.33 Unpacking gcc (4:13.2.0-7ubuntu1) ...
+#7 35.34 Selecting previously unselected package libc-dev-bin.
+#7 35.34 Preparing to unpack .../62-libc-dev-bin_2.39-0ubuntu8.12_amd64.deb ...
+#7 35.34 Unpacking libc-dev-bin (2.39-0ubuntu8.12) ...
+#7 35.36 Selecting previously unselected package linux-libc-dev:amd64.
+#7 35.36 Preparing to unpack .../63-linux-libc-dev_6.8.0-151.151_amd64.deb ...
+#7 35.36 Unpacking linux-libc-dev:amd64 (6.8.0-151.151) ...
+#7 35.47 Selecting previously unselected package libcrypt-dev:amd64.
+#7 35.47 Preparing to unpack .../64-libcrypt-dev_1%3a4.4.36-4build1_amd64.deb ...
+#7 35.48 Unpacking libcrypt-dev:amd64 (1:4.4.36-4build1) ...
+#7 35.49 Selecting previously unselected package rpcsvc-proto.
+#7 35.50 Preparing to unpack .../65-rpcsvc-proto_1.4.2-0ubuntu7_amd64.deb ...
+#7 35.50 Unpacking rpcsvc-proto (1.4.2-0ubuntu7) ...
+#7 35.51 Selecting previously unselected package libc6-dev:amd64.
+#7 35.51 Preparing to unpack .../66-libc6-dev_2.39-0ubuntu8.12_amd64.deb ...
+#7 35.51 Unpacking libc6-dev:amd64 (2.39-0ubuntu8.12) ...
+#7 35.60 Selecting previously unselected package libstdc++-13-dev:amd64.
+#7 35.60 Preparing to unpack .../67-libstdc++-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 35.60 Unpacking libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 35.73 Selecting previously unselected package g++-13-x86-64-linux-gnu.
+#7 35.73 Preparing to unpack .../68-g++-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 35.73 Unpacking g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 35.87 Selecting previously unselected package g++-13.
+#7 35.87 Preparing to unpack .../69-g++-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+#7 35.87 Unpacking g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 35.88 Selecting previously unselected package g++-x86-64-linux-gnu.
+#7 35.88 Preparing to unpack .../70-g++-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#7 35.88 Unpacking g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 35.89 Selecting previously unselected package g++.
+#7 35.90 Preparing to unpack .../71-g++_4%3a13.2.0-7ubuntu1_amd64.deb ...
+#7 35.90 Unpacking g++ (4:13.2.0-7ubuntu1) ...
+#7 35.91 Selecting previously unselected package libcurl3t64-gnutls:amd64.
+#7 35.91 Preparing to unpack .../72-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_amd64.deb ...
+#7 35.91 Unpacking libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.16) ...
+#7 35.92 Selecting previously unselected package liberror-perl.
+#7 35.93 Preparing to unpack .../73-liberror-perl_0.17029-2_all.deb ...
+#7 35.93 Unpacking liberror-perl (0.17029-2) ...
+#7 35.94 Selecting previously unselected package git-man.
+#7 35.94 Preparing to unpack .../74-git-man_1%3a2.43.0-1ubuntu7.4_all.deb ...
+#7 35.94 Unpacking git-man (1:2.43.0-1ubuntu7.4) ...
+#7 35.96 Selecting previously unselected package git.
+#7 35.96 Preparing to unpack .../75-git_1%3a2.43.0-1ubuntu7.4_amd64.deb ...
+#7 35.96 Unpacking git (1:2.43.0-1ubuntu7.4) ...
+#7 36.07 Selecting previously unselected package libbrotli-dev:amd64.
+#7 36.07 Preparing to unpack .../76-libbrotli-dev_1.1.0-2ubuntu0.1_amd64.deb ...
+#7 36.07 Unpacking libbrotli-dev:amd64 (1.1.0-2ubuntu0.1) ...
+#7 36.09 Selecting previously unselected package libcares2:amd64.
+#7 36.09 Preparing to unpack .../77-libcares2_1.27.0-1.0ubuntu1.1_amd64.deb ...
+#7 36.09 Unpacking libcares2:amd64 (1.27.0-1.0ubuntu1.1) ...
+#7 36.11 Selecting previously unselected package libpq5:amd64.
+#7 36.11 Preparing to unpack .../78-libpq5_16.15-0ubuntu0.24.04.1_amd64.deb ...
+#7 36.12 Unpacking libpq5:amd64 (16.15-0ubuntu0.24.04.1) ...
+#7 36.13 Selecting previously unselected package libssl-dev:amd64.
+#7 36.13 Preparing to unpack .../79-libssl-dev_3.0.13-0ubuntu3.16_amd64.deb ...
+#7 36.14 Unpacking libssl-dev:amd64 (3.0.13-0ubuntu3.16) ...
+#7 36.20 Selecting previously unselected package libpq-dev.
+#7 36.20 Preparing to unpack .../80-libpq-dev_16.15-0ubuntu0.24.04.1_amd64.deb ...
+#7 36.20 Unpacking libpq-dev (16.15-0ubuntu0.24.04.1) ...
+#7 36.22 Selecting previously unselected package make.
+#7 36.22 Preparing to unpack .../81-make_4.3-4.1build2_amd64.deb ...
+#7 36.22 Unpacking make (4.3-4.1build2) ...
+#7 36.24 Selecting previously unselected package zlib1g-dev:amd64.
+#7 36.24 Preparing to unpack .../82-zlib1g-dev_1%3a1.3.dfsg-3.1ubuntu2.3_amd64.deb ...
+#7 36.24 Unpacking zlib1g-dev:amd64 (1:1.3.dfsg-3.1ubuntu2.3) ...
+#7 36.25 Selecting previously unselected package libc-ares-dev:amd64.
+#7 36.25 Preparing to unpack .../83-libc-ares-dev_1.27.0-1.0ubuntu1.1_amd64.deb ...
+#7 36.26 Unpacking libc-ares-dev:amd64 (1.27.0-1.0ubuntu1.1) ...
+#7 36.28 Selecting previously unselected package libjsoncpp-dev:amd64.
+#7 36.28 Preparing to unpack .../84-libjsoncpp-dev_1.9.5-6build1_amd64.deb ...
+#7 36.28 Unpacking libjsoncpp-dev:amd64 (1.9.5-6build1) ...
+#7 36.29 Selecting previously unselected package uuid-dev:amd64.
+#7 36.29 Preparing to unpack .../85-uuid-dev_2.39.3-9ubuntu6.6_amd64.deb ...
+#7 36.30 Unpacking uuid-dev:amd64 (2.39.3-9ubuntu6.6) ...
+#7 36.31 Setting up libexpat1:amd64 (2.6.1-2ubuntu0.7) ...
+#7 36.32 Setting up libkeyutils1:amd64 (1.6.3-3build1) ...
+#7 36.32 Setting up libgdbm6t64:amd64 (1.23-5.1build1) ...
+#7 36.32 Setting up libgdbm-compat4t64:amd64 (1.23-5.1build1) ...
+#7 36.32 Setting up libbrotli1:amd64 (1.1.0-2ubuntu0.1) ...
+#7 36.32 Setting up libuv1t64:amd64 (1.48.0-1.1build1) ...
+#7 36.32 Setting up binutils-common:amd64 (2.42-4ubuntu2.11) ...
+#7 36.33 Setting up libpsl5t64:amd64 (0.21.2-1.1build1) ...
+#7 36.33 Setting up libnghttp2-14:amd64 (1.59.0-1ubuntu0.4) ...
+#7 36.33 Setting up linux-libc-dev:amd64 (6.8.0-151.151) ...
+#7 36.34 Setting up libctf-nobfd0:amd64 (2.42-4ubuntu2.11) ...
+#7 36.34 Setting up libgomp1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.34 Setting up libsframe1:amd64 (2.42-4ubuntu2.11) ...
+#7 36.34 Setting up libjansson4:amd64 (2.14-2build2) ...
+#7 36.34 Setting up libkrb5support0:amd64 (1.20.1-6ubuntu2.12) ...
+#7 36.34 Setting up libsasl2-modules-db:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#7 36.34 Setting up rpcsvc-proto (1.4.2-0ubuntu7) ...
+#7 36.34 Setting up gcc-13-base:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 36.35 Setting up make (4.3-4.1build2) ...
+#7 36.35 Setting up libmpfr6:amd64 (4.2.1-1build1.1) ...
+#7 36.35 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build7) ...
+#7 36.35 Setting up perl-modules-5.38 (5.38.2-3.2ubuntu0.7) ...
+#7 36.35 Setting up libquadmath0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.35 Setting up libssl-dev:amd64 (3.0.13-0ubuntu3.16) ...
+#7 36.35 Setting up libcares2:amd64 (1.27.0-1.0ubuntu1.1) ...
+#7 36.35 Setting up libmpc3:amd64 (1.3.1-1build1.1) ...
+#7 36.36 Setting up libc-ares-dev:amd64 (1.27.0-1.0ubuntu1.1) ...
+#7 36.36 Setting up libatomic1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.36 Setting up libjsoncpp25:amd64 (1.9.5-6build1) ...
+#7 36.36 Setting up libk5crypto3:amd64 (1.20.1-6ubuntu2.12) ...
+#7 36.36 Setting up libsasl2-2:amd64 (2.1.28+dfsg1-5ubuntu3.1) ...
+#7 36.36 Setting up libubsan1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.36 Setting up libicu74:amd64 (74.2-1ubuntu3.1) ...
+#7 36.36 Setting up libhwasan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.36 Setting up librhash0:amd64 (1.4.3-3build1) ...
+#7 36.36 Setting up libcrypt-dev:amd64 (1:4.4.36-4build1) ...
+#7 36.37 Setting up libasan8:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.37 Setting up git-man (1:2.43.0-1ubuntu7.4) ...
+#7 36.37 Setting up cmake-data (3.28.3-1build7) ...
+#7 36.38 Setting up libkrb5-3:amd64 (1.20.1-6ubuntu2.12) ...
+#7 36.38 Setting up libperl5.38t64:amd64 (5.38.2-3.2ubuntu0.7) ...
+#7 36.38 Setting up libtsan2:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.38 Setting up libbinutils:amd64 (2.42-4ubuntu2.11) ...
+#7 36.38 Setting up libisl23:amd64 (0.26-3build1.1) ...
+#7 36.38 Setting up libc-dev-bin (2.39-0ubuntu8.12) ...
+#7 36.38 Setting up openssl (3.0.13-0ubuntu3.16) ...
+#7 36.39 Setting up libxml2:amd64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+#7 36.39 Setting up libcc1-0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.39 Setting up libldap2:amd64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...
+#7 36.39 Setting up libbrotli-dev:amd64 (1.1.0-2ubuntu0.1) ...
+#7 36.39 Setting up liblsan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.39 Setting up libitm1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+#7 36.39 Setting up libctf0:amd64 (2.42-4ubuntu2.11) ...
+#7 36.39 Setting up libjsoncpp-dev:amd64 (1.9.5-6build1) ...
+#7 36.39 Setting up cpp-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 36.39 Setting up ca-certificates (20260816ubuntu0.24.04.2) ...
+#7 36.72 Updating certificates in /etc/ssl/certs...
+#7 37.13 120 added, 0 removed; done.
+#7 37.13 Running hooks in /etc/ca-certificates/update.d...
+#7 37.13 done.
+#7 37.15 Setting up perl (5.38.2-3.2ubuntu0.7) ...
+#7 37.15 Setting up libgprofng0:amd64 (2.42-4ubuntu2.11) ...
+#7 37.16 Setting up libgssapi-krb5-2:amd64 (1.20.1-6ubuntu2.12) ...
+#7 37.16 Setting up libssh-4:amd64 (0.10.6-2ubuntu0.6) ...
+#7 37.16 Setting up libgcc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 37.16 Setting up libc6-dev:amd64 (2.39-0ubuntu8.12) ...
+#7 37.16 Setting up libarchive13t64:amd64 (3.7.2-2ubuntu0.9) ...
+#7 37.17 Setting up libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+#7 37.17 Setting up binutils-x86-64-linux-gnu (2.42-4ubuntu2.11) ...
+#7 37.17 Setting up cpp-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 37.17 Setting up cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 37.17 Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+#7 37.18 Setting up gcc-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 37.18 Setting up libpq5:amd64 (16.15-0ubuntu0.24.04.1) ...
+#7 37.18 Setting up libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.16) ...
+#7 37.18 Setting up libpq-dev (16.15-0ubuntu0.24.04.1) ...
+#7 37.18 Setting up binutils (2.42-4ubuntu2.11) ...
+#7 37.18 Setting up liberror-perl (0.17029-2) ...
+#7 37.18 Setting up uuid-dev:amd64 (2.39.3-9ubuntu6.6) ...
+#7 37.18 Setting up gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 37.18 Setting up git (1:2.43.0-1ubuntu7.4) ...
+#7 37.19 Setting up zlib1g-dev:amd64 (1:1.3.dfsg-3.1ubuntu2.3) ...
+#7 37.19 Setting up cpp (4:13.2.0-7ubuntu1) ...
+#7 37.20 Setting up cmake (3.28.3-1build7) ...
+#7 37.20 Setting up g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+#7 37.20 Setting up gcc-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 37.20 Setting up gcc (4:13.2.0-7ubuntu1) ...
+#7 37.21 Setting up g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+#7 37.22 Setting up g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+#7 37.22 Setting up g++ (4:13.2.0-7ubuntu1) ...
+#7 37.22 update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+#7 37.22 update-alternatives: warning: skip creation of /usr/share/man/man1/c++.1.gz because associated file /usr/share/man/man1/g++.1.gz (of link group c++) doesn't exist
+#7 37.22 Processing triggers for libc-bin (2.39-0ubuntu8.12) ...
+#7 DONE 37.6s
+
+#8 [build 3/6] RUN git clone -q --depth 1 --branch v1.9.14 --recurse-submodules https://github.com/drogonframework/drogon /drogon  && cmake -S /drogon -B /drogon/build -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLES=OFF -DBUILD_CTL=OFF -DBUILD_ORM=ON       -DBUILD_POSTGRESQL=ON -DBUILD_MYSQL=OFF -DBUILD_SQLITE=OFF -DBUILD_REDIS=OFF -DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=OFF  && cmake --build /drogon/build -j4 && cmake --install /drogon/build
+#8 0.786 Note: switching to '3aae769cc405cf5abb9d477675c6430924f02c7c'.
+#8 0.786 
+#8 0.786 You are in 'detached HEAD' state. You can look around, make experimental
+#8 0.786 changes and commit them, and you can discard any commits you make in this
+#8 0.786 state without impacting any branches by switching back to a branch.
+#8 0.786 
+#8 0.786 If you want to create a new branch to retain commits you create, you may
+#8 0.786 do so (now or later) by using -c with the switch command. Example:
+#8 0.786 
+#8 0.786   git switch -c <new-branch-name>
+#8 0.786 
+#8 0.786 Or undo this operation with:
+#8 0.786 
+#8 0.786   git switch -
+#8 0.786 
+#8 0.786 Turn off this advice by setting config variable advice.detachedHead to false
+#8 0.786 
+#8 1.415 -- The C compiler identification is GNU 13.3.0
+#8 1.459 -- The CXX compiler identification is GNU 13.3.0
+#8 1.473 -- Detecting C compiler ABI info
+#8 1.547 -- Detecting C compiler ABI info - done
+#8 1.554 -- Check for working C compiler: /usr/bin/cc - skipped
+#8 1.554 -- Detecting C compile features
+#8 1.555 -- Detecting C compile features - done
+#8 1.562 -- Detecting CXX compiler ABI info
+#8 1.638 -- Detecting CXX compiler ABI info - done
+#8 1.645 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#8 1.645 -- Detecting CXX compile features
+#8 1.646 -- Detecting CXX compile features - done
+#8 1.646 -- compiler: GNU
+#8 1.650 -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+#8 1.727 -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+#8 1.728 -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+#8 1.802 -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+#8 1.802 -- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+#8 1.876 -- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+#8 1.877 -- Looking for C++ include any
+#8 1.967 -- Looking for C++ include any - found
+#8 1.967 -- Looking for C++ include string_view
+#8 2.075 -- Looking for C++ include string_view - found
+#8 2.075 -- Looking for C++ include coroutine
+#8 2.119 -- Looking for C++ include coroutine - not found
+#8 2.127 -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+#8 2.127 -- Trantor using SSL library: OpenSSL
+#8 2.128 -- Found c-ares: /usr/include  
+#8 2.128 -- c-ares found!
+#8 2.129 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+#8 2.195 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+#8 2.195 -- Found Threads: TRUE  
+#8 2.301 -- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+#8 2.302 -- Looking for C++ include filesystem
+#8 2.654 -- Looking for C++ include filesystem - found
+#8 2.654 -- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED
+#8 3.059 -- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED - Success
+#8 3.059 -- Found std::filesystem
+#8 3.059 -- use c++17
+#8 3.426 -- jsoncpp found by config
+#8 3.428 -- yaml-cpp not used
+#8 3.429 -- Found UUID: /usr/lib/x86_64-linux-gnu/libuuid.so
+#8 3.554 -- Found Brotli: /usr/lib/x86_64-linux-gnu/libbrotlidec.so  
+#8 3.554 -- Brotli found
+#8 3.564 -- Found PostgreSQL: /usr/lib/x86_64-linux-gnu/libpq.so (found version "16.15")  
+#8 3.564 -- pg inc: /usr/include/postgresql
+#8 3.564 -- Found pg: /usr/lib/x86_64-linux-gnu/libpq.so  
+#8 3.564 -- libpq inc path:/usr/include/postgresql
+#8 3.564 -- libpq lib:/usr/lib/x86_64-linux-gnu/libpq.so
+#8 3.685 -- The libpq supports batch mode
+#8 3.691 -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  
+#8 3.700 -- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+#8 3.714 -- Configuring done (2.3s)
+#8 3.732 -- Generating done (0.0s)
+#8 3.733 -- Build files have been written to: /drogon/build
+#8 3.782 [  2%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/Date.cc.o
+#8 3.782 [  3%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/AsyncFileLogger.cc.o
+#8 3.782 [  3%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/LogStream.cc.o
+#8 3.782 [  3%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/ConcurrentTaskQueue.cc.o
+#8 4.157 [  4%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/Logger.cc.o
+#8 4.446 [  5%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/MsgBuffer.cc.o
+#8 4.526 [  6%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/SerialTaskQueue.cc.o
+#8 4.789 [  7%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/TimingWheel.cc.o
+#8 4.839 [  8%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/Utilities.cc.o
+#8 5.186 [  9%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/EventLoop.cc.o
+#8 5.381 [ 10%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/EventLoopThread.cc.o
+#8 5.683 [ 11%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/EventLoopThreadPool.cc.o
+#8 5.813 [ 12%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/InetAddress.cc.o
+#8 5.936 [ 12%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/TcpClient.cc.o
+#8 6.131 [ 13%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/TcpServer.cc.o
+#8 6.293 [ 14%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/Channel.cc.o
+#8 6.300 [ 15%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/Acceptor.cc.o
+#8 6.639 [ 16%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/Connector.cc.o
+#8 6.812 [ 17%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/Poller.cc.o
+#8 7.008 [ 18%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/Socket.cc.o
+#8 7.090 [ 19%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/MemBufferNode.cc.o
+#8 7.377 [ 20%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/StreamBufferNode.cc.o
+#8 7.403 [ 21%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/AsyncStreamBufferNode.cc.o
+#8 7.410 [ 21%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/TcpConnectionImpl.cc.o
+#8 7.656 [ 22%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/Timer.cc.o
+#8 7.723 [ 23%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/TimerQueue.cc.o
+#8 7.732 [ 24%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/poller/EpollPoller.cc.o
+#8 8.064 [ 25%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/poller/KQueue.cc.o
+#8 8.285 [ 26%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/poller/PollPoller.cc.o
+#8 8.412 [ 27%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/FileBufferNodeUnix.cc.o
+#8 8.638 [ 28%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/tlsprovider/OpenSSLProvider.cc.o
+#8 8.806 [ 29%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/utils/crypto/openssl.cc.o
+#8 8.849 [ 30%] Building CXX object trantor/CMakeFiles/trantor.dir/trantor/net/inner/AresResolver.cc.o
+#8 10.31 [ 31%] Linking CXX static library libtrantor.a
+#8 10.35 [ 31%] Built target trantor
+#8 10.37 [ 31%] Building CXX object CMakeFiles/drogon.dir/lib/src/AOPAdvice.cc.o
+#8 10.37 [ 32%] Building CXX object CMakeFiles/drogon.dir/lib/src/AccessLogger.cc.o
+#8 10.37 [ 33%] Building CXX object CMakeFiles/drogon.dir/lib/src/CacheFile.cc.o
+#8 10.37 [ 34%] Building CXX object CMakeFiles/drogon.dir/lib/src/ConfigAdapterManager.cc.o
+#8 10.78 [ 35%] Building CXX object CMakeFiles/drogon.dir/lib/src/ConfigLoader.cc.o
+#8 10.91 [ 36%] Building CXX object CMakeFiles/drogon.dir/lib/src/Cookie.cc.o
+#8 11.48 [ 37%] Building CXX object CMakeFiles/drogon.dir/lib/src/DrClassMap.cc.o
+#8 11.61 [ 38%] Building CXX object CMakeFiles/drogon.dir/lib/src/DrTemplateBase.cc.o
+#8 12.17 [ 39%] Building CXX object CMakeFiles/drogon.dir/lib/src/MiddlewaresFunction.cc.o
+#8 12.22 [ 40%] Building CXX object CMakeFiles/drogon.dir/lib/src/FixedWindowRateLimiter.cc.o
+#8 12.43 [ 40%] Building CXX object CMakeFiles/drogon.dir/lib/src/GlobalFilters.cc.o
+#8 13.11 [ 41%] Building CXX object CMakeFiles/drogon.dir/lib/src/Histogram.cc.o
+#8 13.68 [ 42%] Building CXX object CMakeFiles/drogon.dir/lib/src/Hodor.cc.o
+#8 14.03 [ 43%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpAppFrameworkImpl.cc.o
+#8 15.54 [ 44%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpBinder.cc.o
+#8 16.58 [ 45%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpClientImpl.cc.o
+#8 16.69 [ 46%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpConnectionLimit.cc.o
+#8 17.26 [ 47%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpControllerBinder.cc.o
+#8 18.70 [ 48%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpControllersRouter.cc.o
+#8 18.71 [ 49%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpFileImpl.cc.o
+#8 19.18 [ 49%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpFileUploadRequest.cc.o
+#8 19.94 [ 50%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpRequestImpl.cc.o
+#8 20.24 [ 51%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpRequestParser.cc.o
+#8 20.61 [ 52%] Building CXX object CMakeFiles/drogon.dir/lib/src/RequestStream.cc.o
+#8 21.73 [ 53%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpResponseImpl.cc.o
+#8 22.25 [ 54%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpResponseParser.cc.o
+#8 22.49 [ 55%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpServer.cc.o
+#8 23.68 [ 56%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpUtils.cc.o
+#8 24.09 /drogon/lib/src/HttpUtils.cc:62:10: warning: 'drogon::CT_APPLICATION_X_JAVASCRIPT' is deprecated: use CT_TEXT_JAVASCRIPT [-Wdeprecated-declarations]
+#8 24.09    62 |         {CT_APPLICATION_X_JAVASCRIPT,
+#8 24.09       |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#8 24.09 In file included from /drogon/lib/src/HttpUtils.h:18,
+#8 24.09                  from /drogon/lib/src/HttpUtils.cc:15:
+#8 24.09 /drogon/lib/inc/drogon/HttpTypes.h:106:5: note: declared here
+#8 24.09   106 |     CT_APPLICATION_X_JAVASCRIPT [[deprecated("use CT_TEXT_JAVASCRIPT")]],
+#8 24.09       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#8 24.15 /drogon/lib/src/HttpUtils.cc: In lambda function:
+#8 24.15 /drogon/lib/src/HttpUtils.cc:733:23: warning: 'drogon::CT_APPLICATION_X_JAVASCRIPT' is deprecated: use CT_TEXT_JAVASCRIPT [-Wdeprecated-declarations]
+#8 24.15   733 |         extensionMap_[CT_APPLICATION_X_JAVASCRIPT] =
+#8 24.15       |                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#8 24.15 /drogon/lib/inc/drogon/HttpTypes.h:106:5: note: declared here
+#8 24.15   106 |     CT_APPLICATION_X_JAVASCRIPT [[deprecated("use CT_TEXT_JAVASCRIPT")]],
+#8 24.15       |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+#8 24.82 [ 57%] Building CXX object CMakeFiles/drogon.dir/lib/src/HttpViewData.cc.o
+#8 25.20 [ 58%] Building CXX object CMakeFiles/drogon.dir/lib/src/IntranetIpFilter.cc.o
+#8 25.20 [ 58%] Building CXX object CMakeFiles/drogon.dir/lib/src/JsonConfigAdapter.cc.o
+#8 25.25 [ 59%] Building CXX object CMakeFiles/drogon.dir/lib/src/ListenerManager.cc.o
+#8 25.60 [ 60%] Building CXX object CMakeFiles/drogon.dir/lib/src/LocalHostFilter.cc.o
+#8 26.20 [ 61%] Building CXX object CMakeFiles/drogon.dir/lib/src/MultiPart.cc.o
+#8 26.56 [ 62%] Building CXX object CMakeFiles/drogon.dir/lib/src/MultipartStreamParser.cc.o
+#8 26.60 [ 63%] Building CXX object CMakeFiles/drogon.dir/lib/src/NotFound.cc.o
+#8 26.92 [ 64%] Building CXX object CMakeFiles/drogon.dir/lib/src/PluginsManager.cc.o
+#8 26.96 [ 65%] Building CXX object CMakeFiles/drogon.dir/lib/src/PromExporter.cc.o
+#8 27.17 [ 66%] Building CXX object CMakeFiles/drogon.dir/lib/src/RangeParser.cc.o
+#8 27.37 [ 67%] Building CXX object CMakeFiles/drogon.dir/lib/src/RateLimiter.cc.o
+#8 27.64 [ 67%] Building CXX object CMakeFiles/drogon.dir/lib/src/RealIpResolver.cc.o
+#8 27.65 [ 68%] Building CXX object CMakeFiles/drogon.dir/lib/src/SecureSSLRedirector.cc.o
+#8 27.80 [ 69%] Building CXX object CMakeFiles/drogon.dir/lib/src/Redirector.cc.o
+#8 29.55 [ 70%] Building CXX object CMakeFiles/drogon.dir/lib/src/SessionManager.cc.o
+#8 30.03 [ 72%] Building CXX object CMakeFiles/drogon.dir/lib/src/SlashRemover.cc.o
+#8 30.03 [ 72%] Building CXX object CMakeFiles/drogon.dir/lib/src/SlidingWindowRateLimiter.cc.o
+#8 30.25 [ 73%] Building CXX object CMakeFiles/drogon.dir/lib/src/StaticFileRouter.cc.o
+#8 31.16 [ 74%] Building CXX object CMakeFiles/drogon.dir/lib/src/TaskTimeoutFlag.cc.o
+#8 31.36 [ 75%] Building CXX object CMakeFiles/drogon.dir/lib/src/TokenBucketRateLimiter.cc.o
+#8 31.53 [ 76%] Building CXX object CMakeFiles/drogon.dir/lib/src/Utilities.cc.o
+#8 31.58 [ 76%] Building CXX object CMakeFiles/drogon.dir/lib/src/WebSocketClientImpl.cc.o
+#8 32.21 [ 77%] Building CXX object CMakeFiles/drogon.dir/lib/src/WebSocketConnectionImpl.cc.o
+#8 32.78 [ 78%] Building CXX object CMakeFiles/drogon.dir/lib/src/YamlConfigAdapter.cc.o
+#8 33.12 [ 79%] Building CXX object CMakeFiles/drogon.dir/lib/src/drogon_test.cc.o
+#8 33.74 [ 80%] Building CXX object CMakeFiles/drogon.dir/lib/src/SharedLibManager.cc.o
+#8 33.78 [ 81%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/postgresql_impl/PostgreSQLResultImpl.cc.o
+#8 34.22 [ 82%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/postgresql_impl/PgListener.cc.o
+#8 34.47 [ 83%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/postgresql_impl/PgBatchConnection.cc.o
+#8 34.56 [ 84%] Building CXX object CMakeFiles/drogon.dir/lib/src/RedisClientSkipped.cc.o
+#8 34.92 [ 85%] Building CXX object CMakeFiles/drogon.dir/lib/src/RedisResultSkipped.cc.o
+#8 34.99 [ 85%] Building CXX object CMakeFiles/drogon.dir/lib/src/RedisClientManagerSkipped.cc.o
+#8 35.27 [ 86%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/ArrayParser.cc.o
+#8 35.58 [ 87%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/Criteria.cc.o
+#8 36.03 [ 88%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/DbClient.cc.o
+#8 36.09 [ 89%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/DbClientImpl.cc.o
+#8 36.39 [ 90%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/DbClientLockFree.cc.o
+#8 36.73 [ 91%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/DbConnection.cc.o
+#8 36.79 [ 92%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/DbListener.cc.o
+#8 37.56 [ 93%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/Exception.cc.o
+#8 37.93 [ 94%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/Field.cc.o
+#8 38.57 [ 94%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/Result.cc.o
+#8 39.15 [ 95%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/Row.cc.o
+#8 39.73 [ 96%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/SqlBinder.cc.o
+#8 39.73 [ 97%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/TransactionImpl.cc.o
+#8 39.98 [ 98%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/RestfulController.cc.o
+#8 40.15 [ 99%] Building CXX object CMakeFiles/drogon.dir/orm_lib/src/DbClientManager.cc.o
+#8 43.52 [100%] Linking CXX static library libdrogon.a
+#8 43.64 [100%] Built target drogon
+#8 43.66 -- Install configuration: "Release"
+#8 43.66 -- Installing: /usr/local/lib/libtrantor.a
+#8 43.66 -- Installing: /usr/local/include/trantor/exports.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/EventLoop.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/EventLoopThread.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/EventLoopThreadPool.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/InetAddress.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/TcpClient.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/TcpConnection.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/TcpServer.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/AsyncStream.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/callbacks.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/Resolver.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/Channel.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/Certificate.h
+#8 43.66 -- Installing: /usr/local/include/trantor/net/TLSPolicy.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/AsyncFileLogger.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/ConcurrentTaskQueue.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/Date.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/Funcs.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/LockFreeQueue.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/LogStream.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/Logger.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/MsgBuffer.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/NonCopyable.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/ObjectPool.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/SerialTaskQueue.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/TaskQueue.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/TimingWheel.h
+#8 43.66 -- Installing: /usr/local/include/trantor/utils/Utilities.h
+#8 43.66 -- Installing: /usr/local/lib/cmake/Trantor/TrantorConfig.cmake
+#8 43.66 -- Installing: /usr/local/lib/cmake/Trantor/TrantorConfigVersion.cmake
+#8 43.66 -- Installing: /usr/local/lib/cmake/Trantor/Findc-ares.cmake
+#8 43.66 -- Installing: /usr/local/lib/cmake/Trantor/FindBotan.cmake
+#8 43.66 -- Installing: /usr/local/lib/cmake/Trantor/TrantorTargets.cmake
+#8 43.66 -- Installing: /usr/local/lib/cmake/Trantor/TrantorTargets-release.cmake
+#8 43.66 -- Installing: /usr/local/lib/libdrogon.a
+#8 43.67 -- Installing: /usr/local/include/drogon/Attribute.h
+#8 43.67 -- Installing: /usr/local/include/drogon/CacheMap.h
+#8 43.67 -- Installing: /usr/local/include/drogon/Cookie.h
+#8 43.67 -- Installing: /usr/local/include/drogon/DrClassMap.h
+#8 43.67 -- Installing: /usr/local/include/drogon/DrObject.h
+#8 43.67 -- Installing: /usr/local/include/drogon/DrTemplate.h
+#8 43.67 -- Installing: /usr/local/include/drogon/DrTemplateBase.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpAppFramework.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpBinder.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpClient.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpController.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpFilter.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpMiddleware.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpRequest.h
+#8 43.67 -- Installing: /usr/local/include/drogon/RequestStream.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpResponse.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpSimpleController.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpTypes.h
+#8 43.67 -- Installing: /usr/local/include/drogon/HttpViewData.h
+#8 43.67 -- Installing: /usr/local/include/drogon/IntranetIpFilter.h
+#8 43.67 -- Installing: /usr/local/include/drogon/IOThreadStorage.h
+#8 43.67 -- Installing: /usr/local/include/drogon/LocalHostFilter.h
+#8 43.67 -- Installing: /usr/local/include/drogon/MultiPart.h
+#8 43.67 -- Installing: /usr/local/include/drogon/NotFound.h
+#8 43.67 -- Installing: /usr/local/include/drogon/Session.h
+#8 43.67 -- Installing: /usr/local/include/drogon/UploadFile.h
+#8 43.67 -- Installing: /usr/local/include/drogon/WebSocketClient.h
+#8 43.67 -- Installing: /usr/local/include/drogon/WebSocketConnection.h
+#8 43.67 -- Installing: /usr/local/include/drogon/WebSocketController.h
+#8 43.67 -- Installing: /usr/local/include/drogon/drogon.h
+#8 43.67 -- Installing: /usr/local/include/drogon/version.h
+#8 43.67 -- Installing: /usr/local/include/drogon/drogon_callbacks.h
+#8 43.67 -- Installing: /usr/local/include/drogon/PubSubService.h
+#8 43.67 -- Installing: /usr/local/include/drogon/drogon_test.h
+#8 43.67 -- Installing: /usr/local/include/drogon/RateLimiter.h
+#8 43.67 -- Installing: /usr/local/include/drogon/exports.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/ArrayParser.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/BaseBuilder.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/Criteria.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/DbClient.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/DbConfig.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/DbListener.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/DbTypes.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/Exception.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/Field.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/FunctionTraits.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/Mapper.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/CoroMapper.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/Result.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/ResultIterator.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/Row.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/RowIterator.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/SqlBinder.h
+#8 43.67 -- Installing: /usr/local/include/drogon/orm/RestfulController.h
+#8 43.67 -- Installing: /usr/local/include/drogon/nosql/RedisClient.h
+#8 43.67 -- Installing: /usr/local/include/drogon/nosql/RedisResult.h
+#8 43.67 -- Installing: /usr/local/include/drogon/nosql/RedisSubscriber.h
+#8 43.67 -- Installing: /usr/local/include/drogon/nosql/RedisException.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/coroutine.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/FunctionTraits.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/HttpConstraint.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/OStringStream.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/Utilities.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/monitoring.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/monitoring/Counter.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/monitoring/Metric.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/monitoring/Registry.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/monitoring/Collector.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/monitoring/Sample.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/monitoring/Gauge.h
+#8 43.67 -- Installing: /usr/local/include/drogon/utils/monitoring/Histogram.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/Plugin.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/Redirector.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/SecureSSLRedirector.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/AccessLogger.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/RealIpResolver.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/Hodor.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/SlashRemover.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/GlobalFilters.h
+#8 43.67 -- Installing: /usr/local/include/drogon/plugins/PromExporter.h
+#8 43.67 -- Installing: /usr/local/lib/cmake/Drogon/DrogonConfig.cmake
+#8 43.67 -- Installing: /usr/local/lib/cmake/Drogon/DrogonConfigVersion.cmake
+#8 43.67 -- Installing: /usr/local/lib/cmake/Drogon/FindUUID.cmake
+#8 43.67 -- Installing: /usr/local/lib/cmake/Drogon/FindJsoncpp.cmake
+#8 43.67 -- Installing: /usr/local/lib/cmake/Drogon/FindSQLite3.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/FindMySQL.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/Findpg.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/FindBrotli.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/Findcoz-profiler.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/FindHiredis.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/FindFilesystem.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/DrogonUtilities.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/ParseAndAddDrogonTests.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/DrogonTargets.cmake
+#8 43.68 -- Installing: /usr/local/lib/cmake/Drogon/DrogonTargets-release.cmake
+#8 DONE 43.7s
+
+#9 [build 4/6] WORKDIR /src
+#9 DONE 0.0s
+
+#10 [build 5/6] COPY CMakeLists.txt main.cc ./
+#10 DONE 0.0s
+
+#11 [build 6/6] RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j4
+#11 0.208 -- The CXX compiler identification is GNU 13.3.0
+#11 0.219 -- Detecting CXX compiler ABI info
+#11 0.288 -- Detecting CXX compiler ABI info - done
+#11 0.295 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#11 0.295 -- Detecting CXX compile features
+#11 0.296 -- Detecting CXX compile features - done
+#11 0.304 -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+#11 0.305 -- Found c-ares: /usr/include  
+#11 0.305 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+#11 0.384 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+#11 0.385 -- Found Threads: TRUE  
+#11 0.386 -- Found UUID: /usr/lib/x86_64-linux-gnu/libuuid.so
+#11 0.390 -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  
+#11 0.399 -- Found PostgreSQL: /usr/lib/x86_64-linux-gnu/libpq.so (found version "16.15")  
+#11 0.399 -- pg inc: /usr/include/postgresql
+#11 0.399 -- Found pg: /usr/lib/x86_64-linux-gnu/libpq.so  
+#11 0.401 -- Found Brotli: /usr/lib/x86_64-linux-gnu/libbrotlidec.so  
+#11 0.401 -- Looking for C++ include filesystem
+#11 0.732 -- Looking for C++ include filesystem - found
+#11 0.732 -- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED
+#11 1.361 -- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED - Success
+#11 1.363 -- Configuring done (1.2s)
+#11 1.367 -- Generating done (0.0s)
+#11 1.367 -- Build files have been written to: /src/build
+#11 1.410 [ 50%] Building CXX object CMakeFiles/bench.dir/main.cc.o
+#11 2.849 /src/main.cc: In function 'int main()':
+#11 2.849 /src/main.cc:92:22: warning: 'virtual drogon::HttpAppFramework& drogon::HttpAppFramework::createDbClient(const std::string&, const std::string&, short unsigned int, const std::string&, const std::string&, const std::string&, size_t, const std::string&, const std::string&, bool, const std::string&, double, bool)' is deprecated: Use addDbClient() instead [-Wdeprecated-declarations]
+#11 2.849    88 |   app().addListener("0.0.0.0", 8000)
+#11 2.849       |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 2.849    89 |       .setThreadNum(0)  // one IO loop per core
+#11 2.849       |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 2.849    90 |       .setIdleConnectionTimeout(75)
+#11 2.849       |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 2.849    91 |       .setClientMaxBodySize(1 << 20)
+#11 2.849       |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 2.849    92 |       .createDbClient("postgresql", dbh ? dbh : "127.0.0.1", 5432, "bench", "bench", "bench",
+#11 2.849       |       ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 2.849    93 |                       4 /* connections per IO loop: 4 loops x 4 = 16 */, "", "default", true /* fast */, "utf8", 10.0 /* timeout s */);
+#11 2.849       |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 2.849 In file included from /usr/local/include/drogon/drogon.h:23,
+#11 2.849                  from /src/main.cc:6:
+#11 2.849 /usr/local/include/drogon/HttpAppFramework.h:1512:5: note: declared here
+#11 2.849  1512 |     createDbClient(const std::string &dbType,
+#11 2.849       |     ^~~~~~~~~~~~~~
+#11 7.311 [100%] Linking CXX executable bench
+#11 7.511 [100%] Built target bench
+#11 DONE 7.6s
+
+#12 [stage-1 3/3] COPY --from=build /src/build/bench /app/bench
+#12 DONE 0.0s
+
+#13 exporting to image
+#13 exporting layers 0.0s done
+#13 writing image sha256:33fad24004de3989734d6c8cc6ceb73c17f58e50b556413a30a25bc47eecbfc7 done
+#13 naming to docker.io/library/bench-drogon done
+#13 DONE 0.0s

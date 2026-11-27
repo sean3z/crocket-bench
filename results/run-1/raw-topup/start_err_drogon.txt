@@ -1,0 +1,5 @@
+Unable to find image 'bench-drogon:latest' locally
+docker: Error response from daemon: pull access denied for bench-drogon, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+Error response from daemon: No such container: app

@@ -1,0 +1,2 @@
+{ "name": "bench-fastify", "version": "0.1.0", "private": true, "type": "module", "main": "server.js",
+  "dependencies": { "fastify": "5.12.8", "pg": "^8", "prom-client": "^15" } }

@@ -1,0 +1,20 @@
+[package]
+name = "bench"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rocket = { version = "=0.5.4", features = ["json"] }
+rocket_db_pools = { version = "0.2", features = ["deadpool_postgres"] }
+serde = { version = "1", features = ["derive"] }
+rocket_prometheus = "0.10"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["json", "env-filter"] }
+tracing-appender = "0.2"
+tokio = { version = "1", features = ["time"] }
+rand = "0.8"
+uuid = { version = "1", features = ["v4"] }
+
+[profile.release]
+codegen-units = 1
+lto = "thin"

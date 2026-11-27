@@ -1,0 +1,6975 @@
+{
+  "run": {
+    "id": "run-1",
+    "ids": [
+      "run-1"
+    ],
+    "title": "November 2026",
+    "date": "2026-11-25",
+    "dateDisplay": "Nov 25, 2026",
+    "track": "production",
+    "lineup": "crocket 0.5.2, Rocket 0.5.4, Axum 0.8.9, Drogon 1.9.14, Fastify 5.12.8, hyper-express 7.0.2, Spring Boot 3.5.16, and FastAPI 0.165.0",
+    "lineupShort": "crocket against Rocket, Axum, Drogon, Fastify, hyper-express, Spring Boot, and FastAPI"
+  },
+  "hardware": {
+    "provider": "DigitalOcean",
+    "size": "CPU-Optimized, 4 vCPU (c-4)",
+    "region": "NYC1",
+    "appCpu": "Intel Xeon Platinum 8280",
+    "loadgenCpu": "Intel Xeon Platinum 8280",
+    "postgres": "16.16",
+    "postgresOwnDroplet": true,
+    "wrk2": "-t4 -c128",
+    "protocol": "HTTP/1.1 keep-alive",
+    "warmup": "60 s at 20,000 req/s",
+    "measured": "median of 3 \u00d7 30 s"
+  },
+  "repo": {
+    "url": "https://github.com/sean3z/crocket-bench",
+    "public": false
+  },
+  "coming": [],
+  "frameworks": [
+    {
+      "id": "crocket",
+      "name": "crocket",
+      "version": "0.5.2",
+      "language": "C++26",
+      "highlight": true,
+      "had": "Logger, Metrics, request timeouts, /healthz, /readyz, and x-request-id are built in",
+      "added": "nothing"
+    },
+    {
+      "id": "rocket",
+      "name": "Rocket",
+      "version": "0.5.4",
+      "language": "Rust",
+      "highlight": false,
+      "had": "There's no built-in request timeout, and no Prometheus histogram",
+      "added": "rocket_prometheus, a JSON access-log fairing, a request-id fairing, health and ready routes, and a 10 second timeout around the query"
+    },
+    {
+      "id": "axum",
+      "name": "Axum",
+      "version": "0.8.9",
+      "language": "Rust",
+      "highlight": false,
+      "had": "These bits aren't built in, though official tower-http layers cover some of them",
+      "added": "a Prometheus histogram, a JSON access-log middleware, tower-http's request-id and 10 second timeout layers, and health and ready routes"
+    },
+    {
+      "id": "drogon",
+      "name": "Drogon",
+      "version": "1.9.14",
+      "language": "C++20",
+      "highlight": false,
+      "had": "A Prometheus plugin and request advice hooks are available",
+      "added": "a histogram at /metrics, a JSON access log and request-id hook, health and ready routes, and a 10 second database timeout"
+    },
+    {
+      "id": "fastify",
+      "name": "Fastify",
+      "version": "5.12.8",
+      "language": "Node.js 26",
+      "highlight": false,
+      "had": "pino logging, request-id headers, and timeouts were already there",
+      "added": "prom-client for the histogram, plus health routes and a request-id hook"
+    },
+    {
+      "id": "hyperexpress",
+      "name": "hyper-express",
+      "version": "7.0.2",
+      "language": "Node.js 24",
+      "highlight": false,
+      "had": "uWebSockets.js underneath gives a body size cap and an idle-connection timeout",
+      "added": "pino for the JSON access log, prom-client for the histogram, a request-id hook, health and ready routes, a hand-written check on POST /echo, a 10 second timeout around the query, and a SIGTERM drain with auto_close off"
+    },
+    {
+      "id": "spring",
+      "name": "Spring Boot",
+      "version": "3.5.16",
+      "language": "Java 25",
+      "highlight": false,
+      "had": "Structured logging is built in",
+      "added": "Actuator and Micrometer for metrics and probes, plus a filter for the request id and the JSON access log"
+    },
+    {
+      "id": "fastapi",
+      "name": "FastAPI",
+      "version": "0.165.0",
+      "language": "Python 3.13",
+      "highlight": false,
+      "had": "These bits aren't built in",
+      "added": "prometheus-fastapi-instrumentator for the histogram, asgi-correlation-id for the request id, a JSON access-log and 10 second timeout middleware, and health and ready routes"
+    }
+  ],
+  "tests": [
+    {
+      "id": "json",
+      "name": "JSON",
+      "blurb": "Each request encodes {\"message\":\"Hello, World!\"} as JSON, and that string is not cached. Same shape as the old TechEmpower JSON test",
+      "pendingNote": "No results for this test yet",
+      "commonRate": 10000,
+      "status": "complete",
+      "note": "This is the HTTP and JSON encoder, no database. Crocket and Drogon stay out in front, and the gap down to Spring Boot and FastAPI is wide"
+    },
+    {
+      "id": "db",
+      "name": "Single query",
+      "blurb": "Each request fetches one random row from a 10,000-row World table and returns it as JSON. Same shape as the old TechEmpower single-query test",
+      "pendingNote": "No results for this test yet",
+      "commonRate": 4000,
+      "status": "complete",
+      "note": "One random row per request. Drogon does come out ahead of crocket here, though it also uses a lot more memory under that load"
+    },
+    {
+      "id": "plaintext",
+      "name": "Plaintext",
+      "blurb": "Each request returns a small Hello, World! text response, which mostly stresses the HTTP pipeline. Same shape as the old TechEmpower plaintext test",
+      "pendingNote": "No results for this test yet",
+      "commonRate": 10000,
+      "status": "complete",
+      "note": "The smallest response, so this is mostly the HTTP pipeline. Crocket's lead is widest here"
+    }
+  ],
+  "results": [
+    {
+      "run": "run-1",
+      "test": "json",
+      "framework": "crocket",
+      "maxRps": 90800,
+      "maxRpsRange": [
+        87528,
+        98631
+      ],
+      "cpuUsPerReq": 35,
+      "appCoresAtMax": 3.18,
+      "commonRate": 10000,
+      "p50Ms": 1.04,
+      "p99Ms": 1.97,
+      "p999Ms": 2.22,
+      "peakRssMb": 34,
+      "idleRssMb": 15,
+      "coldStartMs": 335,
+      "lgCpuPct": 49.6,
+      "errors": 0,
+      "flags": [],
+      "heldRate": 3500,
+      "heldReqS": 3465,
+      "heldP50Ms": 1.12,
+      "heldP99Ms": 2.12,
+      "heldP999Ms": 2.34
+    },
+    {
+      "run": "run-1",
+      "test": "db",
+      "framework": "crocket",
+      "maxRps": 45453,
+      "maxRpsRange": [
+        45407,
+        46037
+      ],
+      "cpuUsPerReq": 71,
+      "appCoresAtMax": 3.22,
+      "commonRate": 4000,
+      "p50Ms": 1.32,
+      "p99Ms": 2.38,
+      "p999Ms": 3.37,
+      "peakRssMb": 32,
+      "idleRssMb": 15,
+      "coldStartMs": 331,
+      "lgCpuPct": null,
+      "errors": 0,
+      "flags": [],
+      "heldRate": 2400,
+      "heldReqS": 2396,
+      "heldP50Ms": 1.48,
+      "heldP99Ms": 2.56,
+      "heldP999Ms": 2.8
+    },
+    {
+      "run": "run-1",
+      "test": "json",
+      "framework": "fastify",
+      "maxRps": 25285,
+      "maxRpsRange": [
+        21675,
+        25402
+      ],
+      "cpuUsPerReq": 42,
+      "appCoresAtMax": 1.05,
+      "commonRate": 10000,
+      "p50Ms": 1.21,
+      "p99Ms": 2.34,
+      "p999Ms": 2.69,
+      "peakRssMb": 260,
+      "idleRssMb": 84,
+      "coldStartMs": 381,
+      "lgCpuPct": null,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "db",
+      "framework": "fastify",
+      "maxRps": 12532,
+      "maxRpsRange": [
+        12454,
+        12598
+      ],
+      "cpuUsPerReq": 85,
+      "appCoresAtMax": 1.06,
+      "commonRate": 4000,
+      "p50Ms": 1.66,
+      "p99Ms": 4.34,
+      "p999Ms": 5.09,
+      "peakRssMb": 164,
+      "idleRssMb": 84,
+      "coldStartMs": 381,
+      "lgCpuPct": null,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "json",
+      "framework": "spring",
+      "maxRps": 14027,
+      "maxRpsRange": [
+        13985,
+        14288
+      ],
+      "cpuUsPerReq": 231,
+      "appCoresAtMax": 3.23,
+      "commonRate": 10000,
+      "p50Ms": 1.32,
+      "p99Ms": 3.07,
+      "p999Ms": 5.19,
+      "peakRssMb": 446,
+      "idleRssMb": 240,
+      "coldStartMs": 4709,
+      "lgCpuPct": 18.9,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "db",
+      "framework": "spring",
+      "maxRps": 10567,
+      "maxRpsRange": [
+        10465,
+        10668
+      ],
+      "cpuUsPerReq": 311,
+      "appCoresAtMax": 3.27,
+      "commonRate": 4000,
+      "p50Ms": 1.46,
+      "p99Ms": 2.69,
+      "p999Ms": 4.07,
+      "peakRssMb": 449,
+      "idleRssMb": 240,
+      "coldStartMs": 4709,
+      "lgCpuPct": 13.8,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "json",
+      "framework": "rocket",
+      "maxRps": 55230,
+      "maxRpsRange": [
+        53517,
+        56641
+      ],
+      "cpuUsPerReq": 60,
+      "appCoresAtMax": 3.33,
+      "commonRate": 10000,
+      "p50Ms": 1.07,
+      "p99Ms": 2.01,
+      "p999Ms": 2.34,
+      "peakRssMb": 16,
+      "idleRssMb": 11,
+      "coldStartMs": 204,
+      "lgCpuPct": 36.4,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "db",
+      "framework": "rocket",
+      "maxRps": 30524,
+      "maxRpsRange": [
+        30375,
+        30854
+      ],
+      "cpuUsPerReq": 111,
+      "appCoresAtMax": 3.4,
+      "commonRate": 4000,
+      "p50Ms": 1.31,
+      "p99Ms": 2.34,
+      "p999Ms": 2.61,
+      "peakRssMb": 21,
+      "idleRssMb": 11,
+      "coldStartMs": 204,
+      "lgCpuPct": 23.0,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "plaintext",
+      "framework": "rocket",
+      "maxRps": 57136,
+      "maxRpsRange": [
+        53255,
+        58307
+      ],
+      "cpuUsPerReq": 58,
+      "appCoresAtMax": 3.32,
+      "commonRate": 10000,
+      "p50Ms": 1.06,
+      "p99Ms": 2.02,
+      "p999Ms": 2.34,
+      "peakRssMb": 20,
+      "idleRssMb": 11,
+      "coldStartMs": 204,
+      "lgCpuPct": 37.4,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "json",
+      "framework": "axum",
+      "maxRps": 72061,
+      "maxRpsRange": [
+        71778,
+        72126
+      ],
+      "cpuUsPerReq": 42,
+      "appCoresAtMax": 3.03,
+      "commonRate": 10000,
+      "p50Ms": 1.05,
+      "p99Ms": 1.99,
+      "p999Ms": 2.31,
+      "peakRssMb": 31,
+      "idleRssMb": 9,
+      "coldStartMs": 293,
+      "lgCpuPct": 44.0,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "db",
+      "framework": "axum",
+      "maxRps": 39882,
+      "maxRpsRange": [
+        39839,
+        40089
+      ],
+      "cpuUsPerReq": 84,
+      "appCoresAtMax": 3.35,
+      "commonRate": 4000,
+      "p50Ms": 1.27,
+      "p99Ms": 2.3,
+      "p999Ms": 2.61,
+      "peakRssMb": 29,
+      "idleRssMb": 9,
+      "coldStartMs": 293,
+      "lgCpuPct": 27.8,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "plaintext",
+      "framework": "axum",
+      "maxRps": 72800,
+      "maxRpsRange": [
+        70695,
+        73820
+      ],
+      "cpuUsPerReq": 42,
+      "appCoresAtMax": 3.05,
+      "commonRate": 10000,
+      "p50Ms": 1.06,
+      "p99Ms": 2.0,
+      "p999Ms": 2.31,
+      "peakRssMb": 33,
+      "idleRssMb": 9,
+      "coldStartMs": 293,
+      "lgCpuPct": 44.2,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "json",
+      "framework": "drogon",
+      "maxRps": 79919,
+      "maxRpsRange": [
+        79890,
+        80437
+      ],
+      "cpuUsPerReq": 42,
+      "appCoresAtMax": 3.37,
+      "commonRate": 10000,
+      "p50Ms": 1.03,
+      "p99Ms": 2.0,
+      "p999Ms": 2.35,
+      "peakRssMb": 18,
+      "idleRssMb": 16,
+      "coldStartMs": 219,
+      "lgCpuPct": 47.1,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "db",
+      "framework": "drogon",
+      "maxRps": 49232,
+      "maxRpsRange": [
+        49188,
+        50868
+      ],
+      "cpuUsPerReq": 75,
+      "appCoresAtMax": 3.71,
+      "commonRate": 4000,
+      "p50Ms": 1.27,
+      "p99Ms": 2.27,
+      "p999Ms": 2.57,
+      "peakRssMb": 201,
+      "idleRssMb": 16,
+      "coldStartMs": 219,
+      "lgCpuPct": 32.4,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "plaintext",
+      "framework": "drogon",
+      "maxRps": 90471,
+      "maxRpsRange": [
+        89800,
+        90731
+      ],
+      "cpuUsPerReq": 35,
+      "appCoresAtMax": 3.21,
+      "commonRate": 10000,
+      "p50Ms": 1.02,
+      "p99Ms": 1.99,
+      "p999Ms": 2.27,
+      "peakRssMb": 201,
+      "idleRssMb": 16,
+      "coldStartMs": 219,
+      "lgCpuPct": 51.3,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "plaintext",
+      "framework": "crocket",
+      "maxRps": 102479,
+      "maxRpsRange": [
+        97521,
+        108194
+      ],
+      "cpuUsPerReq": 31,
+      "appCoresAtMax": 3.15,
+      "commonRate": 10000,
+      "p50Ms": 1.05,
+      "p99Ms": 2.01,
+      "p999Ms": 2.24,
+      "peakRssMb": 32,
+      "idleRssMb": 15,
+      "coldStartMs": 335,
+      "lgCpuPct": 54.9,
+      "errors": 0,
+      "flags": [],
+      "heldRate": 3600,
+      "heldReqS": 3593,
+      "heldP50Ms": 1.05,
+      "heldP99Ms": 2.06,
+      "heldP999Ms": 2.3
+    },
+    {
+      "run": "run-1",
+      "test": "json",
+      "framework": "fastapi",
+      "maxRps": 5909,
+      "maxRpsRange": [
+        5826,
+        5922
+      ],
+      "cpuUsPerReq": 616,
+      "appCoresAtMax": 3.62,
+      "commonRate": 10000,
+      "p50Ms": 7100.0,
+      "p99Ms": 15340.0,
+      "p999Ms": 15660.0,
+      "peakRssMb": 267,
+      "idleRssMb": 259,
+      "coldStartMs": 1120,
+      "lgCpuPct": 7.4,
+      "errors": 0,
+      "flags": [
+        "couldnt-hold-rate"
+      ],
+      "heldRate": 3500,
+      "heldReqS": 3493,
+      "heldP50Ms": 1.58,
+      "heldP99Ms": 3.76,
+      "heldP999Ms": 8.86
+    },
+    {
+      "run": "run-1",
+      "test": "db",
+      "framework": "fastapi",
+      "maxRps": 3930,
+      "maxRpsRange": [
+        3930,
+        3936
+      ],
+      "cpuUsPerReq": 944,
+      "appCoresAtMax": 3.71,
+      "commonRate": 4000,
+      "p50Ms": 321.71,
+      "p99Ms": 3240.0,
+      "p999Ms": 3485.0,
+      "peakRssMb": 270,
+      "idleRssMb": 259,
+      "coldStartMs": 1120,
+      "lgCpuPct": 5.4,
+      "errors": 0,
+      "flags": [
+        "couldnt-hold-rate"
+      ],
+      "heldRate": 2400,
+      "heldReqS": 2376,
+      "heldP50Ms": 3.88,
+      "heldP99Ms": 20.08,
+      "heldP999Ms": 36.61
+    },
+    {
+      "run": "run-1",
+      "test": "plaintext",
+      "framework": "fastapi",
+      "maxRps": 6082,
+      "maxRpsRange": [
+        6076,
+        6098
+      ],
+      "cpuUsPerReq": 592,
+      "appCoresAtMax": 3.6,
+      "commonRate": 10000,
+      "p50Ms": 7170.0,
+      "p99Ms": 13510.0,
+      "p999Ms": 13740.0,
+      "peakRssMb": 270,
+      "idleRssMb": 259,
+      "coldStartMs": 1120,
+      "lgCpuPct": 8.0,
+      "errors": 0,
+      "flags": [
+        "couldnt-hold-rate"
+      ],
+      "heldRate": 3600,
+      "heldReqS": 3592,
+      "heldP50Ms": 1.73,
+      "heldP99Ms": 4.7,
+      "heldP999Ms": 10.8
+    },
+    {
+      "run": "run-1",
+      "test": "plaintext",
+      "framework": "fastify",
+      "maxRps": 23394,
+      "maxRpsRange": [
+        21337,
+        24118
+      ],
+      "cpuUsPerReq": 44,
+      "appCoresAtMax": 1.04,
+      "commonRate": 10000,
+      "p50Ms": 1.23,
+      "p99Ms": 2.47,
+      "p999Ms": 3.05,
+      "peakRssMb": 389,
+      "idleRssMb": 84,
+      "coldStartMs": 405,
+      "lgCpuPct": 17.7,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "plaintext",
+      "framework": "spring",
+      "maxRps": 16781,
+      "maxRpsRange": [
+        16720,
+        16842
+      ],
+      "cpuUsPerReq": 192,
+      "appCoresAtMax": 3.22,
+      "commonRate": 10000,
+      "p50Ms": 1.59,
+      "p99Ms": 4.13,
+      "p999Ms": 5.86,
+      "peakRssMb": 430,
+      "idleRssMb": 240,
+      "coldStartMs": 4709,
+      "lgCpuPct": 13.4,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "plaintext",
+      "framework": "hyperexpress",
+      "maxRps": 17576,
+      "maxRpsRange": [
+        17540,
+        21137
+      ],
+      "cpuUsPerReq": 59,
+      "appCoresAtMax": 1.04,
+      "commonRate": 10000,
+      "p50Ms": 1.44,
+      "p99Ms": 3.08,
+      "p999Ms": 4.48,
+      "peakRssMb": 480,
+      "idleRssMb": 73,
+      "coldStartMs": 310,
+      "lgCpuPct": 14.1,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "json",
+      "framework": "hyperexpress",
+      "maxRps": 20832,
+      "maxRpsRange": [
+        20468,
+        20848
+      ],
+      "cpuUsPerReq": 50,
+      "appCoresAtMax": 1.05,
+      "commonRate": 10000,
+      "p50Ms": 1.42,
+      "p99Ms": 2.93,
+      "p999Ms": 3.54,
+      "peakRssMb": 483,
+      "idleRssMb": 73,
+      "coldStartMs": 310,
+      "lgCpuPct": 18.0,
+      "errors": 0,
+      "flags": []
+    },
+    {
+      "run": "run-1",
+      "test": "db",
+      "framework": "hyperexpress",
+      "maxRps": 8189,
+      "maxRpsRange": [
+        7847,
+        8829
+      ],
+      "cpuUsPerReq": 130,
+      "appCoresAtMax": 1.07,
+      "commonRate": 4000,
+      "p50Ms": 1.93,
+      "p99Ms": 13.39,
+      "p999Ms": 35.62,
+      "peakRssMb": 776,
+      "idleRssMb": 73,
+      "coldStartMs": 310,
+      "lgCpuPct": 6.2,
+      "errors": 0,
+      "flags": []
+    }
+  ],
+  "caveats": [
+    {
+      "id": "loadgen",
+      "text": "wrk2 had a 4 vCPU droplet, same size as the app. At crocket's max it was only around half busy (JSON about 50%, plaintext about 55%), so I wouldn't call those numbers client-pegged, though a larger generator could still move them"
+    },
+    {
+      "id": "drogon-db",
+      "text": "Drogon does beat crocket on the database test, 49,232 req/s against 45,453, and that's real. It also used about 201 MB of RSS under that load, against 32 MB for crocket"
+    },
+    {
+      "id": "fastapi-rate",
+      "text": "FastAPI tops out around 6,000 req/s on these 4 vCPUs, so at the shared 10,000 (or 4,000 for the query test) requests just queue up. Those wouldn't be fair p50 or p99 figures, which is why the table flags them. The latency you see there is from a rate it can hold, about 60% of its max: 3,500 req/s for JSON, 3,600 for plaintext, and 2,400 for the single query. It ran four uvicorn workers, one per core"
+    },
+    {
+      "id": "single-process",
+      "text": "Fastify and hyper-express each run as a single Node.js process by default, so they top out around one core. CPU per request is the fairer comparison there"
+    },
+    {
+      "id": "hyperexpress-rss",
+      "text": "hyper-express grew to about 480 to 780 MB of RSS at max load, though it settled around 232 MB at 3,500 req/s in the soak"
+    },
+    {
+      "id": "spring-histogram",
+      "text": "Spring Boot needs a one-line property to expose histogram buckets at /metrics, and it's on for every number here"
+    }
+  ],
+  "notes": {
+    "fastapiHeld": "FastAPI tops out around 6,000 req/s on these 4 vCPUs, so at the shared 10,000 (or 4,000 for the query test) requests just queue up. Those wouldn't be fair p50 or p99 figures, which is why the table flags them. The latency you see there is from a rate it can hold, about 60% of its max: 3,500 req/s for JSON, 3,600 for plaintext, and 2,400 for the single query. It ran four uvicorn workers, one per core",
+    "coldStart": "Cold start is container start to the first 200 on /db. That's the number you feel when a new pod comes up during autoscaling or a deploy. Spring Boot takes about 4\u20135 seconds here; crocket is around 330 milliseconds"
+  },
+  "prod": {
+    "contract": [
+      {
+        "framework": "hyperexpress",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 29.51742400000512,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 3.0709589991602115,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.4610730004278594,
+            "error": null
+          },
+          "extra": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 2.3556249998364365,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.4465859994743369,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 0,
+          "medianCloseS": 8.07,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.75,
+          "healthyP99Ms": 2.02,
+          "closeS": [
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 46.9,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 326.0,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "crocket",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 28.677120999873296,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.8694040000136738,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.7193110000116576,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.7604340000852972,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.8090040000752197,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 0,
+          "medianCloseS": 10.02,
+          "healthyOk": 485,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.36,
+          "healthyP99Ms": 1.8,
+          "closeS": [
+            10.03,
+            10.03,
+            10.03,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 33.5,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 36.2,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "rocket",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 31.118097999979,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.3983210001242696,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.2110740001389786,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.0975669999879756,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.1475190001419833,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.03,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.71,
+          "healthyP99Ms": 1.92,
+          "closeS": [
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.02,
+            25.02,
+            25.02,
+            25.02,
+            25.02,
+            25.02
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 39.9,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 317.2,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "axum",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 32.938359000013406,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.467660999992404,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.2144180000177585,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.1814239999807796,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.0372799999913696,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.04,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.71,
+          "healthyP99Ms": 2.33,
+          "closeS": [
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 1.5,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 1.9,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "fastify",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 31.187658999442647,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 2.569657000094594,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.704354000139574,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.6015510000215727,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.814057000046887,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.03,
+          "healthyOk": 479,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.93,
+          "healthyP99Ms": 2.3,
+          "closeS": [
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 2.9,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 2.2,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "fastapi",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 30.693269999574113,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.6449069998998311,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.396509000187507,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.285008999730053,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.331428999947093,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 477,
+          "healthyErr": 0,
+          "healthyP50Ms": 2.18,
+          "healthyP99Ms": 2.68,
+          "closeS": [
+            25.06,
+            25.06,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 81.7,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 639.6,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "spring",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 70.76402900020184,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 24.928842000008444,
+            "error": null
+          },
+          "missing": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 4.652275999887934,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 3.7610909998875286,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 5.911664999985078,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 462,
+          "healthyErr": 0,
+          "healthyP50Ms": 3.74,
+          "healthyP99Ms": 5.21,
+          "closeS": [
+            25.06,
+            25.06,
+            25.06,
+            25.06,
+            25.06,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 55.6,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 334.8,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "drogon",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 40.500073000202974,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.0859079998226662,
+            "error": null
+          },
+          "missing": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.8896290000848239,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.9543699998175725,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 0.9815339999477146,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 483,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.57,
+          "healthyP99Ms": 1.9,
+          "closeS": [
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 35.1,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 315.9,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      }
+    ],
+    "slow": [
+      {
+        "framework": "hyperexpress",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 29.51742400000512,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 3.0709589991602115,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.4610730004278594,
+            "error": null
+          },
+          "extra": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 2.3556249998364365,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.4465859994743369,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 0,
+          "medianCloseS": 8.07,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.75,
+          "healthyP99Ms": 2.02,
+          "closeS": [
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 46.9,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 326.0,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "crocket",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 28.677120999873296,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.8694040000136738,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.7193110000116576,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.7604340000852972,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.8090040000752197,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 0,
+          "medianCloseS": 10.02,
+          "healthyOk": 485,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.36,
+          "healthyP99Ms": 1.8,
+          "closeS": [
+            10.03,
+            10.03,
+            10.03,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 33.5,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 36.2,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "rocket",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 31.118097999979,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.3983210001242696,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.2110740001389786,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.0975669999879756,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.1475190001419833,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.03,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.71,
+          "healthyP99Ms": 1.92,
+          "closeS": [
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.02,
+            25.02,
+            25.02,
+            25.02,
+            25.02,
+            25.02
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 39.9,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 317.2,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "fastify",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 31.187658999442647,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 2.569657000094594,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.704354000139574,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.6015510000215727,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.814057000046887,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.03,
+          "healthyOk": 479,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.93,
+          "healthyP99Ms": 2.3,
+          "closeS": [
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 2.9,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 2.2,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "axum",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 32.938359000013406,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.467660999992404,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.2144180000177585,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.1814239999807796,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.0372799999913696,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.04,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.71,
+          "healthyP99Ms": 2.33,
+          "closeS": [
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 1.5,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 1.9,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "drogon",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 40.500073000202974,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.0859079998226662,
+            "error": null
+          },
+          "missing": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.8896290000848239,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.9543699998175725,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 0.9815339999477146,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 483,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.57,
+          "healthyP99Ms": 1.9,
+          "closeS": [
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 35.1,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 315.9,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "fastapi",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 30.693269999574113,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.6449069998998311,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.396509000187507,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.285008999730053,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.331428999947093,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 477,
+          "healthyErr": 0,
+          "healthyP50Ms": 2.18,
+          "healthyP99Ms": 2.68,
+          "closeS": [
+            25.06,
+            25.06,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 81.7,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 639.6,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "spring",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 70.76402900020184,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 24.928842000008444,
+            "error": null
+          },
+          "missing": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 4.652275999887934,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 3.7610909998875286,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 5.911664999985078,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 462,
+          "healthyErr": 0,
+          "healthyP50Ms": 3.74,
+          "healthyP99Ms": 5.21,
+          "closeS": [
+            25.06,
+            25.06,
+            25.06,
+            25.06,
+            25.06,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 55.6,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 334.8,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      }
+    ],
+    "oversize": [
+      {
+        "framework": "drogon",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 40.500073000202974,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.0859079998226662,
+            "error": null
+          },
+          "missing": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.8896290000848239,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.9543699998175725,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 0.9815339999477146,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 483,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.57,
+          "healthyP99Ms": 1.9,
+          "closeS": [
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 35.1,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 315.9,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "rocket",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 31.118097999979,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.3983210001242696,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.2110740001389786,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.0975669999879756,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.1475190001419833,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.03,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.71,
+          "healthyP99Ms": 1.92,
+          "closeS": [
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.02,
+            25.02,
+            25.02,
+            25.02,
+            25.02,
+            25.02
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 39.9,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 317.2,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "hyperexpress",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 29.51742400000512,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 3.0709589991602115,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.4610730004278594,
+            "error": null
+          },
+          "extra": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 2.3556249998364365,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.4465859994743369,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 0,
+          "medianCloseS": 8.07,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.75,
+          "healthyP99Ms": 2.02,
+          "closeS": [
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.08,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07,
+            8.07
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 46.9,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 326.0,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "crocket",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 28.677120999873296,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.8694040000136738,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.7193110000116576,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 0.7604340000852972,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 0.8090040000752197,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 0,
+          "medianCloseS": 10.02,
+          "healthyOk": 485,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.36,
+          "healthyP99Ms": 1.8,
+          "closeS": [
+            10.03,
+            10.03,
+            10.03,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02,
+            10.02
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "rejected",
+            "label": "413",
+            "status": 413,
+            "ms": 33.5,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 36.2,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "axum",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 32.938359000013406,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.467660999992404,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.2144180000177585,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.1814239999807796,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.0372799999913696,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.04,
+          "healthyOk": 481,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.71,
+          "healthyP99Ms": 2.33,
+          "closeS": [
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04,
+            25.04
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 1.5,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 1.9,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "fastify",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 31.187658999442647,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 2.569657000094594,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.704354000139574,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.6015510000215727,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 1.814057000046887,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.03,
+          "healthyOk": 479,
+          "healthyErr": 0,
+          "healthyP50Ms": 1.93,
+          "healthyP99Ms": 2.3,
+          "closeS": [
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03,
+            25.03
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 2.9,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "reset",
+            "label": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "status": null,
+            "ms": 2.2,
+            "error": "URLError: <urlopen error [Errno 32] Broken pipe>",
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "spring",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 70.76402900020184,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 24.928842000008444,
+            "error": null
+          },
+          "missing": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 4.652275999887934,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 3.7610909998875286,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "400",
+            "status": 400,
+            "ms": 5.911664999985078,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 462,
+          "healthyErr": 0,
+          "healthyP50Ms": 3.74,
+          "healthyP99Ms": 5.21,
+          "closeS": [
+            25.06,
+            25.06,
+            25.06,
+            25.06,
+            25.06,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 55.6,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 334.8,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      },
+      {
+        "framework": "fastapi",
+        "contract": {
+          "ok": {
+            "verdict": "ok",
+            "label": "200",
+            "status": 200,
+            "ms": 30.693269999574113,
+            "error": null
+          },
+          "wrong_type": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.6449069998998311,
+            "error": null
+          },
+          "missing": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.396509000187507,
+            "error": null
+          },
+          "extra": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 1.285008999730053,
+            "error": null
+          },
+          "malformed": {
+            "verdict": "rejected",
+            "label": "422",
+            "status": 422,
+            "ms": 1.331428999947093,
+            "error": null
+          }
+        },
+        "slow": {
+          "opened": 16,
+          "stillOpen": 16,
+          "medianCloseS": 25.05,
+          "healthyOk": 477,
+          "healthyErr": 0,
+          "healthyP50Ms": 2.18,
+          "healthyP99Ms": 2.68,
+          "closeS": [
+            25.06,
+            25.06,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05,
+            25.05
+          ]
+        },
+        "oversize": {
+          "10mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 81.7,
+            "error": null,
+            "bytes": 10485751
+          },
+          "100mb": {
+            "verdict": "accepted",
+            "label": "200",
+            "status": 200,
+            "ms": 639.6,
+            "error": null,
+            "bytes": 104857591
+          }
+        }
+      }
+    ],
+    "drain": [
+      {
+        "framework": "rocket",
+        "runs": 3,
+        "perRun": 16,
+        "ok": 48,
+        "total": 48,
+        "dropped": 0,
+        "cleanRuns": 3,
+        "exitS": 0.4,
+        "graceS": 15.0,
+        "termAfterMs": 150,
+        "exitCodes": [
+          "0"
+        ]
+      },
+      {
+        "framework": "hyperexpress",
+        "runs": 3,
+        "perRun": 16,
+        "ok": 48,
+        "total": 48,
+        "dropped": 0,
+        "cleanRuns": 3,
+        "exitS": 0.4,
+        "graceS": 15.0,
+        "termAfterMs": 150,
+        "exitCodes": [
+          "0"
+        ]
+      },
+      {
+        "framework": "spring",
+        "runs": 3,
+        "perRun": 16,
+        "ok": 48,
+        "total": 48,
+        "dropped": 0,
+        "cleanRuns": 3,
+        "exitS": 0.76,
+        "graceS": 15.0,
+        "termAfterMs": 150,
+        "exitCodes": [
+          "143"
+        ]
+      },
+      {
+        "framework": "fastapi",
+        "runs": 3,
+        "perRun": 16,
+        "ok": 48,
+        "total": 48,
+        "dropped": 0,
+        "cleanRuns": 3,
+        "exitS": 0.94,
+        "graceS": 15.0,
+        "termAfterMs": 150,
+        "exitCodes": [
+          "0"
+        ]
+      },
+      {
+        "framework": "crocket",
+        "runs": 3,
+        "perRun": 16,
+        "ok": 48,
+        "total": 48,
+        "dropped": 0,
+        "cleanRuns": 3,
+        "exitS": 0.49,
+        "graceS": 15.0,
+        "termAfterMs": 150,
+        "exitCodes": [
+          "139"
+        ]
+      },
+      {
+        "framework": "fastify",
+        "runs": 3,
+        "perRun": 16,
+        "ok": 48,
+        "total": 48,
+        "dropped": 0,
+        "cleanRuns": 0,
+        "exitS": 15.09,
+        "graceS": 15.0,
+        "termAfterMs": 150,
+        "exitCodes": [
+          "137"
+        ]
+      },
+      {
+        "framework": "axum",
+        "runs": 3,
+        "perRun": 16,
+        "ok": 48,
+        "total": 48,
+        "dropped": 0,
+        "cleanRuns": 0,
+        "exitS": 15.18,
+        "graceS": 15.0,
+        "termAfterMs": 150,
+        "exitCodes": [
+          "137"
+        ]
+      },
+      {
+        "framework": "drogon",
+        "runs": 3,
+        "perRun": 16,
+        "ok": 0,
+        "total": 48,
+        "dropped": 48,
+        "cleanRuns": 3,
+        "exitS": 0.07,
+        "graceS": 15.0,
+        "termAfterMs": 150,
+        "exitCodes": [
+          "0"
+        ]
+      }
+    ],
+    "soak": [
+      {
+        "framework": "crocket",
+        "series": [
+          {
+            "t": 0,
+            "mb": 15.8
+          },
+          {
+            "t": 5,
+            "mb": 17.3
+          },
+          {
+            "t": 10,
+            "mb": 17.3
+          },
+          {
+            "t": 15,
+            "mb": 17.3
+          },
+          {
+            "t": 20,
+            "mb": 17.3
+          },
+          {
+            "t": 25,
+            "mb": 17.3
+          },
+          {
+            "t": 30,
+            "mb": 17.3
+          },
+          {
+            "t": 35,
+            "mb": 17.3
+          },
+          {
+            "t": 40,
+            "mb": 17.3
+          },
+          {
+            "t": 45,
+            "mb": 17.3
+          },
+          {
+            "t": 50,
+            "mb": 17.3
+          },
+          {
+            "t": 55,
+            "mb": 17.3
+          },
+          {
+            "t": 60,
+            "mb": 17.3
+          },
+          {
+            "t": 65,
+            "mb": 17.3
+          },
+          {
+            "t": 70,
+            "mb": 17.3
+          },
+          {
+            "t": 75,
+            "mb": 17.3
+          },
+          {
+            "t": 80,
+            "mb": 17.3
+          },
+          {
+            "t": 85,
+            "mb": 17.3
+          },
+          {
+            "t": 90,
+            "mb": 17.3
+          },
+          {
+            "t": 96,
+            "mb": 17.3
+          },
+          {
+            "t": 101,
+            "mb": 17.3
+          },
+          {
+            "t": 106,
+            "mb": 17.3
+          },
+          {
+            "t": 111,
+            "mb": 17.3
+          },
+          {
+            "t": 116,
+            "mb": 17.3
+          },
+          {
+            "t": 121,
+            "mb": 17.3
+          },
+          {
+            "t": 126,
+            "mb": 17.3
+          },
+          {
+            "t": 131,
+            "mb": 17.3
+          },
+          {
+            "t": 136,
+            "mb": 17.3
+          },
+          {
+            "t": 141,
+            "mb": 17.3
+          },
+          {
+            "t": 146,
+            "mb": 17.3
+          },
+          {
+            "t": 151,
+            "mb": 17.3
+          },
+          {
+            "t": 156,
+            "mb": 17.3
+          },
+          {
+            "t": 161,
+            "mb": 17.3
+          },
+          {
+            "t": 166,
+            "mb": 17.3
+          },
+          {
+            "t": 171,
+            "mb": 17.3
+          },
+          {
+            "t": 176,
+            "mb": 17.3
+          },
+          {
+            "t": 181,
+            "mb": 17.3
+          },
+          {
+            "t": 186,
+            "mb": 17.3
+          },
+          {
+            "t": 191,
+            "mb": 17.3
+          },
+          {
+            "t": 196,
+            "mb": 17.3
+          },
+          {
+            "t": 201,
+            "mb": 17.3
+          },
+          {
+            "t": 206,
+            "mb": 17.3
+          },
+          {
+            "t": 211,
+            "mb": 17.3
+          },
+          {
+            "t": 216,
+            "mb": 17.3
+          },
+          {
+            "t": 221,
+            "mb": 17.3
+          },
+          {
+            "t": 226,
+            "mb": 17.3
+          },
+          {
+            "t": 231,
+            "mb": 17.3
+          },
+          {
+            "t": 236,
+            "mb": 17.3
+          },
+          {
+            "t": 241,
+            "mb": 17.3
+          },
+          {
+            "t": 246,
+            "mb": 17.3
+          },
+          {
+            "t": 251,
+            "mb": 17.3
+          },
+          {
+            "t": 256,
+            "mb": 17.3
+          },
+          {
+            "t": 261,
+            "mb": 17.3
+          },
+          {
+            "t": 266,
+            "mb": 17.3
+          },
+          {
+            "t": 271,
+            "mb": 17.3
+          },
+          {
+            "t": 276,
+            "mb": 17.3
+          },
+          {
+            "t": 281,
+            "mb": 17.3
+          },
+          {
+            "t": 286,
+            "mb": 17.3
+          },
+          {
+            "t": 291,
+            "mb": 17.3
+          },
+          {
+            "t": 296,
+            "mb": 17.3
+          },
+          {
+            "t": 301,
+            "mb": 17.3
+          },
+          {
+            "t": 306,
+            "mb": 17.3
+          },
+          {
+            "t": 311,
+            "mb": 17.3
+          },
+          {
+            "t": 316,
+            "mb": 17.3
+          },
+          {
+            "t": 321,
+            "mb": 17.3
+          },
+          {
+            "t": 327,
+            "mb": 17.3
+          },
+          {
+            "t": 332,
+            "mb": 17.3
+          },
+          {
+            "t": 337,
+            "mb": 17.3
+          },
+          {
+            "t": 342,
+            "mb": 17.3
+          },
+          {
+            "t": 347,
+            "mb": 17.3
+          },
+          {
+            "t": 352,
+            "mb": 17.3
+          },
+          {
+            "t": 357,
+            "mb": 17.3
+          },
+          {
+            "t": 362,
+            "mb": 17.3
+          },
+          {
+            "t": 367,
+            "mb": 17.3
+          },
+          {
+            "t": 372,
+            "mb": 17.3
+          },
+          {
+            "t": 377,
+            "mb": 17.3
+          },
+          {
+            "t": 382,
+            "mb": 17.3
+          },
+          {
+            "t": 387,
+            "mb": 17.3
+          },
+          {
+            "t": 392,
+            "mb": 17.3
+          },
+          {
+            "t": 397,
+            "mb": 17.3
+          },
+          {
+            "t": 402,
+            "mb": 17.3
+          },
+          {
+            "t": 407,
+            "mb": 17.3
+          },
+          {
+            "t": 412,
+            "mb": 17.3
+          },
+          {
+            "t": 417,
+            "mb": 17.3
+          },
+          {
+            "t": 422,
+            "mb": 17.3
+          },
+          {
+            "t": 427,
+            "mb": 17.3
+          },
+          {
+            "t": 432,
+            "mb": 17.3
+          },
+          {
+            "t": 437,
+            "mb": 17.3
+          },
+          {
+            "t": 442,
+            "mb": 17.3
+          },
+          {
+            "t": 447,
+            "mb": 17.3
+          },
+          {
+            "t": 452,
+            "mb": 17.3
+          },
+          {
+            "t": 457,
+            "mb": 17.3
+          },
+          {
+            "t": 462,
+            "mb": 17.3
+          },
+          {
+            "t": 467,
+            "mb": 17.3
+          },
+          {
+            "t": 472,
+            "mb": 17.3
+          },
+          {
+            "t": 477,
+            "mb": 17.3
+          },
+          {
+            "t": 482,
+            "mb": 17.3
+          },
+          {
+            "t": 487,
+            "mb": 17.3
+          },
+          {
+            "t": 492,
+            "mb": 17.3
+          },
+          {
+            "t": 497,
+            "mb": 17.3
+          },
+          {
+            "t": 502,
+            "mb": 17.3
+          },
+          {
+            "t": 507,
+            "mb": 17.3
+          },
+          {
+            "t": 512,
+            "mb": 17.3
+          },
+          {
+            "t": 517,
+            "mb": 17.3
+          },
+          {
+            "t": 522,
+            "mb": 17.3
+          },
+          {
+            "t": 527,
+            "mb": 17.3
+          },
+          {
+            "t": 532,
+            "mb": 17.3
+          },
+          {
+            "t": 537,
+            "mb": 17.3
+          },
+          {
+            "t": 542,
+            "mb": 17.3
+          },
+          {
+            "t": 547,
+            "mb": 17.3
+          },
+          {
+            "t": 552,
+            "mb": 17.3
+          },
+          {
+            "t": 557,
+            "mb": 17.3
+          },
+          {
+            "t": 562,
+            "mb": 17.3
+          },
+          {
+            "t": 568,
+            "mb": 17.3
+          },
+          {
+            "t": 573,
+            "mb": 17.3
+          },
+          {
+            "t": 578,
+            "mb": 17.3
+          },
+          {
+            "t": 583,
+            "mb": 17.3
+          },
+          {
+            "t": 588,
+            "mb": 17.3
+          },
+          {
+            "t": 593,
+            "mb": 17.3
+          },
+          {
+            "t": 598,
+            "mb": 17.3
+          }
+        ],
+        "startMb": 15.8,
+        "endMb": 17.3,
+        "peakMb": 17.3,
+        "deltaMb": 1.5,
+        "samples": 120,
+        "reqS": 3499.65,
+        "p99Ms": 1.91,
+        "p50Ms": 0.95,
+        "non2xx": 0,
+        "socketErrors": 0,
+        "requests": 2099789,
+        "driftMb": 0.0
+      },
+      {
+        "framework": "rocket",
+        "series": [
+          {
+            "t": 0,
+            "mb": 24.5
+          },
+          {
+            "t": 5,
+            "mb": 24.5
+          },
+          {
+            "t": 10,
+            "mb": 24.5
+          },
+          {
+            "t": 15,
+            "mb": 24.5
+          },
+          {
+            "t": 20,
+            "mb": 24.5
+          },
+          {
+            "t": 25,
+            "mb": 24.5
+          },
+          {
+            "t": 30,
+            "mb": 24.5
+          },
+          {
+            "t": 35,
+            "mb": 24.5
+          },
+          {
+            "t": 40,
+            "mb": 24.5
+          },
+          {
+            "t": 45,
+            "mb": 24.5
+          },
+          {
+            "t": 50,
+            "mb": 24.5
+          },
+          {
+            "t": 55,
+            "mb": 24.5
+          },
+          {
+            "t": 60,
+            "mb": 24.5
+          },
+          {
+            "t": 65,
+            "mb": 24.5
+          },
+          {
+            "t": 70,
+            "mb": 24.5
+          },
+          {
+            "t": 75,
+            "mb": 24.5
+          },
+          {
+            "t": 80,
+            "mb": 24.5
+          },
+          {
+            "t": 85,
+            "mb": 24.5
+          },
+          {
+            "t": 90,
+            "mb": 24.5
+          },
+          {
+            "t": 95,
+            "mb": 24.5
+          },
+          {
+            "t": 100,
+            "mb": 24.5
+          },
+          {
+            "t": 105,
+            "mb": 24.5
+          },
+          {
+            "t": 110,
+            "mb": 24.5
+          },
+          {
+            "t": 115,
+            "mb": 24.5
+          },
+          {
+            "t": 120,
+            "mb": 24.5
+          },
+          {
+            "t": 125,
+            "mb": 24.5
+          },
+          {
+            "t": 130,
+            "mb": 24.5
+          },
+          {
+            "t": 135,
+            "mb": 24.5
+          },
+          {
+            "t": 140,
+            "mb": 24.5
+          },
+          {
+            "t": 145,
+            "mb": 24.5
+          },
+          {
+            "t": 150,
+            "mb": 24.5
+          },
+          {
+            "t": 155,
+            "mb": 24.5
+          },
+          {
+            "t": 160,
+            "mb": 24.5
+          },
+          {
+            "t": 165,
+            "mb": 24.5
+          },
+          {
+            "t": 170,
+            "mb": 24.5
+          },
+          {
+            "t": 175,
+            "mb": 24.5
+          },
+          {
+            "t": 180,
+            "mb": 24.5
+          },
+          {
+            "t": 185,
+            "mb": 24.5
+          },
+          {
+            "t": 190,
+            "mb": 24.5
+          },
+          {
+            "t": 195,
+            "mb": 24.5
+          },
+          {
+            "t": 200,
+            "mb": 24.5
+          },
+          {
+            "t": 205,
+            "mb": 24.5
+          },
+          {
+            "t": 210,
+            "mb": 24.5
+          },
+          {
+            "t": 216,
+            "mb": 24.5
+          },
+          {
+            "t": 221,
+            "mb": 24.5
+          },
+          {
+            "t": 226,
+            "mb": 24.5
+          },
+          {
+            "t": 231,
+            "mb": 24.5
+          },
+          {
+            "t": 236,
+            "mb": 24.5
+          },
+          {
+            "t": 241,
+            "mb": 24.5
+          },
+          {
+            "t": 246,
+            "mb": 24.5
+          },
+          {
+            "t": 251,
+            "mb": 24.5
+          },
+          {
+            "t": 256,
+            "mb": 24.5
+          },
+          {
+            "t": 261,
+            "mb": 24.5
+          },
+          {
+            "t": 266,
+            "mb": 24.5
+          },
+          {
+            "t": 271,
+            "mb": 24.5
+          },
+          {
+            "t": 276,
+            "mb": 24.5
+          },
+          {
+            "t": 281,
+            "mb": 24.5
+          },
+          {
+            "t": 286,
+            "mb": 24.5
+          },
+          {
+            "t": 291,
+            "mb": 24.5
+          },
+          {
+            "t": 296,
+            "mb": 24.5
+          },
+          {
+            "t": 301,
+            "mb": 24.5
+          },
+          {
+            "t": 306,
+            "mb": 24.5
+          },
+          {
+            "t": 311,
+            "mb": 24.5
+          },
+          {
+            "t": 316,
+            "mb": 24.5
+          },
+          {
+            "t": 321,
+            "mb": 24.5
+          },
+          {
+            "t": 326,
+            "mb": 24.5
+          },
+          {
+            "t": 331,
+            "mb": 24.5
+          },
+          {
+            "t": 336,
+            "mb": 24.5
+          },
+          {
+            "t": 341,
+            "mb": 24.5
+          },
+          {
+            "t": 346,
+            "mb": 24.5
+          },
+          {
+            "t": 351,
+            "mb": 24.5
+          },
+          {
+            "t": 356,
+            "mb": 24.5
+          },
+          {
+            "t": 361,
+            "mb": 24.5
+          },
+          {
+            "t": 366,
+            "mb": 24.5
+          },
+          {
+            "t": 371,
+            "mb": 24.5
+          },
+          {
+            "t": 376,
+            "mb": 24.5
+          },
+          {
+            "t": 381,
+            "mb": 24.5
+          },
+          {
+            "t": 386,
+            "mb": 24.5
+          },
+          {
+            "t": 391,
+            "mb": 24.5
+          },
+          {
+            "t": 396,
+            "mb": 24.5
+          },
+          {
+            "t": 401,
+            "mb": 24.5
+          },
+          {
+            "t": 406,
+            "mb": 24.5
+          },
+          {
+            "t": 411,
+            "mb": 24.5
+          },
+          {
+            "t": 416,
+            "mb": 24.5
+          },
+          {
+            "t": 421,
+            "mb": 24.5
+          },
+          {
+            "t": 426,
+            "mb": 24.5
+          },
+          {
+            "t": 431,
+            "mb": 24.5
+          },
+          {
+            "t": 436,
+            "mb": 24.5
+          },
+          {
+            "t": 441,
+            "mb": 24.5
+          },
+          {
+            "t": 446,
+            "mb": 24.5
+          },
+          {
+            "t": 451,
+            "mb": 24.5
+          },
+          {
+            "t": 456,
+            "mb": 24.5
+          },
+          {
+            "t": 461,
+            "mb": 24.5
+          },
+          {
+            "t": 466,
+            "mb": 24.5
+          },
+          {
+            "t": 471,
+            "mb": 24.5
+          },
+          {
+            "t": 476,
+            "mb": 24.5
+          },
+          {
+            "t": 482,
+            "mb": 24.5
+          },
+          {
+            "t": 487,
+            "mb": 24.5
+          },
+          {
+            "t": 492,
+            "mb": 24.5
+          },
+          {
+            "t": 497,
+            "mb": 24.5
+          },
+          {
+            "t": 502,
+            "mb": 24.5
+          },
+          {
+            "t": 507,
+            "mb": 24.5
+          },
+          {
+            "t": 512,
+            "mb": 24.5
+          },
+          {
+            "t": 517,
+            "mb": 24.5
+          },
+          {
+            "t": 522,
+            "mb": 24.5
+          },
+          {
+            "t": 527,
+            "mb": 24.5
+          },
+          {
+            "t": 532,
+            "mb": 24.5
+          },
+          {
+            "t": 537,
+            "mb": 24.5
+          },
+          {
+            "t": 542,
+            "mb": 24.5
+          },
+          {
+            "t": 547,
+            "mb": 24.5
+          },
+          {
+            "t": 552,
+            "mb": 24.5
+          },
+          {
+            "t": 557,
+            "mb": 24.5
+          },
+          {
+            "t": 562,
+            "mb": 24.5
+          },
+          {
+            "t": 567,
+            "mb": 24.5
+          },
+          {
+            "t": 572,
+            "mb": 24.5
+          },
+          {
+            "t": 577,
+            "mb": 24.5
+          },
+          {
+            "t": 582,
+            "mb": 24.5
+          },
+          {
+            "t": 587,
+            "mb": 24.5
+          },
+          {
+            "t": 592,
+            "mb": 24.5
+          },
+          {
+            "t": 597,
+            "mb": 24.5
+          }
+        ],
+        "startMb": 24.5,
+        "endMb": 24.5,
+        "peakMb": 24.5,
+        "deltaMb": 0.0,
+        "samples": 120,
+        "reqS": 3499.24,
+        "p99Ms": 2.1,
+        "p50Ms": 1.12,
+        "non2xx": 0,
+        "socketErrors": 0,
+        "requests": 2099551,
+        "driftMb": 0.0
+      },
+      {
+        "framework": "drogon",
+        "series": [
+          {
+            "t": 0,
+            "mb": 15.1
+          },
+          {
+            "t": 5,
+            "mb": 16.2
+          },
+          {
+            "t": 10,
+            "mb": 16.2
+          },
+          {
+            "t": 15,
+            "mb": 16.3
+          },
+          {
+            "t": 20,
+            "mb": 16.3
+          },
+          {
+            "t": 25,
+            "mb": 16.3
+          },
+          {
+            "t": 30,
+            "mb": 16.3
+          },
+          {
+            "t": 35,
+            "mb": 16.4
+          },
+          {
+            "t": 41,
+            "mb": 16.4
+          },
+          {
+            "t": 46,
+            "mb": 16.4
+          },
+          {
+            "t": 51,
+            "mb": 16.4
+          },
+          {
+            "t": 56,
+            "mb": 16.5
+          },
+          {
+            "t": 61,
+            "mb": 16.5
+          },
+          {
+            "t": 66,
+            "mb": 16.5
+          },
+          {
+            "t": 71,
+            "mb": 16.6
+          },
+          {
+            "t": 76,
+            "mb": 16.6
+          },
+          {
+            "t": 81,
+            "mb": 16.6
+          },
+          {
+            "t": 86,
+            "mb": 16.6
+          },
+          {
+            "t": 91,
+            "mb": 16.6
+          },
+          {
+            "t": 96,
+            "mb": 16.6
+          },
+          {
+            "t": 101,
+            "mb": 16.6
+          },
+          {
+            "t": 106,
+            "mb": 16.6
+          },
+          {
+            "t": 111,
+            "mb": 16.6
+          },
+          {
+            "t": 116,
+            "mb": 16.6
+          },
+          {
+            "t": 121,
+            "mb": 16.6
+          },
+          {
+            "t": 126,
+            "mb": 16.6
+          },
+          {
+            "t": 131,
+            "mb": 16.6
+          },
+          {
+            "t": 136,
+            "mb": 16.6
+          },
+          {
+            "t": 141,
+            "mb": 16.6
+          },
+          {
+            "t": 146,
+            "mb": 16.6
+          },
+          {
+            "t": 151,
+            "mb": 16.6
+          },
+          {
+            "t": 156,
+            "mb": 16.6
+          },
+          {
+            "t": 161,
+            "mb": 16.6
+          },
+          {
+            "t": 166,
+            "mb": 16.6
+          },
+          {
+            "t": 171,
+            "mb": 16.6
+          },
+          {
+            "t": 176,
+            "mb": 16.6
+          },
+          {
+            "t": 181,
+            "mb": 16.6
+          },
+          {
+            "t": 186,
+            "mb": 16.6
+          },
+          {
+            "t": 191,
+            "mb": 16.6
+          },
+          {
+            "t": 196,
+            "mb": 16.6
+          },
+          {
+            "t": 201,
+            "mb": 16.6
+          },
+          {
+            "t": 206,
+            "mb": 16.6
+          },
+          {
+            "t": 211,
+            "mb": 16.6
+          },
+          {
+            "t": 216,
+            "mb": 16.6
+          },
+          {
+            "t": 221,
+            "mb": 16.6
+          },
+          {
+            "t": 226,
+            "mb": 16.6
+          },
+          {
+            "t": 231,
+            "mb": 16.6
+          },
+          {
+            "t": 236,
+            "mb": 16.6
+          },
+          {
+            "t": 241,
+            "mb": 16.6
+          },
+          {
+            "t": 246,
+            "mb": 16.6
+          },
+          {
+            "t": 251,
+            "mb": 16.6
+          },
+          {
+            "t": 256,
+            "mb": 16.6
+          },
+          {
+            "t": 261,
+            "mb": 16.6
+          },
+          {
+            "t": 266,
+            "mb": 16.6
+          },
+          {
+            "t": 271,
+            "mb": 16.6
+          },
+          {
+            "t": 276,
+            "mb": 16.6
+          },
+          {
+            "t": 281,
+            "mb": 16.6
+          },
+          {
+            "t": 286,
+            "mb": 16.6
+          },
+          {
+            "t": 291,
+            "mb": 16.6
+          },
+          {
+            "t": 297,
+            "mb": 16.6
+          },
+          {
+            "t": 302,
+            "mb": 16.6
+          },
+          {
+            "t": 307,
+            "mb": 16.6
+          },
+          {
+            "t": 312,
+            "mb": 16.6
+          },
+          {
+            "t": 317,
+            "mb": 16.6
+          },
+          {
+            "t": 322,
+            "mb": 16.6
+          },
+          {
+            "t": 327,
+            "mb": 16.6
+          },
+          {
+            "t": 332,
+            "mb": 16.6
+          },
+          {
+            "t": 337,
+            "mb": 16.6
+          },
+          {
+            "t": 342,
+            "mb": 16.6
+          },
+          {
+            "t": 347,
+            "mb": 16.6
+          },
+          {
+            "t": 352,
+            "mb": 16.6
+          },
+          {
+            "t": 357,
+            "mb": 16.6
+          },
+          {
+            "t": 362,
+            "mb": 16.6
+          },
+          {
+            "t": 367,
+            "mb": 16.6
+          },
+          {
+            "t": 372,
+            "mb": 16.6
+          },
+          {
+            "t": 377,
+            "mb": 16.6
+          },
+          {
+            "t": 382,
+            "mb": 16.6
+          },
+          {
+            "t": 387,
+            "mb": 16.6
+          },
+          {
+            "t": 392,
+            "mb": 16.6
+          },
+          {
+            "t": 397,
+            "mb": 16.6
+          },
+          {
+            "t": 402,
+            "mb": 16.6
+          },
+          {
+            "t": 407,
+            "mb": 16.6
+          },
+          {
+            "t": 412,
+            "mb": 16.6
+          },
+          {
+            "t": 417,
+            "mb": 16.6
+          },
+          {
+            "t": 422,
+            "mb": 16.6
+          },
+          {
+            "t": 427,
+            "mb": 16.6
+          },
+          {
+            "t": 432,
+            "mb": 16.6
+          },
+          {
+            "t": 437,
+            "mb": 16.6
+          },
+          {
+            "t": 442,
+            "mb": 16.6
+          },
+          {
+            "t": 447,
+            "mb": 16.6
+          },
+          {
+            "t": 452,
+            "mb": 16.6
+          },
+          {
+            "t": 457,
+            "mb": 16.6
+          },
+          {
+            "t": 462,
+            "mb": 16.6
+          },
+          {
+            "t": 467,
+            "mb": 16.6
+          },
+          {
+            "t": 472,
+            "mb": 16.6
+          },
+          {
+            "t": 477,
+            "mb": 16.6
+          },
+          {
+            "t": 482,
+            "mb": 16.6
+          },
+          {
+            "t": 487,
+            "mb": 16.6
+          },
+          {
+            "t": 492,
+            "mb": 16.6
+          },
+          {
+            "t": 497,
+            "mb": 16.6
+          },
+          {
+            "t": 502,
+            "mb": 16.6
+          },
+          {
+            "t": 507,
+            "mb": 16.6
+          },
+          {
+            "t": 512,
+            "mb": 16.6
+          },
+          {
+            "t": 517,
+            "mb": 16.6
+          },
+          {
+            "t": 522,
+            "mb": 16.6
+          },
+          {
+            "t": 527,
+            "mb": 16.6
+          },
+          {
+            "t": 532,
+            "mb": 16.6
+          },
+          {
+            "t": 537,
+            "mb": 16.6
+          },
+          {
+            "t": 542,
+            "mb": 16.6
+          },
+          {
+            "t": 547,
+            "mb": 16.6
+          },
+          {
+            "t": 553,
+            "mb": 16.6
+          },
+          {
+            "t": 558,
+            "mb": 16.6
+          },
+          {
+            "t": 563,
+            "mb": 16.6
+          },
+          {
+            "t": 568,
+            "mb": 16.6
+          },
+          {
+            "t": 573,
+            "mb": 16.6
+          },
+          {
+            "t": 578,
+            "mb": 16.6
+          },
+          {
+            "t": 583,
+            "mb": 16.6
+          },
+          {
+            "t": 588,
+            "mb": 16.6
+          },
+          {
+            "t": 593,
+            "mb": 16.6
+          },
+          {
+            "t": 598,
+            "mb": 16.6
+          }
+        ],
+        "startMb": 15.1,
+        "endMb": 16.6,
+        "peakMb": 16.6,
+        "deltaMb": 1.5,
+        "samples": 120,
+        "reqS": 3499.64,
+        "p99Ms": 1.94,
+        "p50Ms": 0.96,
+        "non2xx": 0,
+        "socketErrors": 0,
+        "requests": 2099788,
+        "driftMb": 0.1
+      },
+      {
+        "framework": "fastapi",
+        "series": [
+          {
+            "t": 0,
+            "mb": 268.2
+          },
+          {
+            "t": 5,
+            "mb": 268.2
+          },
+          {
+            "t": 10,
+            "mb": 268.2
+          },
+          {
+            "t": 15,
+            "mb": 268.2
+          },
+          {
+            "t": 20,
+            "mb": 268.2
+          },
+          {
+            "t": 25,
+            "mb": 268.2
+          },
+          {
+            "t": 30,
+            "mb": 268.2
+          },
+          {
+            "t": 35,
+            "mb": 268.2
+          },
+          {
+            "t": 40,
+            "mb": 268.2
+          },
+          {
+            "t": 45,
+            "mb": 268.2
+          },
+          {
+            "t": 50,
+            "mb": 268.2
+          },
+          {
+            "t": 55,
+            "mb": 268.2
+          },
+          {
+            "t": 60,
+            "mb": 268.2
+          },
+          {
+            "t": 65,
+            "mb": 268.2
+          },
+          {
+            "t": 70,
+            "mb": 268.2
+          },
+          {
+            "t": 75,
+            "mb": 268.2
+          },
+          {
+            "t": 80,
+            "mb": 268.2
+          },
+          {
+            "t": 85,
+            "mb": 268.2
+          },
+          {
+            "t": 90,
+            "mb": 268.2
+          },
+          {
+            "t": 96,
+            "mb": 268.2
+          },
+          {
+            "t": 101,
+            "mb": 268.3
+          },
+          {
+            "t": 106,
+            "mb": 268.3
+          },
+          {
+            "t": 111,
+            "mb": 268.3
+          },
+          {
+            "t": 116,
+            "mb": 268.3
+          },
+          {
+            "t": 121,
+            "mb": 268.3
+          },
+          {
+            "t": 126,
+            "mb": 268.3
+          },
+          {
+            "t": 131,
+            "mb": 268.3
+          },
+          {
+            "t": 136,
+            "mb": 268.3
+          },
+          {
+            "t": 141,
+            "mb": 268.3
+          },
+          {
+            "t": 146,
+            "mb": 268.3
+          },
+          {
+            "t": 151,
+            "mb": 268.3
+          },
+          {
+            "t": 156,
+            "mb": 268.3
+          },
+          {
+            "t": 161,
+            "mb": 268.3
+          },
+          {
+            "t": 166,
+            "mb": 268.3
+          },
+          {
+            "t": 171,
+            "mb": 268.3
+          },
+          {
+            "t": 176,
+            "mb": 268.3
+          },
+          {
+            "t": 182,
+            "mb": 268.3
+          },
+          {
+            "t": 187,
+            "mb": 268.3
+          },
+          {
+            "t": 192,
+            "mb": 268.3
+          },
+          {
+            "t": 197,
+            "mb": 268.3
+          },
+          {
+            "t": 202,
+            "mb": 268.3
+          },
+          {
+            "t": 207,
+            "mb": 268.3
+          },
+          {
+            "t": 212,
+            "mb": 268.3
+          },
+          {
+            "t": 217,
+            "mb": 268.3
+          },
+          {
+            "t": 222,
+            "mb": 268.3
+          },
+          {
+            "t": 227,
+            "mb": 268.3
+          },
+          {
+            "t": 232,
+            "mb": 268.3
+          },
+          {
+            "t": 237,
+            "mb": 268.3
+          },
+          {
+            "t": 242,
+            "mb": 268.3
+          },
+          {
+            "t": 247,
+            "mb": 268.3
+          },
+          {
+            "t": 252,
+            "mb": 268.3
+          },
+          {
+            "t": 257,
+            "mb": 268.3
+          },
+          {
+            "t": 262,
+            "mb": 268.3
+          },
+          {
+            "t": 267,
+            "mb": 268.3
+          },
+          {
+            "t": 272,
+            "mb": 268.3
+          },
+          {
+            "t": 277,
+            "mb": 268.3
+          },
+          {
+            "t": 283,
+            "mb": 268.3
+          },
+          {
+            "t": 288,
+            "mb": 268.3
+          },
+          {
+            "t": 293,
+            "mb": 268.3
+          },
+          {
+            "t": 298,
+            "mb": 268.3
+          },
+          {
+            "t": 303,
+            "mb": 268.3
+          },
+          {
+            "t": 308,
+            "mb": 268.3
+          },
+          {
+            "t": 313,
+            "mb": 268.3
+          },
+          {
+            "t": 318,
+            "mb": 268.3
+          },
+          {
+            "t": 323,
+            "mb": 268.3
+          },
+          {
+            "t": 328,
+            "mb": 268.3
+          },
+          {
+            "t": 333,
+            "mb": 268.3
+          },
+          {
+            "t": 338,
+            "mb": 268.3
+          },
+          {
+            "t": 343,
+            "mb": 268.3
+          },
+          {
+            "t": 348,
+            "mb": 268.3
+          },
+          {
+            "t": 353,
+            "mb": 268.3
+          },
+          {
+            "t": 358,
+            "mb": 268.3
+          },
+          {
+            "t": 363,
+            "mb": 268.3
+          },
+          {
+            "t": 368,
+            "mb": 268.3
+          },
+          {
+            "t": 373,
+            "mb": 268.3
+          },
+          {
+            "t": 379,
+            "mb": 268.3
+          },
+          {
+            "t": 384,
+            "mb": 268.3
+          },
+          {
+            "t": 389,
+            "mb": 268.3
+          },
+          {
+            "t": 394,
+            "mb": 268.3
+          },
+          {
+            "t": 399,
+            "mb": 268.3
+          },
+          {
+            "t": 404,
+            "mb": 268.3
+          },
+          {
+            "t": 409,
+            "mb": 268.3
+          },
+          {
+            "t": 414,
+            "mb": 268.3
+          },
+          {
+            "t": 419,
+            "mb": 268.3
+          },
+          {
+            "t": 424,
+            "mb": 268.3
+          },
+          {
+            "t": 429,
+            "mb": 268.3
+          },
+          {
+            "t": 434,
+            "mb": 268.3
+          },
+          {
+            "t": 439,
+            "mb": 268.3
+          },
+          {
+            "t": 444,
+            "mb": 268.3
+          },
+          {
+            "t": 449,
+            "mb": 268.3
+          },
+          {
+            "t": 454,
+            "mb": 268.3
+          },
+          {
+            "t": 459,
+            "mb": 268.3
+          },
+          {
+            "t": 464,
+            "mb": 268.3
+          },
+          {
+            "t": 469,
+            "mb": 268.3
+          },
+          {
+            "t": 475,
+            "mb": 268.3
+          },
+          {
+            "t": 480,
+            "mb": 268.3
+          },
+          {
+            "t": 485,
+            "mb": 268.3
+          },
+          {
+            "t": 490,
+            "mb": 268.3
+          },
+          {
+            "t": 495,
+            "mb": 268.3
+          },
+          {
+            "t": 500,
+            "mb": 268.3
+          },
+          {
+            "t": 505,
+            "mb": 268.3
+          },
+          {
+            "t": 510,
+            "mb": 268.3
+          },
+          {
+            "t": 515,
+            "mb": 268.3
+          },
+          {
+            "t": 520,
+            "mb": 268.3
+          },
+          {
+            "t": 525,
+            "mb": 268.3
+          },
+          {
+            "t": 530,
+            "mb": 268.3
+          },
+          {
+            "t": 535,
+            "mb": 268.3
+          },
+          {
+            "t": 540,
+            "mb": 268.3
+          },
+          {
+            "t": 545,
+            "mb": 268.3
+          },
+          {
+            "t": 550,
+            "mb": 268.3
+          },
+          {
+            "t": 555,
+            "mb": 268.3
+          },
+          {
+            "t": 560,
+            "mb": 268.3
+          },
+          {
+            "t": 565,
+            "mb": 268.3
+          },
+          {
+            "t": 571,
+            "mb": 268.3
+          },
+          {
+            "t": 576,
+            "mb": 268.3
+          },
+          {
+            "t": 581,
+            "mb": 268.3
+          },
+          {
+            "t": 586,
+            "mb": 268.3
+          },
+          {
+            "t": 591,
+            "mb": 268.3
+          },
+          {
+            "t": 596,
+            "mb": 268.3
+          }
+        ],
+        "startMb": 268.2,
+        "endMb": 268.3,
+        "peakMb": 268.3,
+        "deltaMb": 0.1,
+        "samples": 119,
+        "reqS": 3499.64,
+        "p99Ms": 3.38,
+        "p50Ms": 1.55,
+        "non2xx": 0,
+        "socketErrors": 0,
+        "requests": 2099787,
+        "driftMb": 0.1
+      },
+      {
+        "framework": "fastify",
+        "series": [
+          {
+            "t": 0,
+            "mb": 147.7
+          },
+          {
+            "t": 5,
+            "mb": 147.6
+          },
+          {
+            "t": 10,
+            "mb": 147.7
+          },
+          {
+            "t": 15,
+            "mb": 147.6
+          },
+          {
+            "t": 20,
+            "mb": 147.7
+          },
+          {
+            "t": 25,
+            "mb": 147.7
+          },
+          {
+            "t": 30,
+            "mb": 147.7
+          },
+          {
+            "t": 35,
+            "mb": 147.7
+          },
+          {
+            "t": 40,
+            "mb": 147.7
+          },
+          {
+            "t": 45,
+            "mb": 147.7
+          },
+          {
+            "t": 50,
+            "mb": 147.2
+          },
+          {
+            "t": 56,
+            "mb": 147.2
+          },
+          {
+            "t": 61,
+            "mb": 147.2
+          },
+          {
+            "t": 66,
+            "mb": 147.2
+          },
+          {
+            "t": 71,
+            "mb": 147.2
+          },
+          {
+            "t": 76,
+            "mb": 147.2
+          },
+          {
+            "t": 81,
+            "mb": 147.2
+          },
+          {
+            "t": 86,
+            "mb": 147.2
+          },
+          {
+            "t": 91,
+            "mb": 147.2
+          },
+          {
+            "t": 96,
+            "mb": 147.7
+          },
+          {
+            "t": 101,
+            "mb": 147.7
+          },
+          {
+            "t": 106,
+            "mb": 147.7
+          },
+          {
+            "t": 111,
+            "mb": 147.7
+          },
+          {
+            "t": 116,
+            "mb": 147.7
+          },
+          {
+            "t": 121,
+            "mb": 147.8
+          },
+          {
+            "t": 126,
+            "mb": 147.9
+          },
+          {
+            "t": 131,
+            "mb": 147.9
+          },
+          {
+            "t": 136,
+            "mb": 147.9
+          },
+          {
+            "t": 141,
+            "mb": 147.9
+          },
+          {
+            "t": 146,
+            "mb": 147.9
+          },
+          {
+            "t": 151,
+            "mb": 147.9
+          },
+          {
+            "t": 156,
+            "mb": 147.9
+          },
+          {
+            "t": 161,
+            "mb": 147.9
+          },
+          {
+            "t": 166,
+            "mb": 147.9
+          },
+          {
+            "t": 171,
+            "mb": 148.0
+          },
+          {
+            "t": 176,
+            "mb": 148.0
+          },
+          {
+            "t": 181,
+            "mb": 148.0
+          },
+          {
+            "t": 186,
+            "mb": 148.2
+          },
+          {
+            "t": 191,
+            "mb": 148.2
+          },
+          {
+            "t": 196,
+            "mb": 148.2
+          },
+          {
+            "t": 201,
+            "mb": 148.2
+          },
+          {
+            "t": 206,
+            "mb": 148.2
+          },
+          {
+            "t": 211,
+            "mb": 148.2
+          },
+          {
+            "t": 216,
+            "mb": 148.2
+          },
+          {
+            "t": 221,
+            "mb": 148.2
+          },
+          {
+            "t": 226,
+            "mb": 148.2
+          },
+          {
+            "t": 231,
+            "mb": 148.2
+          },
+          {
+            "t": 236,
+            "mb": 148.2
+          },
+          {
+            "t": 241,
+            "mb": 148.2
+          },
+          {
+            "t": 246,
+            "mb": 148.2
+          },
+          {
+            "t": 251,
+            "mb": 148.2
+          },
+          {
+            "t": 256,
+            "mb": 148.2
+          },
+          {
+            "t": 261,
+            "mb": 148.2
+          },
+          {
+            "t": 266,
+            "mb": 148.2
+          },
+          {
+            "t": 271,
+            "mb": 148.2
+          },
+          {
+            "t": 276,
+            "mb": 148.2
+          },
+          {
+            "t": 281,
+            "mb": 148.2
+          },
+          {
+            "t": 286,
+            "mb": 148.2
+          },
+          {
+            "t": 291,
+            "mb": 148.2
+          },
+          {
+            "t": 296,
+            "mb": 147.5
+          },
+          {
+            "t": 301,
+            "mb": 147.5
+          },
+          {
+            "t": 306,
+            "mb": 147.5
+          },
+          {
+            "t": 311,
+            "mb": 147.5
+          },
+          {
+            "t": 316,
+            "mb": 147.5
+          },
+          {
+            "t": 322,
+            "mb": 147.5
+          },
+          {
+            "t": 327,
+            "mb": 147.5
+          },
+          {
+            "t": 332,
+            "mb": 147.5
+          },
+          {
+            "t": 337,
+            "mb": 147.5
+          },
+          {
+            "t": 342,
+            "mb": 147.5
+          },
+          {
+            "t": 347,
+            "mb": 147.5
+          },
+          {
+            "t": 352,
+            "mb": 147.5
+          },
+          {
+            "t": 357,
+            "mb": 147.5
+          },
+          {
+            "t": 362,
+            "mb": 147.7
+          },
+          {
+            "t": 367,
+            "mb": 147.7
+          },
+          {
+            "t": 372,
+            "mb": 147.7
+          },
+          {
+            "t": 377,
+            "mb": 147.7
+          },
+          {
+            "t": 382,
+            "mb": 147.7
+          },
+          {
+            "t": 387,
+            "mb": 147.7
+          },
+          {
+            "t": 392,
+            "mb": 147.8
+          },
+          {
+            "t": 397,
+            "mb": 147.8
+          },
+          {
+            "t": 402,
+            "mb": 147.8
+          },
+          {
+            "t": 407,
+            "mb": 147.9
+          },
+          {
+            "t": 412,
+            "mb": 148.0
+          },
+          {
+            "t": 417,
+            "mb": 148.0
+          },
+          {
+            "t": 422,
+            "mb": 148.0
+          },
+          {
+            "t": 427,
+            "mb": 148.0
+          },
+          {
+            "t": 432,
+            "mb": 148.0
+          },
+          {
+            "t": 437,
+            "mb": 148.0
+          },
+          {
+            "t": 442,
+            "mb": 148.0
+          },
+          {
+            "t": 447,
+            "mb": 148.0
+          },
+          {
+            "t": 452,
+            "mb": 148.0
+          },
+          {
+            "t": 457,
+            "mb": 148.0
+          },
+          {
+            "t": 462,
+            "mb": 148.0
+          },
+          {
+            "t": 467,
+            "mb": 148.0
+          },
+          {
+            "t": 472,
+            "mb": 148.0
+          },
+          {
+            "t": 477,
+            "mb": 148.0
+          },
+          {
+            "t": 482,
+            "mb": 148.0
+          },
+          {
+            "t": 487,
+            "mb": 148.0
+          },
+          {
+            "t": 492,
+            "mb": 148.0
+          },
+          {
+            "t": 497,
+            "mb": 148.0
+          },
+          {
+            "t": 502,
+            "mb": 148.0
+          },
+          {
+            "t": 507,
+            "mb": 148.0
+          },
+          {
+            "t": 512,
+            "mb": 147.8
+          },
+          {
+            "t": 517,
+            "mb": 147.8
+          },
+          {
+            "t": 522,
+            "mb": 147.8
+          },
+          {
+            "t": 527,
+            "mb": 147.8
+          },
+          {
+            "t": 532,
+            "mb": 147.8
+          },
+          {
+            "t": 537,
+            "mb": 147.8
+          },
+          {
+            "t": 542,
+            "mb": 147.8
+          },
+          {
+            "t": 547,
+            "mb": 147.8
+          },
+          {
+            "t": 552,
+            "mb": 147.8
+          },
+          {
+            "t": 557,
+            "mb": 147.8
+          },
+          {
+            "t": 562,
+            "mb": 147.8
+          },
+          {
+            "t": 567,
+            "mb": 147.8
+          },
+          {
+            "t": 572,
+            "mb": 147.8
+          },
+          {
+            "t": 578,
+            "mb": 147.8
+          },
+          {
+            "t": 583,
+            "mb": 147.8
+          },
+          {
+            "t": 588,
+            "mb": 147.8
+          },
+          {
+            "t": 593,
+            "mb": 147.8
+          },
+          {
+            "t": 598,
+            "mb": 147.8
+          }
+        ],
+        "startMb": 147.7,
+        "endMb": 147.8,
+        "peakMb": 148.2,
+        "deltaMb": 0.1,
+        "samples": 120,
+        "reqS": 3499.29,
+        "p99Ms": 2.14,
+        "p50Ms": 1.13,
+        "non2xx": 0,
+        "socketErrors": 0,
+        "requests": 2099582,
+        "driftMb": 0.6
+      },
+      {
+        "framework": "spring",
+        "series": [
+          {
+            "t": 0,
+            "mb": 400.5
+          },
+          {
+            "t": 5,
+            "mb": 400.6
+          },
+          {
+            "t": 10,
+            "mb": 400.7
+          },
+          {
+            "t": 15,
+            "mb": 400.7
+          },
+          {
+            "t": 20,
+            "mb": 400.8
+          },
+          {
+            "t": 25,
+            "mb": 400.9
+          },
+          {
+            "t": 30,
+            "mb": 400.9
+          },
+          {
+            "t": 35,
+            "mb": 400.9
+          },
+          {
+            "t": 40,
+            "mb": 400.9
+          },
+          {
+            "t": 45,
+            "mb": 401.0
+          },
+          {
+            "t": 51,
+            "mb": 401.0
+          },
+          {
+            "t": 56,
+            "mb": 401.1
+          },
+          {
+            "t": 61,
+            "mb": 401.1
+          },
+          {
+            "t": 66,
+            "mb": 401.1
+          },
+          {
+            "t": 71,
+            "mb": 401.1
+          },
+          {
+            "t": 76,
+            "mb": 401.2
+          },
+          {
+            "t": 81,
+            "mb": 401.2
+          },
+          {
+            "t": 86,
+            "mb": 401.3
+          },
+          {
+            "t": 91,
+            "mb": 401.3
+          },
+          {
+            "t": 96,
+            "mb": 401.3
+          },
+          {
+            "t": 101,
+            "mb": 401.4
+          },
+          {
+            "t": 106,
+            "mb": 401.4
+          },
+          {
+            "t": 111,
+            "mb": 401.4
+          },
+          {
+            "t": 116,
+            "mb": 401.4
+          },
+          {
+            "t": 121,
+            "mb": 401.5
+          },
+          {
+            "t": 126,
+            "mb": 401.5
+          },
+          {
+            "t": 131,
+            "mb": 401.5
+          },
+          {
+            "t": 136,
+            "mb": 401.5
+          },
+          {
+            "t": 141,
+            "mb": 401.5
+          },
+          {
+            "t": 146,
+            "mb": 401.6
+          },
+          {
+            "t": 151,
+            "mb": 401.6
+          },
+          {
+            "t": 156,
+            "mb": 401.6
+          },
+          {
+            "t": 161,
+            "mb": 401.6
+          },
+          {
+            "t": 166,
+            "mb": 401.7
+          },
+          {
+            "t": 171,
+            "mb": 401.7
+          },
+          {
+            "t": 176,
+            "mb": 401.7
+          },
+          {
+            "t": 181,
+            "mb": 401.7
+          },
+          {
+            "t": 186,
+            "mb": 401.8
+          },
+          {
+            "t": 191,
+            "mb": 401.8
+          },
+          {
+            "t": 196,
+            "mb": 401.8
+          },
+          {
+            "t": 201,
+            "mb": 401.8
+          },
+          {
+            "t": 206,
+            "mb": 401.8
+          },
+          {
+            "t": 211,
+            "mb": 401.8
+          },
+          {
+            "t": 216,
+            "mb": 401.8
+          },
+          {
+            "t": 221,
+            "mb": 401.8
+          },
+          {
+            "t": 226,
+            "mb": 401.8
+          },
+          {
+            "t": 231,
+            "mb": 401.8
+          },
+          {
+            "t": 236,
+            "mb": 401.9
+          },
+          {
+            "t": 241,
+            "mb": 401.9
+          },
+          {
+            "t": 246,
+            "mb": 401.9
+          },
+          {
+            "t": 251,
+            "mb": 401.9
+          },
+          {
+            "t": 256,
+            "mb": 401.9
+          },
+          {
+            "t": 261,
+            "mb": 401.9
+          },
+          {
+            "t": 266,
+            "mb": 402.0
+          },
+          {
+            "t": 271,
+            "mb": 402.0
+          },
+          {
+            "t": 277,
+            "mb": 402.0
+          },
+          {
+            "t": 282,
+            "mb": 402.0
+          },
+          {
+            "t": 287,
+            "mb": 402.0
+          },
+          {
+            "t": 292,
+            "mb": 402.0
+          },
+          {
+            "t": 297,
+            "mb": 402.0
+          },
+          {
+            "t": 302,
+            "mb": 402.0
+          },
+          {
+            "t": 307,
+            "mb": 402.0
+          },
+          {
+            "t": 312,
+            "mb": 402.0
+          },
+          {
+            "t": 317,
+            "mb": 402.1
+          },
+          {
+            "t": 322,
+            "mb": 402.1
+          },
+          {
+            "t": 327,
+            "mb": 402.1
+          },
+          {
+            "t": 332,
+            "mb": 402.1
+          },
+          {
+            "t": 337,
+            "mb": 402.1
+          },
+          {
+            "t": 342,
+            "mb": 402.2
+          },
+          {
+            "t": 347,
+            "mb": 402.2
+          },
+          {
+            "t": 352,
+            "mb": 402.2
+          },
+          {
+            "t": 357,
+            "mb": 402.2
+          },
+          {
+            "t": 362,
+            "mb": 402.2
+          },
+          {
+            "t": 367,
+            "mb": 402.2
+          },
+          {
+            "t": 372,
+            "mb": 402.3
+          },
+          {
+            "t": 377,
+            "mb": 402.3
+          },
+          {
+            "t": 382,
+            "mb": 402.3
+          },
+          {
+            "t": 387,
+            "mb": 402.3
+          },
+          {
+            "t": 392,
+            "mb": 402.3
+          },
+          {
+            "t": 397,
+            "mb": 402.3
+          },
+          {
+            "t": 402,
+            "mb": 402.3
+          },
+          {
+            "t": 407,
+            "mb": 402.4
+          },
+          {
+            "t": 412,
+            "mb": 402.4
+          },
+          {
+            "t": 417,
+            "mb": 402.4
+          },
+          {
+            "t": 422,
+            "mb": 402.4
+          },
+          {
+            "t": 427,
+            "mb": 402.5
+          },
+          {
+            "t": 432,
+            "mb": 402.5
+          },
+          {
+            "t": 437,
+            "mb": 402.5
+          },
+          {
+            "t": 442,
+            "mb": 402.5
+          },
+          {
+            "t": 447,
+            "mb": 402.5
+          },
+          {
+            "t": 452,
+            "mb": 402.5
+          },
+          {
+            "t": 457,
+            "mb": 402.6
+          },
+          {
+            "t": 462,
+            "mb": 402.6
+          },
+          {
+            "t": 467,
+            "mb": 402.6
+          },
+          {
+            "t": 472,
+            "mb": 402.6
+          },
+          {
+            "t": 477,
+            "mb": 402.6
+          },
+          {
+            "t": 482,
+            "mb": 402.7
+          },
+          {
+            "t": 487,
+            "mb": 402.7
+          },
+          {
+            "t": 492,
+            "mb": 402.7
+          },
+          {
+            "t": 497,
+            "mb": 402.7
+          },
+          {
+            "t": 502,
+            "mb": 402.7
+          },
+          {
+            "t": 508,
+            "mb": 402.7
+          },
+          {
+            "t": 513,
+            "mb": 402.7
+          },
+          {
+            "t": 518,
+            "mb": 402.8
+          },
+          {
+            "t": 523,
+            "mb": 402.8
+          },
+          {
+            "t": 528,
+            "mb": 402.8
+          },
+          {
+            "t": 533,
+            "mb": 402.8
+          },
+          {
+            "t": 538,
+            "mb": 402.8
+          },
+          {
+            "t": 543,
+            "mb": 402.9
+          },
+          {
+            "t": 548,
+            "mb": 402.9
+          },
+          {
+            "t": 553,
+            "mb": 402.9
+          },
+          {
+            "t": 558,
+            "mb": 402.9
+          },
+          {
+            "t": 563,
+            "mb": 402.9
+          },
+          {
+            "t": 568,
+            "mb": 402.9
+          },
+          {
+            "t": 573,
+            "mb": 403.0
+          },
+          {
+            "t": 578,
+            "mb": 403.0
+          },
+          {
+            "t": 583,
+            "mb": 403.0
+          },
+          {
+            "t": 588,
+            "mb": 403.0
+          },
+          {
+            "t": 593,
+            "mb": 403.0
+          },
+          {
+            "t": 598,
+            "mb": 403.0
+          }
+        ],
+        "startMb": 400.5,
+        "endMb": 403.0,
+        "peakMb": 403.0,
+        "deltaMb": 2.5,
+        "samples": 120,
+        "reqS": 3498.25,
+        "p99Ms": 3.04,
+        "p50Ms": 1.34,
+        "non2xx": 0,
+        "socketErrors": 0,
+        "requests": 2098972,
+        "driftMb": 1.9
+      },
+      {
+        "framework": "hyperexpress",
+        "series": [
+          {
+            "t": 0,
+            "mb": 93.6
+          },
+          {
+            "t": 5,
+            "mb": 155.9
+          },
+          {
+            "t": 10,
+            "mb": 212.1
+          },
+          {
+            "t": 15,
+            "mb": 230.9
+          },
+          {
+            "t": 20,
+            "mb": 231.5
+          },
+          {
+            "t": 25,
+            "mb": 231.7
+          },
+          {
+            "t": 30,
+            "mb": 231.7
+          },
+          {
+            "t": 35,
+            "mb": 231.8
+          },
+          {
+            "t": 40,
+            "mb": 231.8
+          },
+          {
+            "t": 45,
+            "mb": 231.8
+          },
+          {
+            "t": 50,
+            "mb": 231.8
+          },
+          {
+            "t": 55,
+            "mb": 232.0
+          },
+          {
+            "t": 60,
+            "mb": 232.0
+          },
+          {
+            "t": 65,
+            "mb": 232.0
+          },
+          {
+            "t": 70,
+            "mb": 232.0
+          },
+          {
+            "t": 75,
+            "mb": 232.0
+          },
+          {
+            "t": 80,
+            "mb": 232.0
+          },
+          {
+            "t": 85,
+            "mb": 232.0
+          },
+          {
+            "t": 90,
+            "mb": 232.0
+          },
+          {
+            "t": 95,
+            "mb": 232.0
+          },
+          {
+            "t": 100,
+            "mb": 232.0
+          },
+          {
+            "t": 105,
+            "mb": 232.0
+          },
+          {
+            "t": 110,
+            "mb": 232.0
+          },
+          {
+            "t": 115,
+            "mb": 232.0
+          },
+          {
+            "t": 120,
+            "mb": 232.0
+          },
+          {
+            "t": 125,
+            "mb": 232.5
+          },
+          {
+            "t": 130,
+            "mb": 232.3
+          },
+          {
+            "t": 135,
+            "mb": 232.3
+          },
+          {
+            "t": 140,
+            "mb": 232.6
+          },
+          {
+            "t": 146,
+            "mb": 232.6
+          },
+          {
+            "t": 151,
+            "mb": 232.6
+          },
+          {
+            "t": 156,
+            "mb": 232.6
+          },
+          {
+            "t": 161,
+            "mb": 232.6
+          },
+          {
+            "t": 166,
+            "mb": 232.6
+          },
+          {
+            "t": 171,
+            "mb": 232.6
+          },
+          {
+            "t": 176,
+            "mb": 232.6
+          },
+          {
+            "t": 181,
+            "mb": 232.6
+          },
+          {
+            "t": 186,
+            "mb": 232.6
+          },
+          {
+            "t": 191,
+            "mb": 232.6
+          },
+          {
+            "t": 196,
+            "mb": 232.6
+          },
+          {
+            "t": 201,
+            "mb": 232.6
+          },
+          {
+            "t": 206,
+            "mb": 232.6
+          },
+          {
+            "t": 211,
+            "mb": 232.6
+          },
+          {
+            "t": 216,
+            "mb": 232.8
+          },
+          {
+            "t": 221,
+            "mb": 232.8
+          },
+          {
+            "t": 226,
+            "mb": 232.8
+          },
+          {
+            "t": 231,
+            "mb": 232.8
+          },
+          {
+            "t": 236,
+            "mb": 232.8
+          },
+          {
+            "t": 241,
+            "mb": 232.8
+          },
+          {
+            "t": 246,
+            "mb": 232.8
+          },
+          {
+            "t": 251,
+            "mb": 233.0
+          },
+          {
+            "t": 256,
+            "mb": 233.0
+          },
+          {
+            "t": 261,
+            "mb": 233.1
+          },
+          {
+            "t": 266,
+            "mb": 233.1
+          },
+          {
+            "t": 271,
+            "mb": 233.1
+          },
+          {
+            "t": 276,
+            "mb": 233.3
+          },
+          {
+            "t": 281,
+            "mb": 233.3
+          },
+          {
+            "t": 286,
+            "mb": 233.3
+          },
+          {
+            "t": 291,
+            "mb": 233.3
+          },
+          {
+            "t": 296,
+            "mb": 233.3
+          },
+          {
+            "t": 301,
+            "mb": 233.3
+          },
+          {
+            "t": 306,
+            "mb": 233.3
+          },
+          {
+            "t": 311,
+            "mb": 233.3
+          },
+          {
+            "t": 316,
+            "mb": 233.3
+          },
+          {
+            "t": 321,
+            "mb": 233.5
+          },
+          {
+            "t": 326,
+            "mb": 233.5
+          },
+          {
+            "t": 331,
+            "mb": 233.5
+          },
+          {
+            "t": 336,
+            "mb": 233.5
+          },
+          {
+            "t": 341,
+            "mb": 233.5
+          },
+          {
+            "t": 346,
+            "mb": 233.5
+          },
+          {
+            "t": 351,
+            "mb": 233.5
+          },
+          {
+            "t": 356,
+            "mb": 233.6
+          },
+          {
+            "t": 361,
+            "mb": 233.6
+          },
+          {
+            "t": 366,
+            "mb": 233.8
+          },
+          {
+            "t": 371,
+            "mb": 233.8
+          },
+          {
+            "t": 376,
+            "mb": 233.8
+          },
+          {
+            "t": 381,
+            "mb": 233.8
+          },
+          {
+            "t": 386,
+            "mb": 233.8
+          },
+          {
+            "t": 391,
+            "mb": 233.8
+          },
+          {
+            "t": 397,
+            "mb": 233.8
+          },
+          {
+            "t": 402,
+            "mb": 233.8
+          },
+          {
+            "t": 407,
+            "mb": 233.8
+          },
+          {
+            "t": 412,
+            "mb": 233.8
+          },
+          {
+            "t": 417,
+            "mb": 233.8
+          },
+          {
+            "t": 422,
+            "mb": 233.8
+          },
+          {
+            "t": 427,
+            "mb": 233.8
+          },
+          {
+            "t": 432,
+            "mb": 233.8
+          },
+          {
+            "t": 437,
+            "mb": 233.8
+          },
+          {
+            "t": 442,
+            "mb": 233.8
+          },
+          {
+            "t": 447,
+            "mb": 233.8
+          },
+          {
+            "t": 452,
+            "mb": 233.8
+          },
+          {
+            "t": 457,
+            "mb": 233.8
+          },
+          {
+            "t": 462,
+            "mb": 233.8
+          },
+          {
+            "t": 467,
+            "mb": 233.8
+          },
+          {
+            "t": 472,
+            "mb": 234.0
+          },
+          {
+            "t": 477,
+            "mb": 234.0
+          },
+          {
+            "t": 482,
+            "mb": 234.0
+          },
+          {
+            "t": 487,
+            "mb": 234.0
+          },
+          {
+            "t": 492,
+            "mb": 234.0
+          },
+          {
+            "t": 497,
+            "mb": 234.0
+          },
+          {
+            "t": 502,
+            "mb": 234.0
+          },
+          {
+            "t": 507,
+            "mb": 234.0
+          },
+          {
+            "t": 512,
+            "mb": 234.0
+          },
+          {
+            "t": 517,
+            "mb": 234.0
+          },
+          {
+            "t": 522,
+            "mb": 234.0
+          },
+          {
+            "t": 527,
+            "mb": 234.0
+          },
+          {
+            "t": 532,
+            "mb": 234.0
+          },
+          {
+            "t": 537,
+            "mb": 234.0
+          },
+          {
+            "t": 542,
+            "mb": 234.0
+          },
+          {
+            "t": 547,
+            "mb": 234.0
+          },
+          {
+            "t": 552,
+            "mb": 234.0
+          },
+          {
+            "t": 557,
+            "mb": 234.0
+          },
+          {
+            "t": 562,
+            "mb": 234.0
+          },
+          {
+            "t": 567,
+            "mb": 234.0
+          },
+          {
+            "t": 572,
+            "mb": 234.0
+          },
+          {
+            "t": 577,
+            "mb": 234.0
+          },
+          {
+            "t": 582,
+            "mb": 234.0
+          },
+          {
+            "t": 587,
+            "mb": 234.0
+          },
+          {
+            "t": 592,
+            "mb": 234.0
+          },
+          {
+            "t": 597,
+            "mb": 234.0
+          }
+        ],
+        "startMb": 93.6,
+        "endMb": 234.0,
+        "peakMb": 234.0,
+        "deltaMb": 140.4,
+        "samples": 120,
+        "reqS": 3499.64,
+        "p99Ms": 2.38,
+        "p50Ms": 1.14,
+        "non2xx": 0,
+        "socketErrors": 0,
+        "requests": 2099792,
+        "driftMb": 2.0
+      },
+      {
+        "framework": "axum",
+        "series": [
+          {
+            "t": 0,
+            "mb": 15.5
+          },
+          {
+            "t": 5,
+            "mb": 17.9
+          },
+          {
+            "t": 10,
+            "mb": 18.4
+          },
+          {
+            "t": 15,
+            "mb": 18.5
+          },
+          {
+            "t": 20,
+            "mb": 18.7
+          },
+          {
+            "t": 25,
+            "mb": 18.8
+          },
+          {
+            "t": 30,
+            "mb": 19.5
+          },
+          {
+            "t": 35,
+            "mb": 19.7
+          },
+          {
+            "t": 40,
+            "mb": 20.2
+          },
+          {
+            "t": 45,
+            "mb": 20.8
+          },
+          {
+            "t": 51,
+            "mb": 21.0
+          },
+          {
+            "t": 56,
+            "mb": 21.1
+          },
+          {
+            "t": 61,
+            "mb": 21.5
+          },
+          {
+            "t": 66,
+            "mb": 21.9
+          },
+          {
+            "t": 71,
+            "mb": 22.0
+          },
+          {
+            "t": 76,
+            "mb": 22.5
+          },
+          {
+            "t": 81,
+            "mb": 22.7
+          },
+          {
+            "t": 86,
+            "mb": 23.1
+          },
+          {
+            "t": 91,
+            "mb": 23.5
+          },
+          {
+            "t": 96,
+            "mb": 23.5
+          },
+          {
+            "t": 101,
+            "mb": 23.8
+          },
+          {
+            "t": 106,
+            "mb": 24.0
+          },
+          {
+            "t": 111,
+            "mb": 24.2
+          },
+          {
+            "t": 116,
+            "mb": 24.7
+          },
+          {
+            "t": 121,
+            "mb": 25.0
+          },
+          {
+            "t": 126,
+            "mb": 25.3
+          },
+          {
+            "t": 131,
+            "mb": 25.7
+          },
+          {
+            "t": 136,
+            "mb": 26.2
+          },
+          {
+            "t": 141,
+            "mb": 26.5
+          },
+          {
+            "t": 146,
+            "mb": 26.8
+          },
+          {
+            "t": 151,
+            "mb": 26.9
+          },
+          {
+            "t": 156,
+            "mb": 27.3
+          },
+          {
+            "t": 161,
+            "mb": 27.4
+          },
+          {
+            "t": 166,
+            "mb": 28.1
+          },
+          {
+            "t": 171,
+            "mb": 28.3
+          },
+          {
+            "t": 176,
+            "mb": 28.8
+          },
+          {
+            "t": 181,
+            "mb": 28.9
+          },
+          {
+            "t": 186,
+            "mb": 29.3
+          },
+          {
+            "t": 191,
+            "mb": 29.5
+          },
+          {
+            "t": 196,
+            "mb": 29.6
+          },
+          {
+            "t": 201,
+            "mb": 29.9
+          },
+          {
+            "t": 206,
+            "mb": 30.1
+          },
+          {
+            "t": 211,
+            "mb": 30.4
+          },
+          {
+            "t": 216,
+            "mb": 30.7
+          },
+          {
+            "t": 221,
+            "mb": 30.8
+          },
+          {
+            "t": 226,
+            "mb": 31.3
+          },
+          {
+            "t": 231,
+            "mb": 31.6
+          },
+          {
+            "t": 236,
+            "mb": 31.9
+          },
+          {
+            "t": 241,
+            "mb": 32.4
+          },
+          {
+            "t": 246,
+            "mb": 32.5
+          },
+          {
+            "t": 251,
+            "mb": 32.8
+          },
+          {
+            "t": 256,
+            "mb": 33.2
+          },
+          {
+            "t": 261,
+            "mb": 33.7
+          },
+          {
+            "t": 266,
+            "mb": 33.9
+          },
+          {
+            "t": 271,
+            "mb": 34.1
+          },
+          {
+            "t": 276,
+            "mb": 34.4
+          },
+          {
+            "t": 281,
+            "mb": 34.8
+          },
+          {
+            "t": 286,
+            "mb": 35.0
+          },
+          {
+            "t": 291,
+            "mb": 35.2
+          },
+          {
+            "t": 296,
+            "mb": 35.5
+          },
+          {
+            "t": 301,
+            "mb": 35.8
+          },
+          {
+            "t": 306,
+            "mb": 36.1
+          },
+          {
+            "t": 311,
+            "mb": 36.7
+          },
+          {
+            "t": 316,
+            "mb": 37.0
+          },
+          {
+            "t": 322,
+            "mb": 37.2
+          },
+          {
+            "t": 327,
+            "mb": 37.5
+          },
+          {
+            "t": 332,
+            "mb": 37.8
+          },
+          {
+            "t": 337,
+            "mb": 38.0
+          },
+          {
+            "t": 342,
+            "mb": 38.4
+          },
+          {
+            "t": 347,
+            "mb": 38.8
+          },
+          {
+            "t": 352,
+            "mb": 39.0
+          },
+          {
+            "t": 357,
+            "mb": 39.4
+          },
+          {
+            "t": 362,
+            "mb": 39.7
+          },
+          {
+            "t": 367,
+            "mb": 40.1
+          },
+          {
+            "t": 372,
+            "mb": 40.5
+          },
+          {
+            "t": 377,
+            "mb": 41.0
+          },
+          {
+            "t": 382,
+            "mb": 41.2
+          },
+          {
+            "t": 387,
+            "mb": 41.5
+          },
+          {
+            "t": 392,
+            "mb": 41.6
+          },
+          {
+            "t": 397,
+            "mb": 42.0
+          },
+          {
+            "t": 402,
+            "mb": 42.3
+          },
+          {
+            "t": 407,
+            "mb": 42.3
+          },
+          {
+            "t": 412,
+            "mb": 42.7
+          },
+          {
+            "t": 417,
+            "mb": 43.2
+          },
+          {
+            "t": 422,
+            "mb": 43.6
+          },
+          {
+            "t": 427,
+            "mb": 43.7
+          },
+          {
+            "t": 432,
+            "mb": 44.0
+          },
+          {
+            "t": 437,
+            "mb": 44.3
+          },
+          {
+            "t": 442,
+            "mb": 44.5
+          },
+          {
+            "t": 447,
+            "mb": 44.8
+          },
+          {
+            "t": 452,
+            "mb": 45.2
+          },
+          {
+            "t": 457,
+            "mb": 45.4
+          },
+          {
+            "t": 462,
+            "mb": 45.6
+          },
+          {
+            "t": 467,
+            "mb": 45.9
+          },
+          {
+            "t": 472,
+            "mb": 46.5
+          },
+          {
+            "t": 477,
+            "mb": 46.9
+          },
+          {
+            "t": 482,
+            "mb": 47.2
+          },
+          {
+            "t": 487,
+            "mb": 47.3
+          },
+          {
+            "t": 492,
+            "mb": 47.7
+          },
+          {
+            "t": 497,
+            "mb": 47.8
+          },
+          {
+            "t": 502,
+            "mb": 48.1
+          },
+          {
+            "t": 507,
+            "mb": 48.5
+          },
+          {
+            "t": 512,
+            "mb": 48.7
+          },
+          {
+            "t": 517,
+            "mb": 49.2
+          },
+          {
+            "t": 522,
+            "mb": 49.5
+          },
+          {
+            "t": 527,
+            "mb": 49.9
+          },
+          {
+            "t": 532,
+            "mb": 50.3
+          },
+          {
+            "t": 537,
+            "mb": 50.5
+          },
+          {
+            "t": 542,
+            "mb": 50.7
+          },
+          {
+            "t": 547,
+            "mb": 50.9
+          },
+          {
+            "t": 552,
+            "mb": 51.2
+          },
+          {
+            "t": 557,
+            "mb": 51.4
+          },
+          {
+            "t": 562,
+            "mb": 51.8
+          },
+          {
+            "t": 567,
+            "mb": 52.2
+          },
+          {
+            "t": 572,
+            "mb": 52.4
+          },
+          {
+            "t": 577,
+            "mb": 52.8
+          },
+          {
+            "t": 582,
+            "mb": 53.0
+          },
+          {
+            "t": 587,
+            "mb": 53.3
+          },
+          {
+            "t": 593,
+            "mb": 53.6
+          },
+          {
+            "t": 598,
+            "mb": 53.8
+          }
+        ],
+        "startMb": 15.5,
+        "endMb": 53.8,
+        "peakMb": 53.8,
+        "deltaMb": 38.3,
+        "samples": 120,
+        "reqS": 3497.93,
+        "p99Ms": 2.07,
+        "p50Ms": 1.08,
+        "non2xx": 0,
+        "socketErrors": 0,
+        "requests": 2098769,
+        "driftMb": 32.3
+      }
+    ],
+    "churn": [
+      {
+        "framework": "fastify",
+        "maxRps": 2431,
+        "maxRpsRange": [
+          324,
+          2601
+        ],
+        "p99Ms": 19680.0,
+        "peakRssMb": 187,
+        "non2xx": 0,
+        "socketErrors": 0
+      },
+      {
+        "framework": "spring",
+        "maxRps": 975,
+        "maxRpsRange": [
+          829,
+          4189
+        ],
+        "p99Ms": 19740.0,
+        "peakRssMb": 400,
+        "non2xx": 0,
+        "socketErrors": 0
+      },
+      {
+        "framework": "fastapi",
+        "maxRps": 750,
+        "maxRpsRange": [
+          711,
+          2189
+        ],
+        "p99Ms": 19740.0,
+        "peakRssMb": 268,
+        "non2xx": 0,
+        "socketErrors": 0
+      },
+      {
+        "framework": "crocket",
+        "maxRps": 749,
+        "maxRpsRange": [
+          415,
+          10617
+        ],
+        "p99Ms": 19760.0,
+        "peakRssMb": 30,
+        "non2xx": 0,
+        "socketErrors": 0
+      },
+      {
+        "framework": "rocket",
+        "maxRps": 519,
+        "maxRpsRange": [
+          403,
+          8745
+        ],
+        "p99Ms": 19790.0,
+        "peakRssMb": 24,
+        "non2xx": 0,
+        "socketErrors": 0
+      },
+      {
+        "framework": "axum",
+        "maxRps": 515,
+        "maxRpsRange": [
+          400,
+          8525
+        ],
+        "p99Ms": 19760.0,
+        "peakRssMb": 16,
+        "non2xx": 0,
+        "socketErrors": 0
+      },
+      {
+        "framework": "drogon",
+        "maxRps": 470,
+        "maxRpsRange": [
+          413,
+          6920
+        ],
+        "p99Ms": 19760.0,
+        "peakRssMb": 176,
+        "non2xx": 0,
+        "socketErrors": 0
+      },
+      {
+        "framework": "hyperexpress",
+        "maxRps": 6,
+        "maxRpsRange": [
+          6,
+          6
+        ],
+        "p99Ms": 0.0,
+        "peakRssMb": 777,
+        "non2xx": 0,
+        "socketErrors": 2272
+      }
+    ],
+    "coming": []
+  },
+  "hardwareNote": "The JSON, query, and plaintext numbers are from NYC1. The crocket and Drogon production tests ran on the same size in SFO2, because c-4 wasn't available in NYC1 that day. The other production tests, and everything for hyper-express, ran back in NYC1. The graceful drain test ran locally in Docker"
+}

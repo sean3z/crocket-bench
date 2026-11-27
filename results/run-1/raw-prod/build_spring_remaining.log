@@ -1,0 +1,20 @@
+#12 [build 5/6] COPY src ./src
+#12 DONE 0.0s
+
+#13 [build 6/6] RUN mvn -q -B package -DskipTests
+#13 DONE 5.4s
+
+#14 [stage-1 3/3] COPY --from=build /src/target/bench.jar /app/bench.jar
+#14 DONE 0.1s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 1.3s done
+#15 exporting manifest sha256:afe48552a361e58dc37839e593e7519062aa704bf8b39e214f91873a7b5f36cd done
+#15 exporting config sha256:84ca7765501103608b438a5b34f22cae1fe6072be119eb903b926cecd51f0d1d done
+#15 exporting attestation manifest sha256:d02686ff1a6dc2fe11d84164954f7e9420b6b143a1dde572c759aad0d6c048a8 done
+#15 exporting manifest list sha256:264df9a3a55bcc74ccad98f0ebeeb6f13be20acdcc64a2e0718f6edd48ec7e36 done
+#15 naming to docker.io/library/bench-spring:latest done
+#15 unpacking to docker.io/library/bench-spring:latest
+#15 unpacking to docker.io/library/bench-spring:latest 0.3s done
+#15 DONE 1.7s

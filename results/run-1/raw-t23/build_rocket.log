@@ -1,0 +1,30 @@
+#12 127.1    |
+#12 127.1 56 | async fn readyz(mut db: Connection<Db>) -> Status {
+#12 127.1    |                 ----^^
+#12 127.1    |                 |
+#12 127.1    |                 help: remove this `mut`
+#12 127.1 
+#12 172.4 warning: `bench` (bin "bench") generated 2 warnings (run `cargo fix --bin "bench" -p bench` to apply 2 suggestions)
+#12 172.4     Finished `release` profile [optimized] target(s) in 2m 52s
+#12 DONE 172.7s
+
+#13 [stage-1 3/5] COPY --from=build /src/target/release/bench /app/bench
+#13 DONE 0.0s
+
+#14 [stage-1 4/5] COPY Rocket.toml /app/
+#14 DONE 0.0s
+
+#15 [stage-1 5/5] WORKDIR /app
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 0.5s done
+#16 exporting manifest sha256:8176bf38108ef2256282b5189133262ebd57bf0b8b7c359ccb99f1f8d5e503ce
+#16 exporting manifest sha256:8176bf38108ef2256282b5189133262ebd57bf0b8b7c359ccb99f1f8d5e503ce done
+#16 exporting config sha256:e40f902934f9f956817b34611ffca8f0047dde03bc1d24f43af36a3bc91e4ffa 0.0s done
+#16 exporting attestation manifest sha256:081f98f0bef1894dfa75e7721a9ee5740e6cbe7cb416e4e61a8f29525d84ce83 0.0s done
+#16 exporting manifest list sha256:7c84bad783473b2fcfd99be0a4185e027dd435132499d1dc1b916d186ee173e7 0.0s done
+#16 naming to docker.io/library/bench-rocket:latest done
+#16 unpacking to docker.io/library/bench-rocket:latest 0.1s done
+#16 DONE 0.8s

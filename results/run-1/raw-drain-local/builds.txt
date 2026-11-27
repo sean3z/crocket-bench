@@ -1,0 +1,9 @@
+axum build exit 0 02:40:39
+crocket build exit 0 02:41:20
+fastify build exit 0 02:41:26
+rocket build exit 0 02:41:41
+hyperexpress build exit 0 02:41:49
+fastapi build exit 0 02:42:00
+spring build exit 0 02:42:24
+drogon build exit 0 02:43:55
+ALLDONE

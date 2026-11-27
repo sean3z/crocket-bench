@@ -1,0 +1,9 @@
+target/
+node_modules/
+__pycache__/
+*.pyc
+*.out
+*.pid
+build/
+rig/cb_key*
+rig/droplets

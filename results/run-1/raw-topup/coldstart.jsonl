@@ -1,0 +1,9 @@
+{"app":"drogon","error":"no 200 in 120s"}
+{"app":"fastapi","error":"no 200 in 120s"}
+{"app":"crocket","cold_ms":352,"startup_rss_kb":14760,"pid":63387}
+{"app":"fastapi","cold_ms":1302,"startup_rss_kb":261904,"pid":67919}
+{"app":"drogon","cold_ms":295,"startup_rss_kb":15772,"pid":76705}
+{"app":"crocket","cold_ms":351,"startup_rss_kb":14472,"pid":87685}
+{"app":"crocket","cold_ms":386,"startup_rss_kb":14968,"pid":91588}
+{"app":"drogon","cold_ms":288,"startup_rss_kb":15648,"pid":91879}
+{"app":"drogon","cold_ms":241,"startup_rss_kb":15632,"pid":94562}

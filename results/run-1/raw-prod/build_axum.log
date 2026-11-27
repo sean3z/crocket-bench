@@ -1,0 +1,20 @@
+
+#12 [stage-1 2/4] RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && rm -rf /var/lib/apt/lists/*
+#12 CACHED
+
+#13 [stage-1 3/4] COPY --from=build /src/target/release/bench /app/bench
+#13 DONE 0.0s
+
+#14 [stage-1 4/4] WORKDIR /app
+#14 DONE 0.0s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 0.2s done
+#15 exporting manifest sha256:20fa9916fc2497a89268a0047e2aaf5218ee9cf657d599e8393bb7ea8af7400d done
+#15 exporting config sha256:275d58531b974ceee5d61474f46e752e638c15482fbc62cb34d2fee2bbc1abdc done
+#15 exporting attestation manifest sha256:2e01668048c42ad75ec498f06307ad66ac9f4c8db673e44c05f847ed2c4977dc done
+#15 exporting manifest list sha256:c9c57221d1660f3c26399c10bd65ba123095fb90599a399aff982f7757fc8121 done
+#15 naming to docker.io/library/bench-axum:latest done
+#15 unpacking to docker.io/library/bench-axum:latest 0.0s done
+#15 DONE 0.3s

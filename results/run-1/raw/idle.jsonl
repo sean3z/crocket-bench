@@ -1,0 +1,3 @@
+{"app":"crocket","phase":"idle","m":{"app_cpu_cores":0.000,"app_user_cores":0.000,"app_sys_cores":0.000,"rss_peak_kb":15472,"rss_avg_kb":15472,"host_cpu_pct":0.5,"docker_cpu_cores":0.00}}
+{"app":"fastify","phase":"idle","m":{"app_cpu_cores":0.002,"app_user_cores":0.000,"app_sys_cores":0.002,"rss_peak_kb":85972,"rss_avg_kb":85972,"host_cpu_pct":0.5,"docker_cpu_cores":0.00}}
+{"app":"spring","phase":"idle","m":{"app_cpu_cores":0.004,"app_user_cores":0.002,"app_sys_cores":0.002,"rss_peak_kb":235300,"rss_avg_kb":235298,"host_cpu_pct":0.6,"docker_cpu_cores":0.00}}

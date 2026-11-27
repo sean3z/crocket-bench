@@ -1,0 +1,20 @@
+139.2    52 |       .mount("/", reflect_routes<^^api>())
+139.2       |                   ~~~~~~~~~~~~~~~~~~~~~^~
+139.2 /src/build/_deps/crocket-src/include/crocket/reflect.hpp:288:32: error: static assertion failed: crocket: handler api::echo [POST /echo]: parameter 'body' of type 'Item' is not a path capture and not an extractor (no FromRequest<Item>)
+139.2   288 |     static_assert(problem.empty(), problem);
+139.2       |                   ~~~~~~~~~~~~~^~
+139.2   • 'problem.std::basic_string_view<char>::empty()' evaluates to false
+140.6 [149/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/engine_h2o.cpp.o
+141.0 [150/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/fairings.cpp.o
+141.0 [151/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket_pg.dir/src/db.cpp.o
+141.0 ninja: build stopped: subcommand failed.
+------
+Dockerfile:14
+--------------------
+  12 |     # WORKAROUND 2: CMAKE_C_COMPILER must be set too: crocket's project() enables C (for h2o) and the
+  13 |     # image has no default `cc`, so configure fails with "No CMAKE_C_COMPILER could be found".
+  14 | >>> RUN cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-16.2 -DCMAKE_C_COMPILER=gcc-16.2 && cmake --build build --target bench && cp build/bench /usr/local/bin/bench
+  15 |     # WORKAROUND 3: the binary needs GCC 16.2's libstdc++ (GLIBCXX_3.4.36); the system one is 3.4.35.
+  16 |     ENV LD_LIBRARY_PATH=/opt/gcc-16.2/lib64
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=g++-16.2 -DCMAKE_C_COMPILER=gcc-16.2 && cmake --build build --target bench && cp build/bench /usr/local/bin/bench" did not complete successfully: exit code: 1

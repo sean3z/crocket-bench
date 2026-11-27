@@ -1,0 +1,15 @@
+{"app":"axum","cold_ms":309,"startup_rss_kb":9100,"pid":16758}
+{"app":"axum","cold_ms":299,"startup_rss_kb":9036,"pid":23576}
+{"app":"rocket","cold_ms":157,"startup_rss_kb":10800,"pid":23814}
+{"app":"rocket","cold_ms":169,"startup_rss_kb":11096,"pid":26525}
+{"app":"fastify","cold_ms":460,"startup_rss_kb":85864,"pid":26762}
+{"app":"fastify","cold_ms":439,"startup_rss_kb":85756,"pid":30308}
+{"app":"spring","cold_ms":5009,"startup_rss_kb":226304,"pid":30577}
+{"app":"spring","cold_ms":5279,"startup_rss_kb":227556,"pid":34007}
+{"app":"fastapi","cold_ms":1144,"startup_rss_kb":259204,"pid":34955}
+{"app":"fastapi","cold_ms":1255,"startup_rss_kb":269480,"pid":39838}
+{"app":"hyperexpress","cold_ms":315,"startup_rss_kb":74476,"pid":40317}
+{"app":"hyperexpress","cold_ms":305,"startup_rss_kb":74440,"pid":40560}
+{"app":"hyperexpress","cold_ms":302,"startup_rss_kb":74460,"pid":40800}
+{"app":"hyperexpress","cold_ms":331,"startup_rss_kb":75332,"pid":50238}
+{"app":"fastify","cold_ms":498,"startup_rss_kb":85292,"pid":50509}

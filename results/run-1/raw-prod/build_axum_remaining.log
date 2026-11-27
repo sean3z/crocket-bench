@@ -1,0 +1,20 @@
+#12 131.6     Finished `release` profile [optimized] target(s) in 2m 11s
+#12 DONE 131.8s
+
+#13 [stage-1 3/4] COPY --from=build /src/target/release/bench /app/bench
+#13 DONE 0.0s
+
+#14 [stage-1 4/4] WORKDIR /app
+#14 DONE 0.0s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 1.0s done
+#15 exporting manifest sha256:4a0a61cb19219993f15fe7a8bcb42925598e41aab30bf3f02f05f423b418c131 done
+#15 exporting config sha256:5530174c515a0c39d6dd7caef5b19959663341e8d2db189f9aef6398d9ca06ea done
+#15 exporting attestation manifest sha256:6d6dd9ec65fe83938e68cc17fb8327ec9bab78d197675b82afe8b34795f28f82 done
+#15 exporting manifest list sha256:f287498699668e6d60f104a5c6fbf97d9818488ebb943407ba189fc0f33725cb done
+#15 naming to docker.io/library/bench-axum:latest done
+#15 unpacking to docker.io/library/bench-axum:latest
+#15 unpacking to docker.io/library/bench-axum:latest 0.2s done
+#15 DONE 1.3s

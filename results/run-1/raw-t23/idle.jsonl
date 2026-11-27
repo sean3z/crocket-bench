@@ -1,0 +1,6 @@
+{"app":"rocket","phase":"idle","m":{"app_cpu_cores":0.000,"app_user_cores":0.000,"app_sys_cores":0.000,"rss_peak_kb":10884,"rss_avg_kb":10884,"host_cpu_pct":0.5,"docker_cpu_cores":0.00}}
+{"app":"axum","phase":"idle","m":{"app_cpu_cores":0.000,"app_user_cores":0.000,"app_sys_cores":0.000,"rss_peak_kb":9144,"rss_avg_kb":9144,"host_cpu_pct":0.4,"docker_cpu_cores":0.00}}
+{"app":"crocket","phase":"idle","m":{"app_cpu_cores":0.002,"app_user_cores":0.002,"app_sys_cores":0.000,"rss_peak_kb":15064,"rss_avg_kb":15064,"host_cpu_pct":0.5,"docker_cpu_cores":0.00}}
+{"app":"fastapi","phase":"idle","m":{"app_cpu_cores":0.008,"app_user_cores":0.008,"app_sys_cores":0.000,"rss_peak_kb":266832,"rss_avg_kb":266832,"host_cpu_pct":0.9,"docker_cpu_cores":0.00}}
+{"app":"fastify","phase":"idle","m":{"app_cpu_cores":0.004,"app_user_cores":0.004,"app_sys_cores":0.000,"rss_peak_kb":86364,"rss_avg_kb":86364,"host_cpu_pct":0.6,"docker_cpu_cores":0.00}}
+{"app":"spring","phase":"idle","m":{"app_cpu_cores":0.000,"app_user_cores":0.000,"app_sys_cores":0.000,"rss_peak_kb":245432,"rss_avg_kb":245428,"host_cpu_pct":0.5,"docker_cpu_cores":0.00}}

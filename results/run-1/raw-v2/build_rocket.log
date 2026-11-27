@@ -1,0 +1,30 @@
+#11 71.78    |                 |
+#11 71.78    |                 help: remove this `mut`
+#11 71.78 
+#11 101.5 warning: `bench` (bin "bench") generated 2 warnings (run `cargo fix --bin "bench" -p bench` to apply 2 suggestions)
+#11 101.5     Finished `release` profile [optimized] target(s) in 1m 41s
+#11 DONE 101.7s
+
+#12 [stage-1 2/5] RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl && rm -rf /var/lib/apt/lists/*
+#12 CACHED
+
+#13 [stage-1 3/5] COPY --from=build /src/target/release/bench /app/bench
+#13 DONE 0.0s
+
+#14 [stage-1 4/5] COPY Rocket.toml /app/
+#14 DONE 0.0s
+
+#15 [stage-1 5/5] WORKDIR /app
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 0.3s done
+#16 exporting manifest sha256:a1c41c48b06e26086b6cccdfc47432a38b72c0e04d9319db850c8245f1f87da8
+#16 exporting manifest sha256:a1c41c48b06e26086b6cccdfc47432a38b72c0e04d9319db850c8245f1f87da8 done
+#16 exporting config sha256:ff8d13513605011d69fd9f857e91e1ba550568221587d46cf74f4c5f9c9b8d0f done
+#16 exporting attestation manifest sha256:5f7d1b448a56859f355ce2256e4249504d37898f6fd4a98edaf7f4ce7b2681d9 done
+#16 exporting manifest list sha256:35794e420f28e342e8140fa29cfd62da581d00554ca5a7c0ee55a04bfa14eeb4 done
+#16 naming to docker.io/library/bench-rocket:latest done
+#16 unpacking to docker.io/library/bench-rocket:latest 0.1s done
+#16 DONE 0.4s

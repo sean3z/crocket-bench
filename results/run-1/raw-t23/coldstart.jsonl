@@ -1,0 +1,7 @@
+{"app":"rocket","cold_ms":204,"startup_rss_kb":10748,"pid":18928}
+{"app":"axum","cold_ms":293,"startup_rss_kb":9020,"pid":25962}
+{"app":"drogon","cold_ms":219,"startup_rss_kb":15828,"pid":32954}
+{"app":"crocket","cold_ms":335,"startup_rss_kb":14512,"pid":40045}
+{"app":"fastapi","cold_ms":1120,"startup_rss_kb":263188,"pid":45139}
+{"app":"fastify","cold_ms":405,"startup_rss_kb":84176,"pid":59740}
+{"app":"spring","cold_ms":4709,"startup_rss_kb":230924,"pid":62535}

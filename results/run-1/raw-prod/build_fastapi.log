@@ -1,0 +1,20 @@
+#7 CACHED
+
+#8 [3/6] WORKDIR /app
+#8 CACHED
+
+#9 [5/6] RUN pip install --no-cache-dir -r requirements.txt
+#9 CACHED
+
+#10 [6/6] COPY app.py ./
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers 0.0s done
+#11 exporting manifest sha256:8739b9adafad9b1594210547eed31cdf9b894276855efa485a45b99130b4d8fd done
+#11 exporting config sha256:bac3188841b84b30f64e1cf5fcbf77ba7c7cb133b5dc69afb1e3a1a0f160fcdc done
+#11 exporting attestation manifest sha256:9946108b212b90a1eec5f4e55152ad34913d5acf6171bdc8c6e375c1a9b5cdb2 done
+#11 exporting manifest list sha256:add77a708f22c8eb97b67746f279d486f7a1b06b5f430aa45c06469e5fbee70f done
+#11 naming to docker.io/library/bench-fastapi:latest done
+#11 unpacking to docker.io/library/bench-fastapi:latest 0.0s done
+#11 DONE 0.1s

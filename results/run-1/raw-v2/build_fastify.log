@@ -1,0 +1,30 @@
+#8 [4/5] RUN npm install --omit=dev --no-audit --no-fund && npm ls --depth=0
+#8 3.452 npm warn deprecated prom-client@15.1.3: prom-client has been replaced by @prometheus-io/client
+#8 4.134 
+#8 4.134 added 65 packages in 4s
+#8 4.138 npm notice
+#8 4.138 npm notice New major version of npm available! 11.20.0 -> 12.2.3
+#8 4.138 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+#8 4.138 npm notice To update run: npm install -g npm@12.2.3
+#8 4.138 npm notice
+#8 4.680 bench-fastify@0.1.0 /app
+#8 4.680 +-- fastify@5.12.8
+#8 4.680 +-- pg@8.23.1
+#8 4.680 `-- prom-client@15.1.3
+#8 4.680 
+#8 DONE 4.9s
+
+#9 [5/5] COPY server.js ./
+#9 DONE 0.1s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 1.8s done
+#10 exporting manifest sha256:546380dd2ea237c4d6841ec3b3393c13ba7926499bc4a9dd82bbce2b5f724f6e done
+#10 exporting config sha256:bca399eba389d4fe2b7e11dc2ae62617a914efdf2161db210a3956a106bbeba9 done
+#10 exporting attestation manifest sha256:fa176e4a61df2da6bc7005c1e436e81e8ac473521edb0489969dcbaeffe3f382 0.0s done
+#10 exporting manifest list sha256:b63fba8d08392c79cf973acf6425016c59f2b404fa02a94d8b0d636f1f4bdceb done
+#10 naming to docker.io/library/bench-fastify:latest done
+#10 unpacking to docker.io/library/bench-fastify:latest
+#10 unpacking to docker.io/library/bench-fastify:latest 1.1s done
+#10 DONE 3.0s

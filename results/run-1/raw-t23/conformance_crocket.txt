@@ -1,0 +1,12 @@
+PASS plaintext body
+PASS plaintext content-type
+PASS json body
+PASS json content-type
+PASS db shape
+PASS db random ids
+PASS x-request-id echoed
+PASS x-request-id generated
+PASS liveness /healthz
+PASS readiness /readyz
+PASS metrics histogram
+PASS json access log line

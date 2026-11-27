@@ -1,0 +1,30 @@
+#11 3.463    90 |       .setIdleConnectionTimeout(75)
+#11 3.463       |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 3.463    91 |       .setClientMaxBodySize(1 << 20)
+#11 3.463       |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 3.463    92 |       .createDbClient("postgresql", dbh ? dbh : "127.0.0.1", 5432, "bench", "bench", "bench",
+#11 3.463       |       ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 3.463    93 |                       4 /* connections per IO loop: 4 loops x 4 = 16 */, "", "default", true /* fast */, "utf8", 10.0 /* timeout s */);
+#11 3.463       |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#11 3.463 In file included from /usr/local/include/drogon/drogon.h:23,
+#11 3.463                  from /src/main.cc:6:
+#11 3.463 /usr/local/include/drogon/HttpAppFramework.h:1512:5: note: declared here
+#11 3.463  1512 |     createDbClient(const std::string &dbType,
+#11 3.463       |     ^~~~~~~~~~~~~~
+#11 9.077 [100%] Linking CXX executable bench
+#11 9.387 [100%] Built target bench
+#11 DONE 9.4s
+
+#12 [stage-1 3/3] COPY --from=build /src/build/bench /app/bench
+#12 DONE 0.0s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.4s done
+#13 exporting manifest sha256:2ef9ee701403eec13435fe0fdf1def7580f0fc004974d1eb7d007639c36e2d69 done
+#13 exporting config sha256:a6987d13b270f33485dd8daa3133f0ef9b0d1c377136df68b92d72a05b34cf7c done
+#13 exporting attestation manifest sha256:e4526fc8e0850033579444d6fdece6ab539b7e3d454dbd9224716840fcc1442c done
+#13 exporting manifest list sha256:71742aaaf936ec00cfd6070d81f4453805fd7a50ae1aafcdac90b41143f7de6b done
+#13 naming to docker.io/library/bench-drogon:latest done
+#13 unpacking to docker.io/library/bench-drogon:latest 0.1s done
+#13 DONE 0.5s

@@ -1,0 +1,1 @@
+{"app": "crocket", "sigterm_unix": 1795637521, "down_unix": 1795637522, "up_unix": 1795637526, "load": {"ok": 41940, "err": 3387, "by": {"200": 41940, "ConnectionResetError": 1, "URLError": 3386}, "seconds": 40.0}}

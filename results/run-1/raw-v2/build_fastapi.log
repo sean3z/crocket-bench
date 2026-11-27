@@ -1,0 +1,30 @@
+#9 6.798 Downloading opentelemetry_api-1.45.2-py3-none-any.whl (60 kB)
+#9 6.823 Downloading pydantic-2.14.4-py3-none-any.whl (494 kB)
+#9 6.869 Downloading pydantic_core-2.50.5-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.3 MB)
+#9 6.983    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 19.6 MB/s  0:00:00
+#9 7.008 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#9 7.034 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#9 7.058 Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+#9 7.405 Installing collected packages: uvloop, typing-extensions, python-json-logger, prometheus-client, orjson, idna, httptools, h11, click, asyncpg, annotated-types, annotated-doc, uvicorn, typing-inspection, pydantic-core, opentelemetry-api, anyio, starlette, pydantic, prometheus-fastapi-instrumentator, fastapi, asgi-correlation-id
+#9 9.545 
+#9 9.550 Successfully installed annotated-doc-0.0.7 annotated-types-0.8.0 anyio-4.16.0 asgi-correlation-id-5.0.1 asyncpg-0.32.0 click-8.5.1 fastapi-0.165.0 h11-0.16.0 httptools-0.9.0 idna-3.20 opentelemetry-api-1.45.2 orjson-3.13.0 prometheus-client-0.26.0 prometheus-fastapi-instrumentator-8.1.0 pydantic-2.14.4 pydantic-core-2.50.5 python-json-logger-4.2.0 starlette-1.10.0 typing-extensions-4.16.0 typing-inspection-0.4.5 uvicorn-0.54.0 uvloop-0.23.0
+#9 9.550 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#9 9.552 
+#9 9.552 [notice] A new release of pip is available: 26.2.2 -> 26.3
+#9 9.552 [notice] To update, run: pip install --upgrade pip
+#9 DONE 9.9s
+
+#10 [6/6] COPY app.py ./
+#10 DONE 0.0s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 3.2s done
+#11 exporting manifest sha256:2b412a76e58e4f609f57c48d477a2ba43bfa3afdc9ed3e0825ee387ba460206e done
+#11 exporting config sha256:d126f25d709768b220070d61cad5a87b5d09cd0c2906fc5b41ec5d2a4f5d9eb4 done
+#11 exporting attestation manifest sha256:3dfe62f1568945f9f625aa3d140897b9d6afcfccac37cdc74c4056be6a8d1520 done
+#11 exporting manifest list sha256:c1a6a98ec2ee3560c3874b35570cf777b85a1bdebb0aa4c91ea9cfad920fa94f done
+#11 naming to docker.io/library/bench-fastapi:latest done
+#11 unpacking to docker.io/library/bench-fastapi:latest
+#11 unpacking to docker.io/library/bench-fastapi:latest 0.8s done
+#11 DONE 4.1s

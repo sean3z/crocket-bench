@@ -1,0 +1,1 @@
+{"app": "spring", "sigterm_unix": 1795750172, "down_unix": 1795750173, "up_unix": 1795750182, "load": {"ok": 27822, "err": 7933, "by": {"200": 27822, "ConnectionResetError": 2, "URLError": 7931}, "seconds": 40.0}}

@@ -1,0 +1,3 @@
+{"app":"crocket","cold_ms":331,"startup_rss_kb":14912,"pid":84800}
+{"app":"fastify","cold_ms":381,"startup_rss_kb":83920,"pid":89704}
+{"app":"spring","cold_ms":4366,"startup_rss_kb":231404,"pid":94648}

@@ -1,0 +1,16 @@
+Warning: Permanently added 'droplet' (ED25519) to the list of known hosts.
+Architecture:                            x86_64
+CPU(s):                                  4
+On-line CPU(s) list:                     0-3
+Vendor ID:                               GenuineIntel
+BIOS Vendor ID:                          QEMU
+Model name:                              Intel(R) Xeon(R) Platinum 8280 CPU @ 2.70GHz
+BIOS Model name:                         pc-i440fx-6.1  CPU @ 2.0GHz
+Thread(s) per core:                      1
+Core(s) per socket:                      4
+Socket(s):                               1
+Hypervisor vendor:                       KVM
+NUMA node0 CPU(s):                       0-3
+-----
+Droplet
+

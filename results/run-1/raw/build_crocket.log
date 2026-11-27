@@ -1,0 +1,30 @@
+#9 41.75 [138/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/conditional.cpp.o
+#9 45.85 [139/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/app.cpp.o
+#9 47.84 [140/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/log.cpp.o
+#9 53.03 [141/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/http.cpp.o
+#9 53.71 [142/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/json.cpp.o
+#9 55.70 [143/154] Linking C static library _deps/h2o-build/libh2o-evloop.a
+#9 55.71 [144/154] Generating CXX dyndep file CMakeFiles/bench.dir/CXX.dd
+#9 57.09 [145/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/grpc.cpp.o
+#9 62.51 [146/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/openapi.cpp.o
+#9 63.78 [147/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/static.cpp.o
+#9 64.83 [148/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/fairings.cpp.o
+#9 68.13 [149/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket_pg.dir/src/db.cpp.o
+#9 68.44 [150/154] Building CXX object _deps/crocket-build/CMakeFiles/crocket.dir/src/engine_h2o.cpp.o
+#9 68.49 [151/154] Linking CXX static library _deps/crocket-build/libcrocket.a
+#9 68.50 [152/154] Linking CXX static library _deps/crocket-build/libcrocket_pg.a
+#9 69.06 [153/154] Building CXX object CMakeFiles/bench.dir/main.cpp.o
+#9 69.46 [154/154] Linking CXX executable bench
+#9 DONE 69.5s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 15.2s done
+#10 exporting manifest sha256:8498bd3c4c2fd6c919ac3c09640a9ba86c618e9cad3524bfec7529439807fd1b done
+#10 exporting config sha256:3f5f3a423e7914b3f3799b4a394a5d09416c142153f4d7e474e6dc0878253a65 done
+#10 exporting attestation manifest sha256:0ca2e688f3fd7e8b35abee2dbe0a8cd61d4bd1a607cc9d645deaf77787d256ed done
+#10 exporting manifest list sha256:1df23d004b3b2b97c48ae3084b8076fce5103aaf4c0f74283722fa46bb9f8775 done
+#10 naming to docker.io/library/bench-crocket:latest done
+#10 unpacking to docker.io/library/bench-crocket:latest
+#10 unpacking to docker.io/library/bench-crocket:latest 2.7s done
+#10 DONE 18.0s

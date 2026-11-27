@@ -1,0 +1,20 @@
+#10 13.55 [100%] Linking CXX executable bench
+#10 14.09 [100%] Built target bench
+#10 DONE 14.2s
+
+#11 [stage-1 2/3] RUN apt-get update && apt-get install -y --no-install-recommends libjsoncpp25 libuuid1 zlib1g libssl3t64 libpq5 libbrotli1 libc-ares2 curl && rm -rf /var/lib/apt/lists/*
+#11 CACHED
+
+#12 [stage-1 3/3] COPY --from=build /src/build/bench /app/bench
+#12 DONE 0.0s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.3s done
+#13 exporting manifest sha256:555c0cb285e757405d35c52f727b2659a89bdf5daf52aee534228c223393e86e done
+#13 exporting config sha256:d3dbd79482d47ac26741b77c889509367e7b1cdac86105d865c9a91cd54590c3 done
+#13 exporting attestation manifest sha256:e80ca1fa94be9a7cb8909276a3b47eb9c33874b38e9ea9e180414203c1dbca9a 0.0s done
+#13 exporting manifest list sha256:cf929247ff540a25e1a0b108d9332d23b0edd992dd4a6f1ad42e8321b1cbeca3 0.0s done
+#13 naming to docker.io/library/bench-drogon:latest done
+#13 unpacking to docker.io/library/bench-drogon:latest 0.1s done
+#13 DONE 0.5s

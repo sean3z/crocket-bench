@@ -1,0 +1,20 @@
+#11 4.590 /usr/local/include/drogon/HttpAppFramework.h:1512:5: note: declared here
+#11 4.590  1512 |     createDbClient(const std::string &dbType,
+#11 4.590       |     ^~~~~~~~~~~~~~
+#11 12.30 [100%] Linking CXX executable bench
+#11 12.74 [100%] Built target bench
+#11 DONE 12.8s
+
+#12 [stage-1 3/3] COPY --from=build /src/build/bench /app/bench
+#12 DONE 0.0s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.5s done
+#13 exporting manifest sha256:2e9e04ff3476053dd2615b3053e11f8fc9a23f22fcd27f58e7429dfa51650c26 done
+#13 exporting config sha256:d0713cf94e13df34ea1bb679885617c4befb7db1d26dfb08d56c8d8f5407a18f done
+#13 exporting attestation manifest sha256:b7f66c32ec4c165adbf0a1719f72e5f095dadad1b24a4db5b9259b02a28e1572 done
+#13 exporting manifest list sha256:9cc58305ff09b7477b68a2c5e28c1b27da9aa32c988ba3bfaa5c06f07157257c done
+#13 naming to docker.io/library/bench-drogon:latest done
+#13 unpacking to docker.io/library/bench-drogon:latest 0.1s done
+#13 DONE 0.7s

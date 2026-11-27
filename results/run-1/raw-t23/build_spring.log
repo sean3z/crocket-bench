@@ -1,0 +1,30 @@
+#8 7.762 Setting up libpsl5t64:amd64 (0.21.2-1.1build2) ...
+#8 7.771 Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-3) ...
+#8 7.775 Setting up libcurl4t64:amd64 (8.18.0-1ubuntu2.8) ...
+#8 7.781 Setting up curl (8.18.0-1ubuntu2.8) ...
+#8 7.783 Processing triggers for libc-bin (2.43-2ubuntu2.7) ...
+#8 DONE 7.9s
+
+#11 [build 4/6] RUN mvn -q -B dependency:go-offline
+#11 DONE 12.2s
+
+#12 [build 5/6] COPY src ./src
+#12 DONE 0.0s
+
+#13 [build 6/6] RUN mvn -q -B package -DskipTests
+#13 DONE 5.0s
+
+#14 [stage-1 3/3] COPY --from=build /src/target/bench.jar /app/bench.jar
+#14 DONE 0.0s
+
+#15 exporting to image
+#15 exporting layers
+#15 exporting layers 1.1s done
+#15 exporting manifest sha256:fa358523f707d6ed4cb51c7bfed9b5c8bccdf93f53c94129860be1ccd2f2237e done
+#15 exporting config sha256:fd1a8b25b2ce83481fe60f73e588d61adabb8f4b7b97e1223af3f844ab021794 done
+#15 exporting attestation manifest sha256:336cfe6cf337f47d6a454671f332696a99cfec32fa8edece34b747b77d7beae2 done
+#15 exporting manifest list sha256:e115050fc1659a6960a5188c1de72b8267006904f93cbfbdf5b65b72f950c1a7 done
+#15 naming to docker.io/library/bench-spring:latest done
+#15 unpacking to docker.io/library/bench-spring:latest
+#15 unpacking to docker.io/library/bench-spring:latest 0.3s done
+#15 DONE 1.4s

@@ -1,0 +1,2 @@
+{ "name": "bench-hyperexpress", "version": "0.1.0", "private": true, "type": "module", "main": "server.js",
+  "dependencies": { "hyper-express": "7.0.2", "pg": "^8", "pino": "^9", "prom-client": "^15" } }

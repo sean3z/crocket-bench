@@ -1,0 +1,1 @@
+{"app": "fastapi", "sigterm_unix": 1795750987, "down_unix": 1795750989, "up_unix": 1795750994, "load": {"ok": 30911, "err": 14738, "by": {"200": 30911, "ConnectionResetError": 2, "URLError": 14736}, "seconds": 40.0}}

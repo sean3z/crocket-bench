@@ -1,0 +1,4 @@
+{"app":"crocket","cold_ms":376,"startup_rss_kb":14536,"pid":19690}
+{"app":"drogon","cold_ms":267,"startup_rss_kb":15476,"pid":21414}
+{"app":"drogon","cold_ms":273,"startup_rss_kb":15672,"pid":22885}
+{"app":"axum","cold_ms":344,"startup_rss_kb":9196,"pid":23127}
